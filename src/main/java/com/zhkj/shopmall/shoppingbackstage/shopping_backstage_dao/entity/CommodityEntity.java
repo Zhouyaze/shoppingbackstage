@@ -9,6 +9,7 @@ public class CommodityEntity {
     private String commodityName;
     private String bigPictureUrl;
     private String typeName;
+    private  String text;
     private CommoditySpecificationInventoryPriceEntity priceEntity;
 
     public CommoditySpecificationInventoryPriceEntity getPriceEntity() {
