@@ -1,4 +1,4 @@
-package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller;
+package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.orderfromShopController;
 
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.OrderfromshopEntity;

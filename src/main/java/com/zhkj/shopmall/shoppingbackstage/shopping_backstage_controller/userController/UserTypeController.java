@@ -1,4 +1,4 @@
-package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller;
+package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.userController;
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UsertypeEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_user.UserTypeService;
