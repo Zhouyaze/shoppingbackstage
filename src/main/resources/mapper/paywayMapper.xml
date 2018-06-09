@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_payWay.Pay_DAO">
+    <resultMap id="resultMap" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PaywayEntity">
+        <id property="id" column="id"/>
+        <result property="payWayName" column="payWayName"/>
+        <result property="pictureUrl" column="pictureUrl"/>
+    </resultMap>
+    <insert id="insertWay">
+         INSERT INTO payway (payWayName,pictureUrl) VALUE(#{payWayName},#{pictureUrl}
+         )
+      </insert>
+    <delete id="deleteWay">
+        delete from payway
+        <where>
+            id=#{id}
+        </where>
+    </delete>
+    <select id="selectPay" resultMap="resultMap">
+        select * from payway
+    </select>
+</mapper>

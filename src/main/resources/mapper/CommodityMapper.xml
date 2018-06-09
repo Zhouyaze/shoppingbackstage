@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.CommodityMapper">
+
+    <select id="getCommodityById" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+        SELECT * FROM commodity WHERE id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper">
+
+    <!-- 商品的所有查询方法-->
+    <!--帮助查询 商品类型 层级（标题） -->
+    <select id="selectleves" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity" >
+        SELECT * FROM shoppingmall.type WHERE levels=1
+    </select>
+    <!--查询商品规格 -->
+    <select id="selectspecificationstopic" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationstopicEntity">
+        SELECT * FROM shoppingmall.specificationstopic
+    </select>
+    <!-- 查询商品详细规格-->
+    <select id="selectspecificationsdetailed" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationsdetailedEntity">
+        SELECT * FROM shoppingmall.specificationsdetailed
+    </select>
+
+    <select id="seletCommodityId" resultType="int">
+        SELECT id FROM shoppingmall.commodity WHERE commodityName=#{name}
+    </select>
+    <select id="selsctspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
+        SELECT id ,specificationName FROM commodity_specification_relation WHERE levels=1;
+    </select>
+
+
+    <resultMap id="selectCommodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+        <id column="id" property="id"/>
+        <result column="commodityName" property="commodityName"/>
+        <result column="bigPictureUrl" property="bigPictureUrl"/>
+        <result column="typeName" property="typeName"/>
+        <association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+            <id column="id" property="id"/>
+            <result column="commodityId" property="commodityId"/>
+            <result column="specification1" property="specification1"/>
+            <result column="specification2" property="specification2"/>
+            <result column="specification3" property="specification3"/>
+            <result column="specification4" property="specification4"/>
+            <result column="inventory" property="inventory"/>
+            <result column="price" property="price"/>
+            <result column="picture" property="picture"/>
+        </association>
+    </resultMap>
+    <select id="selectCommodity" resultMap="selectCommodity">
+        SELECT * FROM shoppingmall.commodity,shoppingmall.commodity_specification_inventory_price
+        WHERE commodity.id=commodity_specification_inventory_price.commodityId
+        <if test="commodity.commodityName !=null" >
+            AND commodity.commodityName LIKE '%${commodity.commodityName}%'
+        </if>
+    </select>
+
+    <select id="selectAllspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+        SELECT * FROM commodity_specification_inventory_price
+        WHERE commodityId=#{Id}
+    </select>
+
+
+</mapper>

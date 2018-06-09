@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_User.UserTypeMapper">
+    <select id="selectUserType" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UsertypeEntity">
+        SELECT * FROM usertype
+    </select>
+</mapper>

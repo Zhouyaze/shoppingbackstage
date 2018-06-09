@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_authentication.AuthenticationMapper">
+    <select id="getAuthenicationById" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuthenticationEntity">
+        SELECT * FROM authentication WHERE id=#{id}
+    </select>
+    <update id="updateAuthentication">
+        UPDATE authentication
+        <set>
+            <if test="userName!=null and userName!=''">
+                userName=#{userName},
+            </if>
+            <if test="userAboutAddress!=null and userAboutAddress!=''">
+                userAboutAddress=#{userAboutAddress},
+            </if>
+            <if test="userAddress!=null and userAddress!=''">
+                userAddress=#{userAddress},
+            </if>
+            <if test="userPhoneNumber!=null and userPhoneNumber!=''">
+                userPhoneNumber=#{userPhoneNumber},
+            </if>
+        </set>
+            WHERE id=#{id}
+    </update>
+</mapper>

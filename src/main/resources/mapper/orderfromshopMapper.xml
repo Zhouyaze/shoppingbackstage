@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_OrderFromShop.OrderFromShopMapper">
+<resultMap id="orderfromshopAndcommodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.OrderfromshopEntity">
+    <id column="id" property="id"></id>
+    <result column="feight" property="feight"></result>
+    <result column="commodityPrice" property="commodityPrice"></result>
+    <result column="commodityNumber" property="commodityNumber"></result>
+    <result column="logisticsTypeId" property="logisticsTypeId"></result>
+    <result column="commodityId" property="commodityId"></result>
+    <result column="orderFromId" property="orderFromId"></result>
+    <association property="commodityEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+        <id column="id" property="id"></id>
+        <result column="commodityName" property="commodityName"></result>
+        <result column="bigPictureUrl" property="bigPictureUrl"></result>
+        <result column="typeName" property="typeName"></result>
+    </association>
+</resultMap>
+    <select id="selectOrderFromShopByOrderNumber1" resultMap="orderfromshopAndcommodity">
+        SELECT * FROM orderfromshop1,commodity
+        WHERE orderfromshop1.commodityId=commodity.id
+        AND orderfromshop1.orderFromId=#{orderFromId}
+    </select>
+    <select id="selectOrderFromShopByOrderNumber0" resultMap="orderfromshopAndcommodity">
+        SELECT * FROM orderfromshop0,commodity
+        WHERE orderfromshop0.commodityId=commodity.id
+        AND orderfromshop0.orderFromId=#{orderFromId}
+    </select>
+</mapper>

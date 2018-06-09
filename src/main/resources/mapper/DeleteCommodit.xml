@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.DeleteCommodityMapper">
+
+    <!--删除商品所有 -->
+    <delete id="DeleteCommodity" parameterType="java.lang.Integer">
+        DELETE FROM shoppingmall.commodity WHERE id=#{Id}
+    </delete>
+    <delete id="DeleteCommodityPrice"  parameterType="java.lang.Integer">
+        DELETE FROM commodity_specification_inventory_price WHERE commodityId=#{Id};
+    </delete>
+    <delete id="DeleteCommodityPicture" parameterType="java.lang.Integer">
+        DELETE FROM shoppingmall.commodityintroducepicture WHERE commodityintroducepicture.commodityId=#{Id}
+    </delete>
+
+    <!--删除 某个商品规格 -->
+    <delete id="DeleteCommoditySpecification" parameterType="java.lang.Integer">
+        DELETE FROM commodity_specification_inventory_price
+        WHERE id=#{id};
+    </delete>
+</mapper>

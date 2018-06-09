@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Specificationsrelation.SpecificationsrelationMapper">
+    <insert id="save">
+        INSERT INTO specificationsrelation(commodityNumber, commodityPrice, commodityId, smallPictureUrl, typeId, speciTopicId, speciDetailedId)
+        VALUES (#{specificaiton.commodityNumber},#{specificaiton.commodityPrice},#{specificaiton.commodityId},#{specificaiton.smallPictureUrl},#{specificaiton.typeId},#{specificaiton.speciTopicId},#{specificaiton.speciDetailedId})
+    </insert>
+
+    <update id="updateSpecification">
+        UPDATE specificationsrelation
+        <set>
+            <if test="specification.commodityNumber!=null">commodityNumber=#{specification.commodityNumber}</if>
+        </set>
+        WHERE commodityId=${specification.commodityId}
+    </update>
+
+ <!--<delete id="deleteSpecification">-->
+        <!--DELETE  FROM shoppingmall.specificationsrelation WHERE commodityId IN (${specification})-->
+
+    <!--</delete>-->
+
+  <delete id="deleteSpecification">
+        DELETE  FROM shoppingmall.specificationsrelation WHERE commodityId IN
+        <foreach item="id"  index="index" collection="specification" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+</mapper>

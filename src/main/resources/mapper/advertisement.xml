@@ -1,0 +1,66 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_advertisement.Advertisement_DAO">
+    <resultMap id="resultMap" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="pictureUrl" column="pictureUrl"/>
+        <result property="status" column="status"/>
+        <result property="commodityId" column="commodityId"/>
+        <result property="type" column="type"/>
+        <result property="floorId" column="floorId"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+    </resultMap>
+    <insert id="addAdvertise">
+         INSERT INTO advertisement (title,pictureUrl,status,commodityId,type,floorId,startTime,endTime)VALUE(
+         #{title},#{pictureUrl},#{status},#{commodityId},#{type},#{floorId},#{startTime},#{endTime}
+         )
+      </insert>
+    <update id="updateStatus">
+        update advertisement set status=#{status}
+        <where>
+            id=#{id}
+        </where>
+    </update>
+    <select id="selectAll" resultMap="resultMap">
+        select * from advertisement
+        <where>
+        <if test="advertisementEntity.startTime!=null">
+               and cast(startTime as date)=#{advertisementEntity.startTime}
+        </if>
+            <if test="advertisementEntity.type!=null and advertisementEntity.type>0">
+               and type=#{advertisementEntity.type}
+            </if>
+            <if test="advertisementEntity.floorId!=null and advertisementEntity.floorId>0">
+               and floorId=#{advertisementEntity.floorId}
+            </if>
+        </where>
+        <if test="currentPage!=null and perPage!=null">limit #{currentPage},#{perPage}</if>
+    </select>
+    <select id="selectCount" resultMap="resultMap">
+    select * from advertisement
+    <where>
+        <if test="advertisementEntity.startTime!=null">
+            and cast(startTime as date)=#{advertisementEntity.startTime}
+        </if>
+        <if test="advertisementEntity.type!=null and advertisementEntity.type>0">
+            and type=#{advertisementEntity.type}
+        </if>
+        <if test="advertisementEntity.floorId!=null and advertisementEntity.floorId>0">
+            and floorId=#{advertisementEntity.floorId}
+        </if>
+    </where>
+    </select>
+    <delete id="delete">
+        delete from advertisement
+        <where>
+            id=#{id}
+        </where>
+    </delete>
+    <update id="updateAdvertise">
+        update advertisement set title=#{title},pictureUrl=#{pictureUrl},status=#{status},commodityId=#{commodityId},
+        type=#{type},floorId=#{floorId},startTime=#{startTime},endTime=#{endTime}
+    </update>
+</mapper>

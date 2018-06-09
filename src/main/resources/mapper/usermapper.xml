@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_User.UserMapper">
+
+    <select id="getUserCount" resultType="int">
+        SELECT count(*) FROM USER
+        <where>
+            <if test="id!=null and id!=''">
+                <if test="id!=null and id!=''">
+                    AND id=#{id}
+                </if>
+                <if test="nickName!=null and nickName!=''">
+                    AND nickName like '%${nickName}%'
+                </if>
+                <if test="loginName!=null and nickName!=''">
+                    AND loginName like '%${loginName}%'
+                </if>
+                <if test="userTypeName!=null and nickName!=''">
+                    AND userTypeName LIKE '%${userTypeName}%'
+                </if>
+                <if test="authenticationId!=null and authenticationId!=''">
+                    AND authenticationId=#{authenticationId}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <insert id="userAdd">
+        INSERT INTO USER VALUES (#{id},#{nickName},#{loginName},#{logingPassword},#{headPortraitUrl},#{userTypeName},#{authenticationId})
+    </insert>
+
+    <update id="userInfoUpdate">
+        UPDATE USER
+        <set>
+            <if test="nickName!=null and nickName!=''">
+                nickName=#{nickName},
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                loginName=#{loginName},
+            </if>
+            <if test="userTypeName!=null and userTypeName!=''">
+                userTypeName=#{userTypeName},
+            </if>
+            <if test="authenticationId!=null and authenticationId!=''">
+                authenticationId=#{authenticationId},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <delete id="userInfoDelete">
+        DELETE FROM USER WHERE id=#{id}
+    </delete>
+
+    <resultMap id="getAllUserInfo" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity">
+        <id column="id" property="id"/>
+        <result column="nickName" property="nickName"/>
+        <result column="loginName" property="loginName"/>
+        <result column="logingPassword" property="logingPassword"/>
+        <result column="headPortraitUrl" property="headPortraitUrl"/>
+        <result column="userTypeName" property="userTypeName"/>
+        <result column="authenticationId" property="authenticationId"/>
+        <association property="authenticationEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuthenticationEntity">
+            <id column="id" property="id"/>
+            <result column="userName" property="userName"/>
+            <result column="userAboutAddress" property="userAboutAddress"/>
+            <result column="userAddress" property="userAddress"/>
+            <result column="userPhoneNumber" property="userPhoneNumber"/>
+        </association>
+    </resultMap>
+    <select id="getAllUserInfo" resultMap="getAllUserInfo">
+        SELECT * FROM shoppingmall.user,shoppingmall.authentication
+        WHERE user.authenticationId=authentication.id
+        <if test="userEntity.id!='' and userEntity.id!=null ">
+            AND user.id=#{userEntity.id}
+        </if>
+        <if test="userEntity.nickName!='' and userEntity.nickName!=null ">
+            AND user.nickName like '%${userEntity.nickName}%'
+        </if>
+        <if test="userEntity.loginName!='' and userEntity.loginName!=null ">
+            AND user.loginName like '%${userEntity.loginName}%'
+        </if>
+        <if test="userEntity.userTypeName!='' and userEntity.userTypeName!=null ">
+            AND user.userTypeName like '%${userEntity.userTypeName}%'
+        </if>
+        <if test="userPhoneNumber!='' and userPhoneNumber!=null ">
+            AND authentication.userPhoneNumber like '%${userPhoneNumber}%'
+        </if>
+        <if test="userName!='' and userName!=null ">
+            AND authentication.userName like '%${userName}%'
+        </if>
+        limit #{currentPage},#{pageSize}
+    </select>
+</mapper>

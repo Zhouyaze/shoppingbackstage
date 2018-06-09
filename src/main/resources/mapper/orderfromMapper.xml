@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_OrderFrom.OrderFromMapper">
+    <!--查询订单数量-->
+    <select id="getOrderFromCount" resultType="int">
+        SELECT count(id) FROM orderfrom
+        <where>
+            <if test="orderfromEntity.orderNumber!=null and orderfromEntity.orderNumber!=''">
+                AND orderfrom.orderNumber='%${orderfromEntity.orderNumber}%'
+            </if>
+            <if test="orderfromEntity.paymentTypeId!=null and orderfromEntity.paymentTypeId!=''">
+                AND orderfrom.paymentTypeId='%${orderfromEntity.paymentTypeId}%'
+            </if>
+        </where>
+    </select>
+    <!--订单表与收获人信息 映射-->
+    <resultMap id="orderFromHarvestaddress" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.OrderfromEntity">
+        <id column="id" property="id"/>
+        <result column="orderNumber" property="orderNumber"/>
+        <result column="orderCreationTime" property="orderCreationTime"/>
+        <result column="orderEndTime" property="orderEndTime"/>
+        <result column="userId" property="userId"/>
+        <result column="paymentTypeId" property="paymentTypeId"/>
+        <result column="orderfromPrice" property="orderfromPrice"/>
+        <result column="harvestAddressId" property="harvestAddressId"/>
+        <association property="harvestAddressEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.HarvestaddressEntity">
+            <id column="id" property="id"/>
+            <id column="harvestAddressName" property="harvestAddressName"/>
+            <id column="harvestIsDefault" property="harvestIsDefault"/>
+            <id column="typeId" property="typeId"/>
+            <id column="userId" property="userId"/>
+            <id column="userName" property="userName"/>
+            <id column="userPhone" property="userPhone"/>
+        </association>
+    </resultMap>
+    <!--查询大概的订单信息-->
+    <!--需要使用的表 orderfrom 与 harvestaddress-->
+    <select id="getOrderFromSimInfoByCond" resultMap="orderFromHarvestaddress">
+        SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom
+        WHERE orderfrom.harvestAddressId=harvestaddress.id
+        <if test="orderfromEntity.orderNumber!=null and orderfromEntity.orderNumber!=''">
+            AND orderfrom.orderNumber LIKE '%${orderfromEntity.orderNumber}%'
+        </if>
+        <if test="orderfromEntity.paymentTypeId!=null and orderfromEntity.paymentTypeId!=''">
+            AND orderfrom.paymentTypeId=#{orderfromEntity.paymentTypeId}
+        </if>
+        <if test="userName!=null and userName!=''">
+            AND harvestaddress.userName=#{userName}
+        </if>
+        LiMIT #{currentPage},#{pageSize}
+    </select>
+    <!--修改订单-->
+    <update id="orderFromUpdate">
+        UPDATE orderfrom
+        <set>
+            <if test="orderCreationTime!=null and orderCreationTime!=''">
+                orderCreationTime=#{orderCreationTime},
+            </if>
+            <if test="orderEndTime!=null and orderEndTime!=''">
+                orderEndTime =#{orderEndTime},
+            </if>
+            <if test="userId!=null and userId!=''">
+                userId=#{userId},
+            </if>
+            <if test="paymentTypeId!=null and paymentTypeId!=''">
+                paymentTypeId =#{paymentTypeId},
+            </if>
+            <if test="harvestAddressId!=null and harvestAddressId!=''">
+                harvestAddressId=#{harvestAddressId},
+            </if>
+        </set>
+        <where>
+            <if test="id!=null and id!=''">
+                AND id=#{id}
+            </if>
+            <if test="orderNumber!=null and orderNumber!=''">
+                AND orderNumber=#{orderNumber}
+            </if>
+        </where>
+    </update>
+    <delete id="orderFromDelete0">
+        DELETE orderfrom,orderfromshop0
+        FROM orderfrom,orderfromshop0
+        WHERE orderfrom.orderNumber=orderfromshop0.orderFromId AND orderNumber=#{orderNumber}
+    </delete>
+    <delete id="orderFromDelete1">
+        DELETE orderfrom,orderfromshop1
+        FROM orderfrom,orderfromshop1
+        WHERE orderfrom.orderNumber=orderfromshop1.orderFromId AND orderNumber=#{orderNumber}
+    </delete>
+</mapper>

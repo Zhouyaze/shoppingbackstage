@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Type.TypeMapper">
+    <select id="getTypeInfo" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity">
+        SELECT * FROM TYPE
+    </select>
+    <select id="getTypeNameById" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity">
+        SELECT typeName FROM TYPE WHERE id=#{id}
+    </select>
+    <update id="typeNameUpdate">
+        UPDATE type SET typeName=#{typeName} WHERE id=#{id}
+    </update>
+    <delete id="typeNameDelete">
+        DELETE FROM TYPE WHERE id=#{id}
+    </delete>
+    <insert id="typeNameAdd">
+        INSERT INTO TYPE VALUES (#{id},#{typeName})
+    </insert>
+</mapper>
