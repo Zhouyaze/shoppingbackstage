@@ -9,5 +9,5 @@ public interface Pay_API {
      int deleteWay(PaywayEntity paywayEntity);
      int updataWay(PaywayEntity paywayEntity);
      List<PaywayEntity> selectPay();
-     int delete();
+
 }
