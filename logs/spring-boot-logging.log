@@ -15,7 +15,7 @@ java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
 	at java.util.ArrayList.rangeCheck(ArrayList.java:653) ~[na:1.8.0_25]
 	at java.util.ArrayList.get(ArrayList.java:429) ~[na:1.8.0_25]
 	at com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_user.UserServiceImpl.getAllUserInfo(UserServiceImpl.java:37) ~[classes/:na]
-	at com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.UserController.getUserInfo(UserController.java:21) ~[classes/:na]
+	at com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.userController.UserController.getUserInfo(UserController.java:21) ~[classes/:na]
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_25]
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_25]
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_25]
