@@ -27,7 +27,7 @@
 
     <insert id="userAdd">
         INSERT INTO USER VALUES (#{id},#{nickName},#{loginName},#{logingPassword},#{headPortraitUrl},#{userTypeName},#{authenticationId})
-    </insert>
+</insert>
 
     <update id="userInfoUpdate">
         UPDATE USER

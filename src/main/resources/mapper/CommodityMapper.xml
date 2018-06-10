@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.CommodityMapper">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.SaveCommodityMapper">
 
-    <select id="getCommodityById" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
-        SELECT * FROM commodity WHERE id=#{id}
-    </select>
+    <!--添加商品标题 -->
+    <insert id="savecommoditytype" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO shoppingmall.type(typeName, levels, parentId)
+        VALUES (#{typeEntity.typeName},#{typeEntity.levels},#{typeEntity.parentId})
+    </insert>
+    <!-- 添加商品规格 -->
+    <insert id="savespecifications">
+        INSERT INTO shoppingmall.specificationstopic(name)
+        VALUES (#{topic.name})
+    </insert>
+    <!-- 添加商品详细规格-->
+    <insert id="savespecificationsdetailed" >
+        INSERT INTO shoppingmall.specificationsdetailed(dName)
+        VALUES (#{sedtaile.dName})
+    </insert>
+
+    <!--添加商品主表 -->
+    <insert id="SaveCommodity">
+        INSERT INTO shoppingmall.commodity(commodityName, bigPictureUrl, typeName)
+        VALUES (#{commodityEntity.commodityName},#{commodityEntity.bigPictureUrl},#{commodityEntity.typeName})
+    </insert>
+    <!--添加商品规格库存价格表(包括小图片) -->
+    <insert id="Savecommodity_specification_inventory_price">
+        INSERT INTO shoppingmall.commodity_specification_inventory_price(commodityId, specification1, specification2, specification3, specification4, inventory, price, picture)
+        VALUES (#{priceEntity.commodityId},#{priceEntity.specification1},#{priceEntity.specification2},#{priceEntity.specification3},#{priceEntity.specification4},#{priceEntity.inventory},#{priceEntity.price},#{priceEntity.picture})
+    </insert>
+    <!-- 添加商品规格关系表-->
+    <insert id="Savecommodity_specification_relation">
+        INSERT INTO shoppingmall.commodity_specification_relation(specificationName, levels, parentId)
+        VALUES (#{relationEntity.specificationName},#{relationEntity.levels},#{relationEntity.parentId})
+    </insert>
+    <!-- 添加商品图片表-->
+    <insert id="Savecommodityintroducepicture">
+        INSERT INTO shoppingmall.commodityintroducepicture(pictureUrl, commodityId, levels)
+        VALUES (#{picture.pictureUrl},#{picture.commodityId},#{picture.levels})
+    </insert>
+
 </mapper>

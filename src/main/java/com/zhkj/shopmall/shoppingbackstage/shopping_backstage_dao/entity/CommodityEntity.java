@@ -1,7 +1,6 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Objects;
 @Repository
@@ -10,6 +9,7 @@ public class CommodityEntity {
     private String commodityName;
     private String bigPictureUrl;
     private String typeName;
+
     private CommoditySpecificationInventoryPriceEntity priceEntity;
 
     public CommoditySpecificationInventoryPriceEntity getPriceEntity() {
@@ -19,7 +19,6 @@ public class CommodityEntity {
     public void setPriceEntity(CommoditySpecificationInventoryPriceEntity priceEntity) {
         this.priceEntity = priceEntity;
     }
-
 
     public int getId() {
         return id;
