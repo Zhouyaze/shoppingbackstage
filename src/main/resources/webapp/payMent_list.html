@@ -7,14 +7,45 @@
     <script src="js/jquery.js"></script>
     <script src="js/public.js"></script>
     <script type="text/javascript">
-
+    function getPayMent() {
+        $.ajax({
+            type: "GET",
+            contentType:"application/json; charset=utf-8",
+            url: 'http://localhost:8080/selectPay',
+            data: {},
+            async: false,
+            success: function (data) {
+                optionJson = data;
+                var str = "";
+                for (var index=0;index<optionJson.length;index++){
+                str+="<tr>"+
+                        "<td>"+optionJson[index].id+"</td>"+
+                        "<td>"+optionJson[index].payWayName+"</td>"+
+                        "<td class=\"center\">"+"<img src="+"'"+optionJson[index].pictureUrl+"'"+ "alt="+optionJson[index].pictureUrl+"/>"+"</td>"+
+                        "<td class=\"center\">"+optionJson[index].payInterface+"</td>"
+                        if(optionJson[index].payStatus==1){
+                           str+="<td>是</td>"
+                        }else{
+                           str+="<td>否</td>"
+                        }
+                        str+= "<td class=\"center\">"+
+                            "<a href=\"edit_payMent.html?id="+optionJson[index].id+"&payWayName="+optionJson[index].payWayName+"&PictureUrl="+optionJson[index].pictureUrl+
+                            "&payStatus="+optionJson[index].payStatus+"&payInterface="+optionJson[index].payInterface+"\" class=\"inline-block\" title=\"修改\">"+"<img src=\"images/icon_view.gif\"/>"+"</a>"+
+                            "<a href=\"delete_payMent.html?id=" + optionJson[index].id + "\" class=\"inline-block\" title=\"删除\">" + "<img src=\"images/icon_drop.gif\"/>" + "</a>" +
+                               "</td>"+
+                     "</tr>"
+                    document.getElementById("tbodydata").innerHTML = str;
+                }
+            }
+        });
+    }
     </script>
 </head>
-<body>
+<body onload="getPayMent()">
 <div class="wrap">
     <div class="page-title">
         <span class="modular fl"><i class="user"></i><em>付款方式列表</em></span>
-        <span class="modular fr"><a href="operational_payMent.html" class="pt-link-btn">+添加付款方式</a></span>
+        <span class="modular fr"><a href="add_payMent.html" class="pt-link-btn">+添加付款方式</a></span>
     </div>
     <table class="list-style Interlaced">
         <tr>
@@ -22,18 +53,10 @@
             <th>名称</th>
             <th>图片</th>
             <th>接口地址</th>
+            <th>是否禁用</th>
             <th>操作</th>
         </tr>
-        <tr>
-            <td>id</td>
-            <td>名称</td>
-            <td class="center">图片路径</td>
-            <td class="center">接口地址</td>
-            <td class="center">
-                <a href="operational_payMent.html"><img src="images/icon_edit.gif"/></a>
-                <a><img src="images/icon_drop.gif"/></a>
-            </td>
-        </tr>
+        <tbody id="tbodydata"></tbody>
     </table>
 </div>
 </body>

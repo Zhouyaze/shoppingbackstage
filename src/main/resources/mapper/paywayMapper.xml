@@ -21,4 +21,22 @@
     <select id="selectPay" resultMap="resultMap">
         select * from payway
     </select>
+    <update id="updataWay">
+        UPDATE payway
+        <set>
+            <if test="payWayName!=null">
+                payWayName=#{payWayName},
+            </if>
+            <if test="pictureUrl!=null">
+                PictureUrl=#{pictureUrl},
+            </if>
+            <if test="payStatus!=null">
+                payStatus=#{payStatus},
+            </if>
+            <if test="payInterface!=null">
+                payInterface=#{payInterface},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
 </mapper>

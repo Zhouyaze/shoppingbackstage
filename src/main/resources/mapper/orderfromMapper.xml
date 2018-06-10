@@ -25,12 +25,12 @@
         <result column="harvestAddressId" property="harvestAddressId"/>
         <association property="harvestAddressEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.HarvestaddressEntity">
             <id column="id" property="id"/>
-            <id column="harvestAddressName" property="harvestAddressName"/>
-            <id column="harvestIsDefault" property="harvestIsDefault"/>
-            <id column="typeId" property="typeId"/>
-            <id column="userId" property="userId"/>
-            <id column="userName" property="userName"/>
-            <id column="userPhone" property="userPhone"/>
+            <result column="harvestAddressName" property="harvestAddressName"/>
+            <result column="harvestIsDefault" property="harvestIsDefault"/>
+            <result column="typeId" property="typeId"/>
+            <result column="userId" property="userId"/>
+            <result column="userName" property="userName"/>
+            <result column="userPhone" property="userPhone"/>
         </association>
     </resultMap>
     <!--查询大概的订单信息-->
