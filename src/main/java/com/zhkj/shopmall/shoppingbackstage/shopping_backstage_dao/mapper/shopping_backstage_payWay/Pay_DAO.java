@@ -9,5 +9,6 @@ import java.util.List;
 public interface Pay_DAO {
     int insertWay(PaywayEntity paywayEntity);
     int deleteWay(PaywayEntity paywayEntity);
+    int updataWay(PaywayEntity paywayEntity);
     List<PaywayEntity> selectPay();
 }

@@ -6,10 +6,11 @@
         <id property="id" column="id"/>
         <result property="payWayName" column="payWayName"/>
         <result property="pictureUrl" column="pictureUrl"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="payInterface" column="payInterface"/>
     </resultMap>
     <insert id="insertWay">
-         INSERT INTO payway (payWayName,pictureUrl) VALUE(#{payWayName},#{pictureUrl}
-         )
+         INSERT INTO payway (payWayName,pictureUrl,payStatus,payInterface) VALUE(#{payWayName},#{pictureUrl},#{payStatus},#{payInterface})
       </insert>
     <delete id="deleteWay">
         delete from payway
@@ -20,4 +21,22 @@
     <select id="selectPay" resultMap="resultMap">
         select * from payway
     </select>
+    <update id="updataWay">
+        UPDATE payway
+        <set>
+            <if test="payWayName!=null">
+                payWayName=#{payWayName},
+            </if>
+            <if test="pictureUrl!=null">
+                PictureUrl=#{pictureUrl},
+            </if>
+            <if test="payStatus!=null">
+                payStatus=#{payStatus},
+            </if>
+            <if test="payInterface!=null">
+                payInterface=#{payInterface},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
 </mapper>

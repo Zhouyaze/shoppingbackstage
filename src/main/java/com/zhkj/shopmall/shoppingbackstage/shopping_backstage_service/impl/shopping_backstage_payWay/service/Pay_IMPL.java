@@ -35,6 +35,21 @@ public class Pay_IMPL implements Pay_API {
         }
         return index;
     }
+
+    /**
+     * 修改支付方式
+     * @param paywayEntity
+     * @return
+     */
+    @Override
+    public int updataWay(PaywayEntity paywayEntity) {
+        int index=0;
+        if(paywayEntity!=null){
+            index= pay_dao.updataWay(paywayEntity);
+        }
+        return index;
+    }
+
     /**
      * 查询支付方式
      * */
