@@ -37,7 +37,7 @@
                and floorId=#{advertisementEntity.floorId}
             </if>
         </where>
-        <if test="currentPage!=null and perPage!=null">limit #{currentPage},#{perPage}</if>
+        <if test="currentPage!=null and currentPage>0  and perPage!=null and perPage>0">limit #{currentPage},#{perPage}</if>
     </select>
     <select id="selectCount" resultMap="resultMap">
     select * from advertisement
@@ -62,5 +62,8 @@
     <update id="updateAdvertise">
         update advertisement set title=#{title},pictureUrl=#{pictureUrl},status=#{status},commodityId=#{commodityId},
         type=#{type},floorId=#{floorId},startTime=#{startTime},endTime=#{endTime}
+        <where>
+            id=#{id}
+        </where>
     </update>
 </mapper>

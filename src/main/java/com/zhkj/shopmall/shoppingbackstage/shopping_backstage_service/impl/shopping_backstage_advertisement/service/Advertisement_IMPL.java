@@ -51,7 +51,7 @@ public class Advertisement_IMPL implements Advertisement_API {
     public Object selectAll(AdvertisementEntity advertisementEntity, Integer currentPage) {
         Result result = new Result();
         Map map = new HashMap();
-        com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Page page=new Page();
+        Page page = new Page();
         if (currentPage == null) {
             currentPage = 1;
         }
