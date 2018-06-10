@@ -3,6 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.sh
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 public interface UserService {
@@ -37,7 +38,7 @@ public interface UserService {
      * 增加用户信息
      * @return
      */
-    int userInfoAdd(UserEntity userEntity);
+    int userInfoAdd(UserEntity userEntity,MultipartFile File);
 
     /**
      * 根据用户id修改用户信息

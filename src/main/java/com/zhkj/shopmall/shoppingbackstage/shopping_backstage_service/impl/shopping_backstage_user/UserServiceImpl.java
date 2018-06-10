@@ -6,9 +6,10 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoppin
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_authentication.AuthenticationMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_user.UserService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Result;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private AuthenticationEntity authenticationEntity;
     private PageBean<UserEntity> pageBean=new PageBean<>();
 
+    Upload upload=new Upload();
     @Override
     public PageBean getUserCount(UserEntity userEntity) {
         pageBean.setTotalNum(userMapper.getUserCount(userEntity));
@@ -68,9 +70,18 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public int userInfoAdd( UserEntity userEntity) {
+    public int userInfoAdd( UserEntity userEntity,MultipartFile File) {
+        String imgPathUrl="";
+        if (null!=File){
+            Upload upload=new Upload();
+            imgPathUrl= upload.toupload(File);
+            String path=imgPathUrl;
+            userEntity.setHeadPortraitUrl(path);
+        }
         return userMapper.userAdd(userEntity);
     }
+
+
 
     /**
      * 根据用户id修改用户信息
