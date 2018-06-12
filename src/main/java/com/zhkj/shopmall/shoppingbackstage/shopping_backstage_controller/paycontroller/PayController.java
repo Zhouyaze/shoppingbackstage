@@ -3,10 +3,8 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.paycon
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PaywayEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_payWay.service.Pay_IMPL;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,10 +18,10 @@ import java.util.List;
 public class PayController {
      @Autowired
      Pay_IMPL pay_impl;
-    @RequestMapping("/insertPay")
-     public String insertPay(@ModelAttribute PaywayEntity paywayEntity){
+    @RequestMapping(value = "/insertPay",method = RequestMethod.POST)
+     public String insertPay(@ModelAttribute PaywayEntity paywayEntity, MultipartFile file){
          int index=0;
-         index=pay_impl.insertWay(paywayEntity);
+         index=pay_impl.insertWay(paywayEntity,file);
          if(index>0){
              return "添加支付方式成功";
          }else {
@@ -41,9 +39,9 @@ public class PayController {
         }
     }
     @RequestMapping("/updatePay")
-    public String updatePay(@ModelAttribute PaywayEntity paywayEntity){
+    public String updatePay(@ModelAttribute PaywayEntity paywayEntity, MultipartFile file){
         int index=0;
-        index=pay_impl.updataWay(paywayEntity);
+        index=pay_impl.updataWay(paywayEntity,file);
         if(index>0){
             return "修改支付方式成功";
         }else {

@@ -2,6 +2,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoppi
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PaywayEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

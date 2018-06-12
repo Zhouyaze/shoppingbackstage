@@ -32,6 +32,20 @@
             });
         }
     </script>
+    <script>
+        var reader = new FileReader();
+        function showImg(file) {
+            var img = document.getElementById('imgHeader');
+            //读取File对象的数据
+            reader.onload = function (evt) {
+                //data:img base64 编码数据显示
+                img.width = "100";
+                img.height = "100";
+                img.src = evt.target.result;
+            }
+            reader.readAsDataURL(file.files[0]);
+        }
+    </script>
 </head>
 <body>
 <div class="wrap">
@@ -41,12 +55,17 @@
     <form id="form" target="ajaxFrame">
     <table class="noborder">
         <tr>
+
             <td width="15%" style="text-align:right;">名称：</td>
             <td><input name="payWayName" id="payName" type="text" class="textBox length-middle"/></td>
         </tr>
         <tr>
             <td style="text-align:right;">图片：</td>
-            <td><input name="PictureUrl" id="payImg" type="text" class="textBox length-middle"/></td>
+            <td><input onchange="showImg(this)" name="file" id="payImg" type="file" class="textBox length-middle"/></td>
+        </tr>
+        <tr>
+            <td style="text-align:right;width: 100px;height: 100px">头像预览</td>
+            <td><img src="" id="imgHeader" alt=""/></td>
         </tr>
         <tr>
             <td style="text-align:right;">链接接口：</td>

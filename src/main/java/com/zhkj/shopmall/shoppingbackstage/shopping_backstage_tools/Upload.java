@@ -30,16 +30,16 @@ public class Upload {
             String imgName = simpleDateFormat.format(new Date());
             // 得到项目路径
             String xiangmuPath = ClassLoader.getSystemClassLoader().getResource("").getPath();
+            System.out.println(xiangmuPath);
             String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("out")) + "img/bigImgPath";
             // 创建File对象 为存储图片做准备
             File file = new File(bigXiangmuPath);
             if(!file.exists()){
                 file.mkdirs();
             }
-            imgFileName = xiangmuPath+imgName+"."+suffix;
+            imgFileName = bigXiangmuPath+"/"+imgName+"."+suffix;
             // 项目中文件存在的路径
             String xiangmuImgPath = bigXiangmuPath + "/" + imgName+"."+suffix;
-
             // 向项目中存放文件
             multipartFile.transferTo(new File(xiangmuImgPath));
         }catch (IOException e){

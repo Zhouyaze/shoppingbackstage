@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>付款方式</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="style/adminStyle.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery.js"></script>
     <script src="js/public.js"></script>
     <script type="text/javascript">
@@ -22,25 +22,25 @@
                 data: {},
                 async: false,
                 success: function (data) {
-                    var str=""
+                    var str = ""
                     console.log(data)
-                    for (var index=0;index<data.length;index++){
-                        str+="<tr>"+
-                        "<td>"+data[index].id+"</td>"+
-                        "<td>"+data[index].payWayName+"</td>"+
-                        "<td>"+data[index].pictureUrl+"</td>"+
-                        "<td>"+data[index].payInterface+"</td>"
-                        if(data[index].payStatus==1){
-                            str+="<td>是</td>"
-                        }else{
-                            str+="<td>否</td>"
+                    for (var index = 0; index < data.length; index++) {
+                        str += "<tr>" +
+                            "<td>" + data[index].id + "</td>" +
+                            "<td>" + data[index].payWayName + "</td>" +
+                            "<td><img src=" + data[index].pictureUrl + " alt=" + data[index].pictureUrl + "></td>" +
+                            "<td>" + data[index].payInterface + "</td>"
+                        if (data[index].payStatus == 1) {
+                            str += "<td>是</td>"
+                        } else {
+                            str += "<td>否</td>"
                         }
-                       str+= "<td class=\"center\">"+
-                            "<a href=\"edit_payMent.jsp?id="+data[index].id+"&PictureUrl="+data[index].pictureUrl+"&payWayName="+data[index].payWayName+"&payInterface="+data[index].payInterface+"&payStatus="+data[index].payStatus+"\" title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
-                            "<a href=\"delete_payMent.jsp?id="+data[index].id+"\" class=\"inline-block\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
-                        "</td>"+
-                        "</tr>"
-                        document.getElementById("body").innerHTML=str
+                        str += "<td class=\"center\">" +
+                            "<a href=\"edit_payMent.jsp?id=" + data[index].id + "&PictureUrl=" + data[index].pictureUrl + "&payWayName=" + data[index].payWayName + "&payInterface=" + data[index].payInterface + "&payStatus=" + data[index].payStatus + "\" title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>" +
+                            "<a href=\"delete_payMent.jsp?id=" + data[index].id + "\" class=\"inline-block\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>" +
+                            "</td>" +
+                            "</tr>"
+                        document.getElementById("body").innerHTML = str
                     }
                 }
             })
@@ -62,7 +62,7 @@
             <th>是否禁用</th>
             <th>操作</th>
         </tr>
-     <tbody id="body"></tbody>
+        <tbody id="body"></tbody>
     </table>
 </div>
 </body>

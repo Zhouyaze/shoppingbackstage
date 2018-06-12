@@ -35,20 +35,36 @@
         })
     </script>
     <script type="text/javascript">
-
-        // function baocun() {
-        //     $.ajax({
-        //         type: "GET",
-        //         contentType:"application/json; charset=utf-8",
-        //         url: 'http://localhost:8080/updatePay?payWayName='+$("#payName").val()+"&PictureUrl="+$("#payImg").val()+"&payStatus="+$('#status input[name="status"]:checked ').val()+"&payInterface="+$("#payInterface").val()+"&id="+params.id,
-        //         data: {},
-        //         async: false,
-        //         success: function (data) {
-        //             alert(data)
-        //             window.location.href="payMent_list.html"
-        //         }
-        //     })
-        // }
+        function baocun() {
+            var form = new FormData(document.getElementById("form"));
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updatePay?id="+params.id,
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    alert("修改付款方式成功！！")
+                    window.location.href="payMent_list.jsp"
+                },
+                error:function(e){
+                    alert("修改付款方式失败！！");
+                    window.location.href="payMent_list.jsp"
+                }
+            });
+        }
+        var reader = new FileReader();
+        function showImg(file) {
+            var img = document.getElementById('imgHeader');
+            //读取File对象的数据
+            reader.onload = function (evt) {
+                //data:img base64 编码数据显示
+                img.width = "100";
+                img.height = "100";
+                img.src = evt.target.result;
+            }
+            reader.readAsDataURL(file.files[0]);
+        }
     </script>
 </head>
 <body>
@@ -56,30 +72,38 @@
     <div class="page-title">
         <span class="modular fl"><i class="user"></i><em>添加付款方式</em></span>
     </div>
-    <table class="noborder">
-        <tr>
-            <td width="15%" style="text-align:right;">名称：</td>
-            <td><input id="payName" type="text" class="textBox length-middle"/></td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">图片：</td>
-            <td><input id="payImg" type="text" class="textBox length-middle"/></td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">链接接口：</td>
-            <td><input id="payInterface" type="text" class="textBox length-middle"/></td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">是否禁用：</td>
-            <!--class="textBox length-middle"-->
-            <td id="status"><input name="status" type="radio" value="2"/>是<input name="status" type="radio" value="1"/>否</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td style="text-align:right;"></td>
-            <td><input onclick="baocun()" type="submit" class="tdBtn" value="保存"/></td>
-        </tr>
-    </table>
+    <form id="form" target="ajaxFrame">
+        <table class="noborder">
+            <tr>
+
+                <td width="15%" style="text-align:right;">名称：</td>
+                <td><input name="payWayName" id="payName" type="text" class="textBox length-middle"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">图片：</td>
+                <td><input onchange="showImg(this)" name="file" id="payImg" type="file" class="textBox length-middle"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;width: 100px;height: 100px">头像预览</td>
+                <td><img src="" id="imgHeader" alt=""/></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">链接接口：</td>
+                <td><input name="payInterface" id="payInterface" type="text" class="textBox length-middle"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">是否禁用：</td>
+                <!--class="textBox length-middle"-->
+                <td id="status"><input name="status" type="radio" value="2"/>是<input name="status" type="radio" value="1"/>否</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"></td>
+                <td><input onclick="baocun()" type="submit" class="tdBtn" value="保存"/></td>
+            </tr>
+        </table>
+    </form>
+    <iframe id="ajaxFrame" name="ajaxFrame" style="display:none;"></iframe>
 </div>
 </body>
 </html>

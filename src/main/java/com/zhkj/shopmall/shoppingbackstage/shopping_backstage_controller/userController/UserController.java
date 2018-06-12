@@ -33,12 +33,10 @@ public class UserController {
         }
         return result.getMsg();
     }
-
-
-    @GetMapping("/userUpdate")
-    public String userInfoUpdate(UserEntity userEntity) {
+    @RequestMapping(value = "/userUpdate",method = RequestMethod.POST)
+    public String userInfoUpdate(UserEntity userEntity,MultipartFile file) {
         Result result = new Result();
-        result.setCode(userService.updateUserInfo(userEntity));
+        result.setCode(userService.updateUserInfo(userEntity,file));
         if (result.getCode() > 0) {
             result.setMsg("修改成功");
         } else {

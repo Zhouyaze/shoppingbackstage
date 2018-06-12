@@ -17,11 +17,13 @@ import java.util.Date;
 public class SelectController {
     @Autowired
     Advertisement_IMPL advertisement_impl;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
+
     @RequestMapping("/selectAll")
     public Object selectAdvertise(@ModelAttribute AdvertisementEntity advertisementEntity, Integer currentPage) {
         return advertisement_impl.selectAll(advertisementEntity, currentPage);

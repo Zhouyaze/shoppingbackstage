@@ -3,8 +3,10 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.api.pay.Pay_API;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PaywayEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_payWay.Pay_DAO;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +19,21 @@ public class Pay_IMPL implements Pay_API {
      * 添加支付方式
      * */
     @Override
-    public int insertWay(PaywayEntity paywayEntity) {
+    public int insertWay(PaywayEntity paywayEntity, MultipartFile file) {
+        String imgPathUrl="";
+        if (null!=file){
+            Upload upload=new Upload();
+            imgPathUrl= upload.toupload(file);
+            String path=imgPathUrl;
+            paywayEntity.setPictureUrl(path);
+        }
         int index=0;
         if(paywayEntity!=null){
            index= pay_dao.insertWay(paywayEntity);
         }
         return index;
     }
+
     /**
      * 删除支付方式
      * */
@@ -42,7 +52,14 @@ public class Pay_IMPL implements Pay_API {
      * @return
      */
     @Override
-    public int updataWay(PaywayEntity paywayEntity) {
+    public int updataWay(PaywayEntity paywayEntity, MultipartFile file) {
+        String imgPathUrl="";
+        if (null!=file){
+            Upload upload=new Upload();
+            imgPathUrl= upload.toupload(file);
+            String path=imgPathUrl;
+            paywayEntity.setPictureUrl(path);
+        }
         int index=0;
         if(paywayEntity!=null){
             index= pay_dao.updataWay(paywayEntity);

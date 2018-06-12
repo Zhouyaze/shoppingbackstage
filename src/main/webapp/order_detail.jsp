@@ -41,10 +41,11 @@
             async: false,
             success: function (data) {
                 optionJson = data;
+                console.log(optionJson)
                 var str = "";
                 for (var index = 0; index < optionJson.length; index++) {
                     str+="<tr>"+
-                          "<td><img src=\"optionJson.commodityEntity.bigPictureUrl\" class=\"thumbnail\"/></td>"+
+                        "<td><img src="+optionJson[index].commodityEntity.bigPictureUrl+" alt="+optionJson[index].commodityEntity.bigPictureUrl+" class=\"thumbnail\"/></td>" +
                           "<td>"+optionJson[index].commodityEntity.commodityName+"</td>"+
                           "<td>"+
                             "<span>"+

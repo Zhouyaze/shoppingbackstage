@@ -38,6 +38,9 @@
             <if test="loginName!=null and loginName!=''">
                 loginName=#{loginName},
             </if>
+            <if test="headPortraitUrl!=null and headPortraitUrl!=''">
+                headPortraitUrl=#{headPortraitUrl},
+            </if>
             <if test="userTypeName!=null and userTypeName!=''">
                 userTypeName=#{userTypeName},
             </if>

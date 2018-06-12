@@ -57,14 +57,14 @@
     <li><a href="admin_list.jsp" title="站点基本设置" target="mainCont">站点管理员</a></li>
    </ul>
   </li>
-  
+
   <li class="menu-list-title">
    <span>广告管理</span>
    <i>◢</i>
   </li>
   <li>
    <ul class="menu-children">
-    <li><a href="advertising_list.jsp" title="站点基本设置" target="mainCont">广告列表</a></li>
+    <li><a href="advertising_list.jsp" title="广告信息展示" target="mainCont">广告列表</a></li>
    </ul>
   </li>
 

@@ -28,7 +28,6 @@
       });
   }
   function tijiao() {
-
       var form = new FormData(document.getElementById("form"));
       $.ajax({
           url:"${pageContext.request.contextPath}/userAdd?authenticationId=0",

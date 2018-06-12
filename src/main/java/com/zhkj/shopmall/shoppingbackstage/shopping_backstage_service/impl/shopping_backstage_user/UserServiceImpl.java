@@ -66,7 +66,14 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public int updateUserInfo( UserEntity userEntity) {
+    public int updateUserInfo( UserEntity userEntity,MultipartFile File) {
+        String imgPathUrl="";
+        if (null!=File){
+            Upload upload=new Upload();
+            imgPathUrl= upload.toupload(File);
+            String path=imgPathUrl;
+            userEntity.setHeadPortraitUrl(path);
+        }
         return userMapper.userInfoUpdate(userEntity);
     }
 
