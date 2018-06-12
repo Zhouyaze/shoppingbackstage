@@ -22,19 +22,6 @@ public interface UserService {
     PageBean<UserEntity> getAllUserInfo(UserEntity userEntity,String userPhoneNumber,String userName,Integer currentPage,Integer pageSize);
 
     /**
-     * 根据条件查询用户信息
-     * @return
-     */
-//    PageBean<UserEntity> getUserByInfo(UserEntity userEntity,Integer currentPage,Integer pageSize);
-
-    /**
-     * 根据条件获取用户信息不带分页
-     * @param userEntity
-     * @return
-     */
-    List<UserEntity> getUserInfoByInfoNoPage(UserEntity userEntity);
-
-    /**
      * 增加用户信息
      * @return
      */

@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Upload {
     /**
@@ -13,25 +15,30 @@ public class Upload {
      * @return
      */
     public String toupload(MultipartFile multipartFile){
+
         // 数据库存放的数据
         String imgFileName = "";
+
         try {
+//
            //生成文件名称
-            String imgName=multipartFile.getOriginalFilename();
+          //  String imgName=multipartFile.getOriginalFilename();
             // 获取文件后缀类型
             String suffix = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
+           // 把图片 名  生成 为日期格式名成
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            String imgName = simpleDateFormat.format(new Date());
             // 得到项目路径
             String xiangmuPath = ClassLoader.getSystemClassLoader().getResource("").getPath();
             String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("out")) + "img/bigImgPath";
-
             // 创建File对象 为存储图片做准备
             File file = new File(bigXiangmuPath);
             if(!file.exists()){
                 file.mkdirs();
             }
-            imgFileName = xiangmuPath+imgName;
+            imgFileName = xiangmuPath+imgName+"."+suffix;
             // 项目中文件存在的路径
-            String xiangmuImgPath = bigXiangmuPath + "/" + imgName;
+            String xiangmuImgPath = bigXiangmuPath + "/" + imgName+"."+suffix;
 
             // 向项目中存放文件
             multipartFile.transferTo(new File(xiangmuImgPath));
@@ -41,6 +48,3 @@ public class Upload {
         return imgFileName;
     }
 }
-//把图片 名  生成 为日期格式名成
-//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-//String imgName = simpleDateFormat.format(new Date());

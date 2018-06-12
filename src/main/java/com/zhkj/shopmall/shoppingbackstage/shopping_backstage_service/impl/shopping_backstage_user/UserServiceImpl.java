@@ -41,29 +41,6 @@ public class UserServiceImpl implements UserService {
         pageBean.setItems(userMapper.getAllUserInfo(userEntity,userPhoneNumber,userName,pageBean.getStartIndex(),pageBean.getPageSize()));
         return pageBean;
     }
-
-    @Override
-    public List<UserEntity> getUserInfoByInfoNoPage(UserEntity userEntity) {
-        List<UserEntity> listUserEntity = userMapper.getUserInfoByInfoNoPage(userEntity);
-        List<AuthenticationEntity> listAuthenticationEntity=new ArrayList<>();
-        for (int i=0;i<listUserEntity.size();i++){
-            authenticationEntity.setId(listUserEntity.get(i).getId());
-            listAuthenticationEntity.addAll(authenticationMapper.getAuthenicationById(authenticationEntity));
-        }
-        for (int i=0;i<listAuthenticationEntity.size();i++){
-            int j=0;
-            while (true){
-                if (listUserEntity.get(i).getAuthenticationId()==listAuthenticationEntity.get(j).getId()){
-                    listUserEntity.get(i).setAuthenticationEntity(listAuthenticationEntity.get(j));
-//                    return listUserEntity;
-                    break;
-                }
-                j++;
-            }
-        }
-        return listUserEntity;
-    }
-
     /**
      * 增加用户
      * @param userEntity

@@ -18,13 +18,6 @@ public interface UserMapper {
      * @return
      */
     List<UserEntity> getAllUserInfo(@Param("userEntity") UserEntity userEntity,@Param("userPhoneNumber")String userPhoneNumber,@Param("userName")String userName,@Param("currentPage") int currentPage, @Param("pageSize") int pageSize);
-
-    /**
-     * 根据条件查询所有用户不带分页
-     * @param userEntity
-     * @return
-     */
-    List<UserEntity> getUserInfoByInfoNoPage(UserEntity userEntity);
     /**
      * 增加用户
      * @return
