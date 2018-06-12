@@ -5,34 +5,31 @@
 
     <update id="UpdateCommodity">
         UPDATE  shoppingmall.commodity
-        <set>
-            <if test="commodityName!=null">commodityName =#{commodityName}</if>
-            <if test="commodityName!=null">commodityName =#{commodityName}</if>
-            <if test="commodityName!=null">commodityName =#{commodityName}</if>
-        </set>
-        WHERE id=#{id}
+          SET  commodityName =  #{CommodityEntity.commodityName},
+                bigPictureUrl = #{CommodityEntity.bigPictureUrl},
+                typeName =#{CommodityEntity.typeName}
+        WHERE id= #{CommodityEntity.id}
     </update>
 
-    <update id="UpdateCommodityPice">
+    <update id="UpdateCommodityPrice">
         UPDATE  shoppingmall.commodity_specification_inventory_price
-        <set>
-            <if test="specification1!=null">specification1=#{specification1}</if>
-            <if test="specification2!=null">specification2=#{specification2}</if>
-            <if test="specification3!=null">specification3=#{specification3} </if>
-            <if test="specification4!=null">specification4=#{specification4} </if>
-            <if test="inventory!=null">inventory=#{inventory} </if>
-            <if test="price!=null">price=#{price} </if>
-            <if test="picture!=null">price=#{picture} </if>
-        </set>
-        WHERE id=#{id}
+        SET
+          commodityId=#{specification.commodityId},
+          specification1=#{specification.specification1},
+          specification2=#{specification.specification2},
+          specification3=#{specification.specification3},
+          specification4=#{specification.specification4},
+          inventory=#{specification.inventory},
+          price=#{specification.price},
+          picture=#{specification.picture}
+        WHERE id=#{specification.id}
     </update>
 
     <update id="UpdateCommodityPicture">
-        UPDATE  shoppingmall.commodityintroducepicture
-        <set>
-          <if test="pictureUrl!=null"> pictureUrl=#{pictureUrl}</if>
-          <if test="levels!=null"> levels=#{levels}</if>
-        </set>
+        UPDATE shoppingmall.commodityintroducepicture
+        set
+            pictureUrl=#{pictureUrl},
+            levels=#{levels}
         WHERE id=#{id}
     </update>
 
