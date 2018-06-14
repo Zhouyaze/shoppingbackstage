@@ -41,6 +41,8 @@ public class CommodityController {
         return saveNumber;
     }
 
+
+
     /**
      * 添加商品规格表
      * @param simmallFile

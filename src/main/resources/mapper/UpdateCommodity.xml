@@ -28,9 +28,9 @@
     <update id="UpdateCommodityPicture">
         UPDATE shoppingmall.commodityintroducepicture
         set
-            pictureUrl=#{pictureUrl},
-            levels=#{levels}
-        WHERE id=#{id}
+            pictureUrl=#{pictureEntity.pictureUrl},
+            levels=#{pictureEntity.levels}
+        WHERE id=#{pictureEntity.id}
     </update>
 
 

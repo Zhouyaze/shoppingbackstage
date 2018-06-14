@@ -56,5 +56,11 @@
         WHERE commodityId=#{Id}
     </select>
 
+    <select id="SelectCommodityId" resultType="int">
+        SELECT id FROM commodity  ORDER BY id DESC LIMIT 0,1;
+    </select>
+
+
+
 
 </mapper>

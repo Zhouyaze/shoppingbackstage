@@ -55,4 +55,12 @@ public interface SelectCommodidyMapper {
      */
     List<CommoditySpecificationInventoryPriceEntity> selectAllspecification(@Param("Id") Integer id);
 
+
+    /**
+     * 查询商品最后一个  商品id
+     * @return
+     */
+    int SelectCommodityId();
+
+
 }

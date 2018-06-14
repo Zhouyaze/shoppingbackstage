@@ -51,4 +51,11 @@ public interface SelectCommodidyService {
      * @return
      */
     List<CommoditySpecificationInventoryPriceEntity> selectAllspecification(Integer id);
+
+    /**
+     * 查询商品  id 最后一个
+     * @return
+     */
+    int  SelectCommodityId();
+
 }
