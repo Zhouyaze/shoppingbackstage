@@ -7,10 +7,7 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopp
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.SelectCommodidyServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.UpdateCommodityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -43,6 +40,8 @@ public class CommodityController {
         saveNumber=saveCommodityService.saveCommodityAll(bigPicture,File,commodity_vo);
         return saveNumber;
     }
+
+
 
     /**
      * 添加商品规格表
@@ -183,37 +182,37 @@ public class CommodityController {
 
     /**
      * 修改商品主表
-     * @param id
+     * @param
      * @return
      */
     @RequestMapping(value = "updateCommodity",method = RequestMethod.POST)
-    public int updateCommodity( Integer id){
+    public int update(@ModelAttribute CommodityEntity commodityEntity, MultipartFile picture){
         int number=0;
-        number=updateCommodityService.UpdateCommodity(id);
+        number=updateCommodityService.UpdateCommodity(commodityEntity,picture);
         return number;
     }
 
     /**
      * 修改商品规格表
-     * @param id
+     * @param
      * @return
      */
     @RequestMapping(value = "UpdateCommodityPrice",method = RequestMethod.POST)
-    public int updateCommodityPrice( Integer id){
+    public int updateCommodityPrice(@ModelAttribute CommoditySpecificationInventoryPriceEntity priceEntity, MultipartFile img){
         int number=0;
-        number=updateCommodityService.UpdateCommodityPice(id);
+        number=updateCommodityService.UpdateCommodityPrice(priceEntity,img);
         return number;
     }
 
     /**
      * 修改商品标题图片 详情图片
-     * @param id
+     * @param
      * @return
      */
     @RequestMapping(value = "UpdateCommodityPicture",method = RequestMethod.POST)
-    public int updateCommodityPicture( Integer id){
+    public int updateCommodityPicture(CommodityintroducepictureEntity pictureEntity,MultipartFile picture){
         int number=0;
-        number=updateCommodityService.UpdateCommodityPicture(id);
+        number=updateCommodityService.UpdateCommodityPicture(pictureEntity,picture);
         return number;
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.SaveCommodityMapper">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SaveCommodityMapper">
 
     <!--添加商品标题 -->
     <insert id="savecommoditytype" useGeneratedKeys="true" keyProperty="id">
@@ -21,7 +21,7 @@
 
     <!--添加商品主表 -->
     <insert id="SaveCommodity">
-        INSERT INTO shoppingmall.commodity(commodityName, bigPictureUrl, typeName)
+        INSERT INTO shoppingmall.commodity(commodityName,bigPictureUrl,typeName)
         VALUES (#{commodityEntity.commodityName},#{commodityEntity.bigPictureUrl},#{commodityEntity.typeName})
     </insert>
     <!--添加商品规格库存价格表(包括小图片) -->

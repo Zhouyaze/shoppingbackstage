@@ -20,6 +20,7 @@
     <select id="seletCommodityId" resultType="int">
         SELECT id FROM shoppingmall.commodity WHERE commodityName=#{name}
     </select>
+    <!-- 查询  商品类型标题  比如说【颜色 ，尺码】-->
     <select id="selsctspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
         SELECT id ,specificationName FROM commodity_specification_relation WHERE levels=1;
     </select>
@@ -54,6 +55,12 @@
         SELECT * FROM commodity_specification_inventory_price
         WHERE commodityId=#{Id}
     </select>
+
+    <select id="SelectCommodityId" resultType="int">
+        SELECT id FROM commodity  ORDER BY id DESC LIMIT 0,1;
+    </select>
+
+
 
 
 </mapper>

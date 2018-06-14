@@ -88,8 +88,15 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
         return list;
     }
 
-
-
+    /**
+     * 查询商品最后  一个id
+     * @return
+     */
+    @Override
+    public  int SelectCommodityId() {
+        int commodityId=selectCommodidyMapper.SelectCommodityId();
+        return commodityId;
+    }
 
 
 }
