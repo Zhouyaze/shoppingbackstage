@@ -2,24 +2,51 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_advertisement.Advertisement_DAO">
-    <resultMap id="resultMap" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity">
+    <resultMap id="resultMap"
+               type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="pictureUrl" column="pictureUrl"/>
         <result property="status" column="status"/>
         <result property="commodityId" column="commodityId"/>
-        <result property="type" column="type"/>
+        <result property="place" column="place"/>
         <result property="floorId" column="floorId"/>
         <result property="startTime" column="startTime"/>
         <result property="endTime" column="endTime"/>
     </resultMap>
     <insert id="addAdvertise">
-         INSERT INTO advertisement (title,pictureUrl,status,commodityId,type,floorId,startTime,endTime)VALUE(
-         #{title},#{pictureUrl},#{status},#{commodityId},#{type},#{floorId},#{startTime},#{endTime}
+         INSERT INTO advertisement (title,pictureUrl,status,commodityId,place,floorId,startTime,endTime)VALUE(
+         #{title},#{pictureUrl},#{status},#{commodityId},#{place},#{floorId},#{startTime},#{endTime}
          )
       </insert>
-    <update id="updateStatus">
-        update advertisement set status=#{status}
+    <update id="updateAdvertise">
+        update advertisement
+        <set>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+            <if test="pictureUrl!=null">
+                pictureUrl=#{pictureUrl},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="commodityId!=null">
+                commodityId=#{commodityId},
+            </if>
+            <if test="place!=null">
+                place=#{place},
+            </if>
+            <if test="floorId!=null">
+                floorId=#{floorId},
+            </if>
+            <if test="startTime!=null">
+                startTime=#{startTime},
+            </if>
+            <if test="endTime!=null">
+                endTime=#{endTime}
+            </if>
+        </set>
         <where>
             id=#{id}
         </where>
@@ -27,31 +54,37 @@
     <select id="selectAll" resultMap="resultMap">
         select * from advertisement
         <where>
-        <if test="advertisementEntity.startTime!=null">
-               and cast(startTime as date)=#{advertisementEntity.startTime}
-        </if>
-            <if test="advertisementEntity.type!=null and advertisementEntity.type>0">
-               and type=#{advertisementEntity.type}
+            <if test="advertisementEntity.startTime!=null">
+                and startTime=#{advertisementEntity.startTime}
+            </if>
+            <if test="advertisementEntity.place!=null">
+                and place=#{advertisementEntity.place}
             </if>
             <if test="advertisementEntity.floorId!=null and advertisementEntity.floorId>0">
-               and floorId=#{advertisementEntity.floorId}
+                and floorId=#{advertisementEntity.floorId}
+            </if>
+            <if test="advertisementEntity.status!=null and advertisementEntity.status>0">
+                and status=#{advertisementEntity.status}
             </if>
         </where>
-        <if test="currentPage!=null and currentPage>0  and perPage!=null and perPage>0">limit #{currentPage},#{perPage}</if>
+        <if test="currentPage!=null and perPage!=null and perPage>0">limit #{currentPage},#{perPage}</if>
     </select>
     <select id="selectCount" resultMap="resultMap">
-    select * from advertisement
-    <where>
-        <if test="advertisementEntity.startTime!=null">
-            and cast(startTime as date)=#{advertisementEntity.startTime}
-        </if>
-        <if test="advertisementEntity.type!=null and advertisementEntity.type>0">
-            and type=#{advertisementEntity.type}
-        </if>
-        <if test="advertisementEntity.floorId!=null and advertisementEntity.floorId>0">
-            and floorId=#{advertisementEntity.floorId}
-        </if>
-    </where>
+        select * from advertisement
+        <where>
+            <if test="advertisementEntity.startTime!=null">
+                and startTime=#{advertisementEntity.startTime}
+            </if>
+            <if test="advertisementEntity.place!=null">
+                and place=#{advertisementEntity.place}
+            </if>
+            <if test="advertisementEntity.floorId!=null and advertisementEntity.floorId>0">
+                and floorId=#{advertisementEntity.floorId}
+            </if>
+            <if test="advertisementEntity.status!=null and advertisementEntity.status>0">
+                and status=#{advertisementEntity.status}
+            </if>
+        </where>
     </select>
     <delete id="delete">
         delete from advertisement
@@ -59,11 +92,11 @@
             id=#{id}
         </where>
     </delete>
-    <update id="updateAdvertise">
-        update advertisement set title=#{title},pictureUrl=#{pictureUrl},status=#{status},commodityId=#{commodityId},
-        type=#{type},floorId=#{floorId},startTime=#{startTime},endTime=#{endTime}
-        <where>
-            id=#{id}
-        </where>
-    </update>
+    <select id="select" resultMap="resultMap">
+        select * from advertisement
+    </select>
+    <select id="getPlace"
+            resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementplaceEntity">
+        select * from advertisementplace
+    </select>
 </mapper>

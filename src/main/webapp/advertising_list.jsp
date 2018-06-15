@@ -7,6 +7,102 @@
     <link href="style/adminStyle.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery.js"></script>
     <script src="js/public.js"></script>
+    <script type="text/javascript">
+        var totalPageCount;
+        var currentPage;
+        $(document).ready(function showAdvertisingInfo() {
+            currentPage = 1;
+            getAdvertisingInfo(currentPage);
+        })
+    </script>
+    <script type="text/javascript">
+        function getAdvertisingInfo(currentPage) {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                async: true,
+                url: "http://localhost:8080/selectAll",
+                data: {currentPage: currentPage},
+                success: function (data) {
+                    var str = ""
+                    optionJson = data.t.page.records
+                    totalPageCount=data.t.page.totalPageCount
+                    for (var index = 0; index < optionJson.length; index++) {
+                        str += "<tr>" +
+                            "<td>" + optionJson[index].id + "</td>" +
+                            "<td>" + optionJson[index].title + "</td>" +
+                            "<td><img src=" + optionJson[index].pictureUrl + " alt=" + optionJson[index].pictureUrl + "></td>" +
+                            "<td>" + optionJson[index].commodityId + "</td>" +
+                            "<td>" + optionJson[index].place + "</td>" +
+                            "<td>" + optionJson[index].floorId + "</td>" +
+                            "<td>" + optionJson[index].startTime + "</td>" +
+                            "<td>" + optionJson[index].endTime + "</td>"
+                                if(optionJson[index].status==1){
+                            str+="<td>是</td>"
+                                }else{
+                            str+="<td>否</td>"
+                                }
+
+                            str+="<td class=\"center\">" +
+                            "<a href=\"edit_advertising.jsp?id="+optionJson[index].id+"&title="+optionJson[index].title+
+                            "&pictureUrl="+optionJson[index].pictureUrl+
+                            "&commodityId="+optionJson[index].commodityId+
+                            "&place="+optionJson[index].place+
+                            "&floorId="+optionJson[index].floorId+
+                            "&startTime="+optionJson[index].startTime+
+                            "&endTime="+optionJson[index].endTime+
+                            "&status="+optionJson[index].status+
+                            "\" title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>" +
+                            "<a href=\"delete_advertising.jsp?id="+optionJson[index].id+"\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>" +
+                            "</td>" +
+                            "</tr>"
+                        document.getElementById("bodyInfo").innerHTML=str
+                    }
+                    document.getElementById("result").innerHTML = currentPage + "/" + totalPageCount;
+                }
+            })
+        }
+    </script>
+    <script type="text/javascript">
+
+        /*
+        分页下一页
+        */
+        function pageJia() {
+            if (currentPage < totalPageCount) {
+                currentPage++;
+                getAdvertisingInfo(currentPage)
+                document.getElementById("result").innerHTML = currentPage + "/" + totalPageCount;
+            }
+        }
+
+        /*
+        分页上一页
+        */
+        function pageJian() {
+            if (currentPage > 1) {
+                currentPage--;
+                getAdvertisingInfo(currentPage)
+                document.getElementById("result").innerHTML = currentPage + "/" + totalPageCount;
+            }
+        }
+
+        /*
+         * 分页跳转
+         */
+        function tiaozhuan() {
+            currentPage = parseInt($("#yema").val());
+            if (currentPage > totalPageCount) {
+                currentPage = totalPageCount
+                document.getElementById("yema").value = totalPageCount;
+            } else if (currentPage < 1) {
+                pagecount = 1
+                document.getElementById("yema").value = 1;
+            }
+            getAdvertisingInfo(currentPage)
+            document.getElementById("result").innerHTML = currentPage + "/" + totalPageCount;
+        }
+    </script>
 </head>
 <body>
 <div class="wrap">
@@ -19,27 +115,16 @@
             <th>广告编号</th>
             <th>广告名称</th>
             <th>图片路径</th>
-            <th>广告商品</th>
+            <th>广告商品ID</th>
             <th>广告位置</th>
             <th>楼层</th>
             <th>开始时间</th>
             <th>结束时间</th>
+            <th>是否禁用</th>
             <th>操作</th>
         </tr>
-        <tr>
-            <td>编号</td>
-            <td>名称</td>
-            <td>图片</td>
-            <td>商品名</td>
-            <td>位置</td>
-            <td>楼层</td>
-            <td>开始时间</td>
-            <td>结束时间</td>
-            <td class="center">
-                <a href="advertising.jsp" title="编辑"><img src="images/icon_edit.gif"/></a>
-                <a title="删除"><img src="images/icon_drop.gif"/></a>
-            </td>
-        </tr>
+
+        <tbody id="bodyInfo"></tbody>
     </table>
     <!-- BatchOperation -->
     <div style="overflow:hidden;">
@@ -50,10 +135,15 @@
             <input type="button" value="批量删除" class="btnStyle"/>
         </div>
         <!-- turn page -->
-        <div class="turnPage center fr">
-            <a>第一页</a>
-            <a>1</a>
-            <a>最后一页</a>
+        <div style="overflow:hidden;">
+            <div class="turnPage center fr" id="pageBtn" style="width: auto;display:inline-block !important;height: auto;">
+                <a onclick="pageJian()">上一页</a>
+                <a>跳转至</a>
+                <input type="text" id="yema" style="width: 20px;"/>
+                <a onclick="tiaozhuan()">跳转</a>
+                <a onclick="pageJia()">下一页</a>
+                <a id="result"></a>
+            </div>
         </div>
     </div>
 </div>

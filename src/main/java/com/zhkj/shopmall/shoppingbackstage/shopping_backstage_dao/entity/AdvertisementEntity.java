@@ -1,18 +1,23 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
-import java.sql.Date;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Objects;
+@Repository
 public class AdvertisementEntity {
     private int id;
     private String title;
     private String pictureUrl;
-    private Integer status;
+    private int status;
     private int commodityId;
-    private int type;
+    private String place;
     private int floorId;
-    private Date startTime;
-    private Date endTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Timestamp startTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Timestamp endTime;
 
     public int getId() {
         return id;
@@ -38,11 +43,11 @@ public class AdvertisementEntity {
         this.pictureUrl = pictureUrl;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -54,12 +59,12 @@ public class AdvertisementEntity {
         this.commodityId = commodityId;
     }
 
-    public int getType() {
-        return type;
+    public String getPlace() {
+        return place;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public int getFloorId() {
@@ -70,19 +75,19 @@ public class AdvertisementEntity {
         this.floorId = floorId;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 
@@ -92,12 +97,12 @@ public class AdvertisementEntity {
         if (o == null || getClass() != o.getClass()) return false;
         AdvertisementEntity that = (AdvertisementEntity) o;
         return id == that.id &&
+                status == that.status &&
                 commodityId == that.commodityId &&
-                type == that.type &&
                 floorId == that.floorId &&
                 Objects.equals(title, that.title) &&
                 Objects.equals(pictureUrl, that.pictureUrl) &&
-                Objects.equals(status, that.status) &&
+                Objects.equals(place, that.place) &&
                 Objects.equals(startTime, that.startTime) &&
                 Objects.equals(endTime, that.endTime);
     }
@@ -105,6 +110,6 @@ public class AdvertisementEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, title, pictureUrl, status, commodityId, type, floorId, startTime, endTime);
+        return Objects.hash(id, title, pictureUrl, status, commodityId, place, floorId, startTime, endTime);
     }
 }

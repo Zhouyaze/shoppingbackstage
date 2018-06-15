@@ -268,7 +268,6 @@
    <img src="images/icon_search.gif"/>
    <input type="text" id="tiaojian" class="textBox length-long" placeholder="输入订单编号或收件人姓名..."/>
    <select class="inline-select" id="select">
-
    </select>
    <input onclick="tiaojianSelect(1,5)" type="button" value="查询" class="tdBtn"/>
   </form>

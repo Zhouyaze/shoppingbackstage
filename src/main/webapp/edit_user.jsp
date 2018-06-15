@@ -46,6 +46,9 @@ function chuanzhi() {
  <script type="text/javascript">
      function baocun() {
          var form = new FormData(document.getElementById("form"));
+         if(form.get("file").name == ""){
+             form.delete("file");
+         }
          $.ajax({
              url:"${pageContext.request.contextPath}/userUpdate?id="+params.id,
              type:"post",

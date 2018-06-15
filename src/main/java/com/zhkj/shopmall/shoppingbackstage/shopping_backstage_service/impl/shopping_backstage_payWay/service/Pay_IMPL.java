@@ -21,7 +21,7 @@ public class Pay_IMPL implements Pay_API {
     @Override
     public int insertWay(PaywayEntity paywayEntity, MultipartFile file) {
         String imgPathUrl="";
-        if (null!=file){
+        if (null != file){
             Upload upload=new Upload();
             imgPathUrl= upload.toupload(file);
             String path=imgPathUrl;

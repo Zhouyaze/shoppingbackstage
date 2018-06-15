@@ -10,6 +10,7 @@ public class Page<T> {
     }
 
     public void setTotalPageCount(Integer totalPageCount) {
+
         this.totalPageCount = totalPageCount;
     }
 
