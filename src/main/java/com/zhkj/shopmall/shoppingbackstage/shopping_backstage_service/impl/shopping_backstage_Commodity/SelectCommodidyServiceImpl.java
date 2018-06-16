@@ -38,7 +38,7 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
     }
 
     /**
-     * 帮助添加商品详细规格    查询层级id
+     * 帮助添加商品type详细规格    查询层级id 为1 的
      * @param
      * @return
      */
@@ -46,6 +46,16 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
     public List<TypeEntity> selecttypeleves() {
         List<TypeEntity> list= selectCommodidyMapper.selectleves();
         return list;
+    }
+
+    /**
+     * 根据typeName查询typeName id
+     * @param typeNamelevels
+     * @return
+     */
+    @Override
+    public int selectTypeName(String typeNamelevels) {
+        return selectCommodidyMapper.selectTypeId(typeNamelevels);
     }
 
     @Override

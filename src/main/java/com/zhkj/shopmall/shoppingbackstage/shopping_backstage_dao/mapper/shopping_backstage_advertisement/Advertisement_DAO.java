@@ -20,12 +20,23 @@ public interface Advertisement_DAO {
      * 查詢过时广告
      * @return
      */
-    List<AdvertisementEntity> selectEndTime(@Param("nowTime")String nowTime);
+    List<AdvertisementEntity> selectEndTime();
+    /**
+     * 修改过时状态 为3 禁用
+     */
+    void updateStatus ();
+
+    /**
+     * 查詢启用广告
+     * @return
+     */
+    List<AdvertisementEntity> selectStartTime();
 
     /**
      * 修改过时状态 为3 禁用
      */
-    void UpdateEndTime(@Param("adId") String advertisementId);
+    void updateStratStatus ();
+
 
 
 }

@@ -105,4 +105,6 @@ public class Advertisement_IMPL implements Advertisement_API {
     public List<AdvertisementplaceEntity> getPlace() {
         return advertisement_dao.getPlace();
     }
+
+
 }

@@ -99,4 +99,29 @@
             resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementplaceEntity">
         select * from advertisementplace
     </select>
+
+
+    <update id="updateStatus">
+        UPDATE shoppingmall.advertisement
+        SET status=2
+        WHERE  now()> advertisement.endTime AND  status=1
+    </update>
+
+    <select id="selectEndTime" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity">
+
+    SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1
+    </select>
+
+
+    <select id="selectStartTime" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity">
+
+        SELECT * FROM advertisement
+        WHERE now() &gt; advertisement.startTime AND status = 2 AND now() &lt; advertisement.endTime
+    </select>
+
+    <update id="updateStratStatus">
+        UPDATE shoppingmall.advertisement
+        SET status=1
+        WHERE  now() &gt; advertisement.startTime AND status = 2 AND now() &lt; advertisement.endTime
+    </update>
 </mapper>

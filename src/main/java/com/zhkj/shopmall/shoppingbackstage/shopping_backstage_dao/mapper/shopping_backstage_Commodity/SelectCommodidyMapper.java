@@ -28,6 +28,12 @@ public interface SelectCommodidyMapper {
     List<TypeEntity> selectleves();
 
     /**
+     * 查询 type id
+     * @return
+     */
+    int selectTypeId(String typeNamelevels);
+
+    /**
      * 添加商品规格类型
      * @return
      */

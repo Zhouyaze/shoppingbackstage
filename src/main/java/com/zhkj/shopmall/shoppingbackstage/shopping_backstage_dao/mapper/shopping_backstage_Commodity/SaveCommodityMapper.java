@@ -26,9 +26,9 @@ public interface SaveCommodityMapper {
      * 添加商品详细规格
      * @param sedtailed
      * @return
+
      */
     int savespecificationsdetailed(@Param("sedtaile") SpecificationsdetailedEntity sedtailed);
-
 
     /**
      * 添加商品

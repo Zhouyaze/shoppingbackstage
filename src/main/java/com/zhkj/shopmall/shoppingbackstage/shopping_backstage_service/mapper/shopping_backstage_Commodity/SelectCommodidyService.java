@@ -25,6 +25,12 @@ public interface SelectCommodidyService {
     List<TypeEntity> selecttypeleves();
 
     /**
+     * 根据 typeNamae查询 typeID
+     * @return
+     */
+    int selectTypeName(String typeNamelevels);
+
+    /**
      * 添加商品规格类型
      * @return
      */

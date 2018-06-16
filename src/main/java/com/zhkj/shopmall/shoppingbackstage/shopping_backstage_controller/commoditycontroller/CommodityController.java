@@ -56,10 +56,10 @@ public class CommodityController {
         return saveNumber;
     }
     /**
-     * 下拉框查询
+     *  Type 下拉框查询
      * @return
      */
-    @RequestMapping(value = "SelectLevels" ,method = RequestMethod.GET)
+    @RequestMapping(value = "SelectTypeLevels" ,method = RequestMethod.GET)
     public List<TypeEntity> selectlevels(){
         List<TypeEntity> list;
         list= selectCommodidyService.selecttypeleves();
@@ -102,8 +102,8 @@ public class CommodityController {
     public int savetype(TypeEntity typeEntity){
         int savetypenumber=  saveCommodityService.savetype(typeEntity);
         return savetypenumber;
-    }
 
+    }
     /**
      * 添加商品标题名称
      * @param relationEntity

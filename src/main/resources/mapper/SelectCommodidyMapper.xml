@@ -56,11 +56,14 @@
         WHERE commodityId=#{Id}
     </select>
 
+    <!-- 查询商品最后一个 商品id-->
     <select id="SelectCommodityId" resultType="int">
         SELECT id FROM commodity  ORDER BY id DESC LIMIT 0,1;
     </select>
-
-
+    <!--查询商品type id -->
+    <select id="selectTypeId" resultType="int">
+        SELECT id FROM  shoppingmall.type WHERE typeName=#{typeNamelevels}
+    </select>
 
 
 </mapper>

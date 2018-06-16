@@ -142,8 +142,8 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
      */
     @Override
     public int savetype(TypeEntity typeEntity) {
-        if (typeEntity.getLevels() != 0) {
-            typeEntity.setParentId(typeEntity.getLevels());
+        if (typeEntity.getId() != 0) {
+            typeEntity.setParentId(typeEntity.getId());
             typeEntity.setLevels(2);
             return saveCommodityMapper.savecommoditytype(typeEntity);
         } else {
@@ -160,8 +160,8 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
      */
     @Override
     public int SavecommoditySpecification(CommoditySpecificationRelationEntity relationEntity) {
-        if (relationEntity.getLevels() != 0) {
-            relationEntity.setParentId(relationEntity.getLevels());
+        if (relationEntity.getId() != 0) {
+            relationEntity.setParentId(relationEntity.getId());
             relationEntity.setLevels(2);
             return saveCommodityMapper.Savecommodity_specification_relation(relationEntity);
         } else {
