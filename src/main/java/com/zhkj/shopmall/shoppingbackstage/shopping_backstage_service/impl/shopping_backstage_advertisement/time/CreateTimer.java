@@ -14,6 +14,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 public class CreateTimer {
     /**
      * 要执行的任务
+     * UpdateAdvertisementEndTime 自己定义的类
      * @return
      */
     @Bean(name = "jobDetail")
@@ -31,11 +32,10 @@ public class CreateTimer {
         methodInvokingJobDetailFactoryBean.setName("see_endTime");
         //此任务的分组
         methodInvokingJobDetailFactoryBean.setGroup("see_Mysql_orderFrom");
-        //此任务要执行的对象
+        //此任务要执行 类 的对象
         methodInvokingJobDetailFactoryBean.setTargetObject(updateAdvertisementEndTime);
-        //要执行对象中的那个方法
+        //要执行类对象中的那个方法
         methodInvokingJobDetailFactoryBean.setTargetMethod("updateadvertisement");
-        methodInvokingJobDetailFactoryBean.setTargetMethod("updateAdvertiseMentStartTime");
 
         return methodInvokingJobDetailFactoryBean;
     }

@@ -26,13 +26,11 @@ public class UpdateAdvertisementEndTime {
           advertisement_dao.updateStatus();
             System.out.println("改变结束时间状态");
        }
-    }
-
-    public void updateAdvertiseMentStartTime(){
-        List<AdvertisementEntity> advertisementEntities=advertisement_dao.selectStartTime();
-        if (advertisementEntities!=null&&advertisementEntities.size()>0){
+        List<AdvertisementEntity> advertisementEntities1=advertisement_dao.selectStartTime();
+        if (advertisementEntities1!=null&&advertisementEntities1.size()>0){
             advertisement_dao.updateStratStatus();
             System.out.println("改变开始时间状态");
         }
     }
+
 }
