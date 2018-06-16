@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Promotionitem.PromotionitemMapper">
+    <insert id="saveMsg">
+        insert into shoppingmall.promotionitem(startTime, endTime, discountPrice, commodityNumber, commodityId)
+         values (#{startTime},#{endTime},#{discountPrice},#{commodityNumber},#{commodityId});
+    </insert>
+    <delete id="delMsg">
+        delete from shoppingmall.promotionitem WHERE id=#{id}
+    </delete>
+    <update id="updateMsg">
+        UPDATE shoppingmall.promotionitem
+        <set>
+            <if test="startTime!=null">
+                startTime=#{startTime},
+            </if>
+            <if test="endTime!=null">
+                endTime=#{endTime},
+            </if>
+            <if test="discountPrice!=null">
+                discountPrice =#{discountPrice},
+            </if>
+            <if test="commodityNumber!=null">
+                commodityNumber =#{commodityNumber},
+            </if>
+            <if test="commodityId!=null">
+                commodityId =#{commodityId}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+    <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
+        select * from shoppingmall.promotionitem
+    </select>
+</mapper>

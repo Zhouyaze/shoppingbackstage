@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_floor.FloorMapper">
+    <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.FloorEntity">
+        SELECT * from shoppingmall.floor
+        <if test="currentPage!=null and pageSize!=null">
+            limit #{currentPage},#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM shoppingmall.floor
+    </select>
+    <delete id="delFloor">
+        DELETE FROM shoppingmall.floor
+        <where>
+            <if test="id!=null">
+                AND id=#{id}
+            </if>
+            <if test="title!=null">
+                AND title=#{title}
+            </if>
+        </where>
+    </delete>
+    <insert id="addFloor">
+        INSERT INTO shoppingmall.floor(title, logoUrl, order) VALUES (title=#{title},logoUrl=#{logoUrl},order=#{order})
+    </insert>
+</mapper>

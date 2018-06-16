@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_dictionary.DictionaryMapper">
+
+
+    <select id="getAllMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.DictionaryEntity">
+        select * from shoppingmall.dictionary
+    </select>
+
+    <select id="getMsgByType" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.DictionaryEntity">
+        select * from shoppingmall.dictionary WHERE type=#{type}
+    </select>
+
+    <insert id="saveMsg">
+        INSERT dictionary(type, showData, practicalData) VALUES (#{type},#{showData},#{practicalData})
+    </insert>
+
+    <delete id="delMsgById">
+        delete from shoppingmall.dictionary where id=#{id}
+    </delete>
+
+    <update id="updateMsg">
+        UPDATE shoppingmall.dictionary
+        <set>
+            <if test="type!=null">
+                type=#{type},
+            </if>
+            <if test="showData!=null">
+                showData=#{showData},
+            </if>
+            <if test="practicalData!=null">
+                practicalData =#{practicalData}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+</mapper>
