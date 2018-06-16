@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_audit.AuditMapper">
+    <resultMap id="auditMap" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuditEntity">
+        <id property="id" column="id"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="status" column="status"/>
+        <result property="auditGoodsId" column="auditGoodsId"/>
+        <result property="type" column="type"/>
+        <association property="auditgoodsEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuditgoodsEntity">
+            <id property="id" column="id"/>
+            <result property="goodsMsg" column="goodsMsg"/>
+        </association>
+    </resultMap>
+    <select id="getAuditCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM shoppingmall.audit
+        <where>
+            <if test="status!=null">
+                status=#{status}
+            </if>
+        </where>
+    </select>
+    <insert id="saveMsg">
+        insert into shoppingmall.audit(startTime, endTime, status, auditGoodsId, type)
+        values (#{startTime},#{endTime},#{status},#{auditGoodsId},#{type});
+    </insert>
+    <select id="getMsg" resultMap="auditMap">
+        SELECT * from audit,auditgoods
+        <where>
+            <if test="auditEntity.status!=null and auditEntity.status!=''">
+                and status=#{auditEntity.status}
+            </if>
+            <if test="auditEntity.type!=null and auditEntity.type!=''">
+                and type=#{auditEntity.type}
+            </if>
+            <if test="auditEntity.startTime!=null and auditEntity.startTime!=''">
+                and CAST (startTime TO DATA )=#{auditEntity.startTime}
+            </if>
+            AND auditGoodsId=auditgoods.id
+        </where>
+        <if test="currentPage!=null and pageSize!=null">
+            limit #{currentPage},#{pageSize}
+        </if>
+    </select>
+    <update id="updateMsg">
+        UPDATE shoppingmall.audit
+        <set>
+            <if test="startTime!=null">
+                startTime=#{startTime},
+            </if>
+            <if test="endTime!=null">
+                endTime=#{endTime},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="auditGoodsId!=null">
+                auditGoodsId=#{auditGoodsId},
+            </if>
+            <if test="type!=null">
+                type=#{type}
+            </if>
+        </set>
+        <where>
+              id=#{id}
+        </where>
+    </update>
+    <delete id="delMsg">
+        DELETE FROM shoppingmall.audit WHERE id=#{id}
+    </delete>
+</mapper>
