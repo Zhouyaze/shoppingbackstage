@@ -12,12 +12,15 @@ import java.util.List;
 @Configuration
 @Component
 @EnableScheduling
-public class UpdateAdvertisementEndTime {
+public class UpdateAdvertisementTime {
 
     @Autowired
     Advertisement_DAO advertisement_dao;
 
-    public  void  updateadvertisement(){
+    /**
+     * 修改过期广告
+     */
+    public  void  updateAdvertisement(){
 //        Date nowDate=new Date();
 //        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        String nowTime=simpleDateFormat.format(nowDate);
@@ -26,11 +29,19 @@ public class UpdateAdvertisementEndTime {
           advertisement_dao.updateStatus();
             System.out.println("改变结束时间状态");
        }
+        System.out.println("触发器1执行了");
+    }
+
+    /**
+     * 修改广告开始状态
+     */
+    public void updateAvertisementStratTime(){
         List<AdvertisementEntity> advertisementEntities1=advertisement_dao.selectStartTime();
         if (advertisementEntities1!=null&&advertisementEntities1.size()>0){
             advertisement_dao.updateStratStatus();
             System.out.println("改变开始时间状态");
         }
+        System.out.println("触发器2执行了");
     }
 
 }
