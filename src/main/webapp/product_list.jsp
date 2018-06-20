@@ -88,10 +88,10 @@
   <table class="list-style Interlaced">
    <tr>
     <th>ID编号</th>
-    <th>产品</th>
-    <th>名称</th>
-    <th>市场价</th>
-    <th>会员价</th>
+    <th>产品名称</th>
+    <th>产品图片</th>
+    <th>产品类型</th>
+    <th>产品详细信息</th>
     <th>库存</th>
     <th>精品</th>
     <th>新品</th>

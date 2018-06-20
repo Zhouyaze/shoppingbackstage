@@ -1,6 +1,7 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity;
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public interface SelectCommodidyService {
      *查询全部
      * @return
      */
-    List<CommodityEntity> selectCommodity(CommodityEntity commodityEntity);
+    PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage, Integer pageSize);
 
 
     /**

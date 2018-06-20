@@ -3,6 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SelectCommodidyService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
     @Autowired
     SelectCommodidyMapper selectCommodidyMapper;
+
+    PageBean<CommodityEntity> pageBean=new PageBean();
 
     /**
      * 查询商品规格
@@ -81,9 +84,11 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
      * @return
      */
     @Override
-    public List<CommodityEntity> selectCommodity(CommodityEntity commodityEntity) {
-        List<CommodityEntity> list=  selectCommodidyMapper.selectCommodity(commodityEntity);
-        return list;
+    public PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage, Integer pageSize) {
+        pageBean.setTotalNum(selectCommodidyMapper.getCount(commodityEntity));
+        pageBean.countPage(pageBean.getTotalNum(),currentPage,pageSize);
+        pageBean.setItems(selectCommodidyMapper.selectCommodity(commodityEntity,pageBean.getStartIndex(),pageSize));
+        return pageBean;
     }
 
     /**

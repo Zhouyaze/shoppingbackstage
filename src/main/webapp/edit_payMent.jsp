@@ -69,6 +69,7 @@
             reader.readAsDataURL(file.files[0]);
         }
     </script>
+
 </head>
 <body>
 <div class="wrap">

@@ -9,6 +9,11 @@ import java.util.List;
 @Repository
 public interface SelectCommodidyMapper {
     /**
+     * 查询商品数量
+     * @return
+     */
+    int getCount(@Param("commodity") CommodityEntity commodityName);
+    /**
      * 查询商品规格
      * @return
      */
@@ -51,7 +56,7 @@ public interface SelectCommodidyMapper {
      * 查询商品所有详情
      * @return
      */
-    List<CommodityEntity> selectCommodity(@Param("commodity") CommodityEntity commodityName);
+    List<CommodityEntity> selectCommodity(@Param("commodity") CommodityEntity commodityName,@Param("currentPage")Integer currentPage,@Param("pageSize")Integer pageSize);
 
 
     /**

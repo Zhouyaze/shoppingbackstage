@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper">
-
+<select id="getCount" resultType="int">
+    SELECT count(id) FROM shoppingmall.commodity
+    <if test="commodity.commodityName !=null" >
+        AND commodity.commodityName LIKE '%${commodity.commodityName}%'
+    </if>
+</select>
     <!-- 商品的所有查询方法-->
     <!--帮助查询 商品类型 层级（标题） -->
     <select id="selectleves" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity" >
@@ -49,6 +54,7 @@
         <if test="commodity.commodityName !=null" >
             AND commodity.commodityName LIKE '%${commodity.commodityName}%'
         </if>
+        limit #{currentPage},#{pageSize}
     </select>
 
     <select id="selectAllspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
