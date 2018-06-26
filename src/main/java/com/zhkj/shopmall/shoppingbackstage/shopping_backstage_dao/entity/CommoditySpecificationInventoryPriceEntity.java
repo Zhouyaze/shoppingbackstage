@@ -13,6 +13,15 @@ public class CommoditySpecificationInventoryPriceEntity {
     private int inventory;
     private BigDecimal price;
     private String picture;
+    private CommodityEntity commodityEntity;
+
+    public CommodityEntity getCommodityEntity() {
+        return commodityEntity;
+    }
+
+    public void setCommodityEntity(CommodityEntity commodityEntity) {
+        this.commodityEntity = commodityEntity;
+    }
 
     public int getId() {
         return id;

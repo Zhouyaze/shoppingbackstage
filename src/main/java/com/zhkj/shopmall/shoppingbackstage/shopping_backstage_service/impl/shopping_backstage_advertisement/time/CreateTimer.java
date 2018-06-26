@@ -79,6 +79,11 @@ public class CreateTimer {
         cronTriggerFactoryBean.setName("StartTime");
         return cronTriggerFactoryBean;
     }
+
+
+
+
+
     @Bean(name = "scheduler")
     public SchedulerFactoryBean schedulerFactoryBean(Trigger firstTrigger,Trigger secondTrigger){
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();

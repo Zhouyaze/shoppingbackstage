@@ -30,29 +30,49 @@
         SELECT id ,specificationName FROM commodity_specification_relation WHERE levels=1;
     </select>
 
-
-    <resultMap id="selectCommodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
-        <id column="id" property="id"/>
-        <result column="commodityName" property="commodityName"/>
-        <result column="bigPictureUrl" property="bigPictureUrl"/>
-        <result column="typeName" property="typeName"/>
-        <association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
-            <id column="id" property="id"/>
-            <result column="commodityId" property="commodityId"/>
-            <result column="specification1" property="specification1"/>
-            <result column="specification2" property="specification2"/>
-            <result column="specification3" property="specification3"/>
-            <result column="specification4" property="specification4"/>
-            <result column="inventory" property="inventory"/>
-            <result column="price" property="price"/>
-            <result column="picture" property="picture"/>
+    <resultMap id="Commodity1" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+        <id column="pid" property="id"/>
+        <result column="commodityId" property="commodityId"/>
+        <result column="specification1" property="specification1"/>
+        <result column="specification2" property="specification2"/>
+        <result column="specification3" property="specification3"/>
+        <result column="specification4" property="specification4"/>
+        <result column="inventory" property="inventory"/>
+        <result column="price" property="price"/>
+        <result column="picture" property="picture"/>
+        <association property="commodityEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+            <id column="cid" property="id"/>
+            <result column="commodityName" property="commodityName"/>
+            <result column="bigPictureUrl" property="bigPictureUrl"/>
+            <result column="typeName" property="typeName"/>
         </association>
     </resultMap>
-    <select id="selectCommodity" resultMap="selectCommodity">
-        SELECT * FROM shoppingmall.commodity,shoppingmall.commodity_specification_inventory_price
-        WHERE commodity.id=commodity_specification_inventory_price.commodityId
+
+
+    <!--<resultMap id="Commodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">-->
+        <!--<id column="cid" property="id"/>-->
+        <!--<result column="commodityName" property="commodityName"/>-->
+        <!--<result column="bigPictureUrl" property="bigPictureUrl"/>-->
+        <!--<result column="typeName" property="typeName"/>-->
+        <!--<association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">-->
+           <!--<id column="pid" property="id"/>-->
+            <!--<result column="commodityId" property="commodityId"/>-->
+            <!--<result column="specification1" property="specification1"/>-->
+            <!--<result column="specification2" property="specification2"/>-->
+            <!--<result column="specification3" property="specification3"/>-->
+            <!--<result column="specification4" property="specification4"/>-->
+            <!--<result column="inventory" property="inventory"/>-->
+            <!--<result column="price" property="price"/>-->
+            <!--<result column="picture" property="picture"/>-->
+        <!--</association>-->
+    <!--</resultMap>-->
+    <select id="selectCommodity" resultMap="Commodity1">
+        SELECT c.id as cid,c.commodityName,c.bigPictureUrl,c.typeName,p.id AS pid,p.commodityId,
+        p.inventory,p.specification1,p.specification3,p.price,p.specification2,p.picture
+        FROM commodity c,commodity_specification_inventory_price p
+        WHERE c.id  = p.commodityId
         <if test="commodity.commodityName !=null" >
-            AND commodity.commodityName LIKE '%${commodity.commodityName}%'
+            AND c.commodityName LIKE '%${commodity.commodityName}%'
         </if>
         limit #{currentPage},#{pageSize}
     </select>
@@ -70,6 +90,5 @@
     <select id="selectTypeId" resultType="int">
         SELECT id FROM  shoppingmall.type WHERE typeName=#{typeNamelevels}
     </select>
-
 
 </mapper>
