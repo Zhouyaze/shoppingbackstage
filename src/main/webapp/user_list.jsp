@@ -10,7 +10,7 @@
     <script src="js/page.js"></script>
     <script type="text/javascript">
         var pagecount = 1;
-        var optionJson = [];
+        var optionJson= [];
 
         function refurbishIndex(currentPage, pageSize) {
             $.ajax({

@@ -8,98 +8,169 @@
 <script src="js/jquery.js"></script>
 <script src="js/public.js"></script>
  <script type="text/javascript">
-     function refurbishIndex() {
-         var optionJson = [];
-         $.ajax({
-             type: "GET",
-             contentType:"application/json; charset=utf-8",
-             url: 'http://localhost:8080/selectCommodity',
-             data: {},
-             async: true,
-             success: function (data) {
-                 optionJson = data;
-                 console.log(optionJson)
-                 // for (var index=0;index<optionJson.map.size;index++){
-                 //     console.log(optionJson.map())
-                 // }
-                 // var str = "";
-                 // for(var index=0;index<optionJson.length;index++){
-                 //     str +=<tr>
-                 //     <td>
-                 //     <span>
-                 //     <input type="checkbox" class="middle children-checkbox"/>
-                 //         <i>0</i>
-                 //         </span>
-                 //         </td>
-                 //         <td class="center pic-area"><img src="#" class="thumbnail"/></td>
-                 //         <td class="td-name">
-                 //         <span class="ellipsis td-name block">这是产品或服务名称(宽度350px,样式自动截取，以省略号表示哦，程序可以处理“截取字符串”)</span>
-                 //     </td>
-                 //     <td class="center">
-                 //         <span>
-                 //         <i>￥</i>
-                 //         <em>0.00</em>
-                 //         </span>
-                 //         </td>
-                 //         <td class="center">
-                 //         <span>
-                 //         <i>￥</i>
-                 //         <em>0.00</em>
-                 //         </span>
-                 //         </td>
-                 //         <td class="center">
-                 //         <span>
-                 //         <em>589</em>
-                 //         <i>件</i>
-                 //         </span>
-                 //         </td>
-                 //         <td class="center"><img src="images/yes.gif"/></td>
-                 //         <td class="center"><img src="images/no.gif"/></td>
-                 //         <td class="center"><img src="images/yes.gif"/></td>
-                 //         <td class="center">
-                 //         <a title="查看" target="_blank"><img src="images/icon_view.gif"/></a>
-                 //         <a title="编辑"><img src="images/icon_edit.gif"/></a>
-                 //         <a title="删除"><img src="images/icon_drop.gif"/></a>
-                 //         </td>
-                 //         </tr>;
-                 //     document.getElementById("tbodydata").innerHTML = str;
-                 // }
-             }
-         });
+     var pagecount = 1;
+     var optionJson = null;
+     function refurbishIndex(currentPage) {
+         var tiaojian=$("#tiaojian").val();
+         console.log(tiaojian)
+         if (tiaojian==""){
+             $.ajax({
+                 type: "GET",
+                 contentType:"application/json; charset=utf-8",
+                 url: 'http://localhost:8080/selectCommodity?currentPage='+currentPage,
+                 data: {},
+                 async: true,
+                 success: function (data) {
+                     optionJson=data
+                     var str="";
+                     for(var i=0;i<data.items.length;i++){
+                         str+="<tr>"+
+                             "<td>"+optionJson.items[i].id+"</td>"+
+                             "<td>"+optionJson.items[i].commodityId+"</td>"+
+                             "<td>"+optionJson.items[i].commodityEntity.commodityName+"</td>"+
+                             "<td><img src="+optionJson.items[i].picture+"/></td>"+
+                             "<td>"+optionJson.items[i].commodityEntity.typeName+"</td>"+
+                             "<td>"+optionJson.items[i].price+"</td>"+
+                             "<td>"
+                         if(optionJson.items[i].specification1!=null){
+                             str+=optionJson.items[i].specification1+"\n"
+                         }
+                         if(optionJson.items[i].specification2!=null){
+                             str+=optionJson.items[i].specification2+"\n"
+                         }
+                         if(optionJson.items[i].specification3!=null){
+                             str+=optionJson.items[i].specification3+"\n"
+                         }
+                         if(optionJson.items[i].specification4!=null){
+                             str+=optionJson.items[i].specification4+"\n"
+                         }
+                         str+="</td>"+
+                             "<td>"+optionJson.items[i].inventory+"</td>"+
+                             "<td>"+
+                             "<a title=\"查看\" target=\"_blank\"><img src=\"images/icon_view.gif\"/></a>"+
+                             "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
+                             "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
+                             "</td>"+
+                             "</tr>";
+                         document.getElementById("tbodydata").innerHTML = str;
+                     }
+                     document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
+                 }
+             });
+         } else{
+             $.ajax({
+                 type: "GET",
+                 contentType:"application/json; charset=utf-8",
+                 url: 'http://localhost:8080/selectCommodity?currentPage='+currentPage+"&commodityName="+tiaojian,
+                 data: {},
+                 async: true,
+                 success: function (data) {
+                     optionJson=data
+                     var str="";
+                     for(var i=0;i<data.items.length;i++){
+                         str+="<tr>"+
+                             "<td>"+optionJson.items[i].id+"</td>"+
+                             "<td>"+optionJson.items[i].commodityId+"</td>"+
+                             "<td>"+optionJson.items[i].commodityEntity.commodityName+"</td>"+
+                             "<td><img src="+optionJson.items[i].picture+"/></td>"+
+                             "<td>"+optionJson.items[i].commodityEntity.typeName+"</td>"+
+                             "<td>"+optionJson.items[i].price+"</td>"+
+                             "<td>"
+                         if(optionJson.items[i].specification1!=null){
+                             str+=optionJson.items[i].specification1+"\n"
+                         }
+                         if(optionJson.items[i].specification2!=null){
+                             str+=optionJson.items[i].specification2+"\n"
+                         }
+                         if(optionJson.items[i].specification3!=null){
+                             str+=optionJson.items[i].specification3+"\n"
+                         }
+                         if(optionJson.items[i].specification4!=null){
+                             str+=optionJson.items[i].specification4+"\n"
+                         }
+                         str+="</td>"+
+                             "<td>"+optionJson.items[i].inventory+"</td>"+
+                             "<td>"+
+                             "<a title=\"查看\" target=\"_blank\"><img src=\"images/icon_view.gif\"/></a>"+
+                             "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
+                             "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
+                             "</td>"+
+                             "</tr>";
+                         document.getElementById("tbodydata").innerHTML = str;
+                     }
+                     document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
+                 }
+             });
+         }
      }
  </script>
+    <script type="text/javascript">
+
+        /*
+        分页下一页
+        */
+        function pageJia() {
+            if (pagecount > 1) {
+                pagecount--;
+                refurbishIndex(pagecount)
+                document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
+            }
+        }
+
+        /*
+        分页上一页
+        */
+        function pageJian() {
+            if (pagecount < optionJson.totalPage) {
+                pagecount++;
+                    refurbishIndex(pagecount)
+                document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
+            }
+            // fun();
+        }
+
+        /*
+         * 分页跳转
+         */
+        function tiaozhuan() {
+            pagecount = parseInt($("#yema").val());
+            if (pagecount > optionJson.totalPage) {
+                pagecount = optionJson.totalPage
+                document.getElementById("yema").value = optionJson.totalPage;
+            } else if (pagecount < 1) {
+                pagecount = 1
+                document.getElementById("yema").value = 1;
+            }
+            refurbishIndex(pagecount)
+            document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
+        }
+    </script>
 </head>
-<body onload="refurbishIndex()">
+<body onload="refurbishIndex(1)">
  <div class="wrap">
   <div class="page-title">
     <span class="modular fl"><i></i><em>产品列表</em></span>
     <span class="modular fr"><a href="edit_product.jsp" class="pt-link-btn">+添加商品</a></span>
   </div>
   <div class="operate">
-   <form>
-    <select class="inline-select">
-     <option>A店铺</option>
-     <option>B店铺</option>
-    </select>
-    <input type="text" class="textBox length-long" placeholder="输入产品名称..."/>
-    <input type="button" value="查询" class="tdBtn"/>
+   <form onclick="refurbishIndex(1)">
+    <input id="tiaojian" type="text" class="textBox length-long" placeholder="输入产品名称..."/>
+    <input id="chaxun" type="button" value="查询" class="tdBtn"/>
    </form>
   </div>
   <table class="list-style Interlaced">
    <tr>
-    <th>ID编号</th>
+    <th>商品信息编号</th>
+       <th>商品编号</th>
     <th>产品名称</th>
     <th>产品图片</th>
     <th>产品类型</th>
-    <th>产品详细信息</th>
+    <th>价格</th>
+    <th>产品规格信息</th>
     <th>库存</th>
-    <th>精品</th>
-    <th>新品</th>
-    <th>热销</th>
     <th>操作</th>
    </tr>
-
-
+      <tbody id="tbodydata"></tbody>
   </table>
   <!-- BatchOperation -->
   <div style="overflow:hidden;">
@@ -110,11 +181,17 @@
 	   <input type="button" value="批量删除" class="btnStyle"/>
 	  </div>
 	  <!-- turn page -->
-	  <div class="turnPage center fr">
-	   <a>第一页</a>
-	   <a>1</a>
-	   <a>最后一页</a>
-	  </div>
+
+      <div style="overflow:hidden;">
+          <div class="turnPage center fr" id="pageBtn" style="width: auto;display:inline-block !important;height: auto;">
+              <a onclick="pageJia()">上一页</a>
+              <a>跳转至</a>
+              <input type="text" id="yema" style="width: 20px;"/>
+              <a onclick="tiaozhuan()">跳转</a>
+              <a onclick="pageJian()">下一页</a>
+              <a id="result"></a>
+          </div>
+      </div>
   </div>
  </div>
 </body>

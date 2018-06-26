@@ -84,10 +84,11 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
      * @return
      */
     @Override
-    public PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage, Integer pageSize) {
+    public PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage) {
+        pageBean.setPageSize(5);
         pageBean.setTotalNum(selectCommodidyMapper.getCount(commodityEntity));
-        pageBean.countPage(pageBean.getTotalNum(),currentPage,pageSize);
-        pageBean.setItems(selectCommodidyMapper.selectCommodity(commodityEntity,pageBean.getStartIndex(),pageSize));
+        pageBean.countPage(pageBean.getTotalNum(),currentPage,pageBean.getPageSize());
+        pageBean.setItems(selectCommodidyMapper.selectCommodity(commodityEntity,pageBean.getStartIndex(),pageBean.getPageSize()));
         return pageBean;
     }
 

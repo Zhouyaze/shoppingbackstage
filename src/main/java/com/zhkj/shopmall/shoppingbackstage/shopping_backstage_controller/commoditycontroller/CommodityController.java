@@ -144,8 +144,8 @@ public class CommodityController {
      * @return
      */
     @RequestMapping(value = "selectCommodity",method = RequestMethod.GET)
-    public PageBean<CommodityEntity> list(CommodityEntity commodityEntity, Integer currentPage, Integer pageSize){
-        return selectCommodidyService.selectCommodity(commodityEntity,currentPage,pageSize);
+    public PageBean<CommodityEntity> list(CommodityEntity commodityEntity, Integer currentPage){
+        return selectCommodidyService.selectCommodity(commodityEntity,currentPage);
     }
 
     /**

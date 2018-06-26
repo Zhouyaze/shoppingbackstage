@@ -4,9 +4,11 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper">
 <select id="getCount" resultType="int">
     SELECT count(id) FROM shoppingmall.commodity
-    <if test="commodity.commodityName !=null" >
-        AND commodity.commodityName LIKE '%${commodity.commodityName}%'
-    </if>
+    <where>
+        <if test="commodity.commodityName !=null" >
+            commodity.commodityName LIKE '%${commodity.commodityName}%'
+        </if>
+    </where>
 </select>
     <!-- 商品的所有查询方法-->
     <!--帮助查询 商品类型 层级（标题） -->

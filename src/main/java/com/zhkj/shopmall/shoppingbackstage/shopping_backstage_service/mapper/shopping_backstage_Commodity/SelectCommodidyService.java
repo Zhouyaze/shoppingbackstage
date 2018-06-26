@@ -49,7 +49,7 @@ public interface SelectCommodidyService {
      *查询全部
      * @return
      */
-    PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage, Integer pageSize);
+    PageBean<CommodityEntity> selectCommodity(CommodityEntity commodityEntity, Integer currentPage);
 
 
     /**
