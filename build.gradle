@@ -32,7 +32,7 @@ dependencies {
     //开发者工具 用于修改文件build就能编译,避免重启springboot带来的麻烦
     runtime("org.springframework.boot:spring-boot-devtools")
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+        compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
     runtime('mysql:mysql-connector-java')
     compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '8.5.16'
     compile group: 'io.shardingjdbc', name: 'sharding-jdbc-core', version: '2.0.3'

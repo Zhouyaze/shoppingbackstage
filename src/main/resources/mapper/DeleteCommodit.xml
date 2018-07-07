@@ -7,9 +7,11 @@
     <delete id="DeleteCommodity" parameterType="java.lang.Integer">
         DELETE FROM shoppingmall.commodity WHERE id=#{Id}
     </delete>
+
     <delete id="DeleteCommodityPrice"  parameterType="java.lang.Integer">
         DELETE FROM commodity_specification_inventory_price WHERE commodityId=#{Id};
     </delete>
+    <!--删除图片商品-->
     <delete id="DeleteCommodityPicture" parameterType="java.lang.Integer">
         DELETE FROM shoppingmall.commodityintroducepicture WHERE commodityintroducepicture.commodityId=#{Id}
     </delete>

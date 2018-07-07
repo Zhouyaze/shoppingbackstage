@@ -1,9 +1,11 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.Commodity_Vo;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SaveCommodityMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_Kafka.KafkaServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SaveCommodityService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+
+//import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_Kafka.KafkaServiceImpl;
 
 @Service
 public class SaveCommodityServiceImpl implements SaveCommodityService {
@@ -22,8 +26,10 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
     @Autowired
     SelectCommodidyMapper selectCommodidyMapper;
 
-
-
+    @Autowired
+    KafkaServiceImpl kafkaService;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     /**
      * 添加商品全部详细信息
@@ -52,6 +58,8 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
             commodity_vo.setCommodityId(commodityId);
             CommodityintroducepictureEntity pictureEntity=getCommodityintroducepictureEntity(commodity_vo);
             String PathUrl = "";
+            int no=2;
+            int levels=0;
             if(null != File){
                 for (int i=0;i< File.length;i++){
                     PathUrl = toupload(File[i]);
@@ -59,6 +67,10 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                     //根据最后“/”截取字符
                     //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
                     commodity_vo.setPictureUrl(patch);
+                    for ( int number=levels;number<no;number++){
+                        pictureEntity.setLevels(levels);
+                    }
+                    levels++;
                     pictureEntity.setPictureUrl(commodity_vo.getPictureUrl());
                     saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
                 }
@@ -92,6 +104,13 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                 int commodityId=selectCommodidyMapper.SelectCommodityId();
                 commodity_vo.setCommodityId(commodityId);
                 CommoditySpecificationInventoryPriceEntity priceEntity=getCommoditySpecificationInventoryPriceEntity(commodity_vo);
+
+                try {
+                    kafkaService.kafka_save(objectMapper.writeValueAsString(priceEntity),String.valueOf(priceEntity.getId()),CommoditySpecificationInventoryPriceEntity.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 saveCommodityMapper.Savecommodity_specification_inventory_price(priceEntity);
             }
         }
