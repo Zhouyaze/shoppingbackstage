@@ -20,6 +20,9 @@ public class OrderfromEntity {
     private BigDecimal orderfromPrice;
     private Integer harvestAddressId;
     private String transactionNumber;
+    private UserEntity userEntity;
+    private OrderfromshopEntity orderfromshopEntity;
+    private HarvestaddressEntity harvestAddressEntity;
     private OrderfromEntity orderfromEntity;
     public HarvestaddressEntity getHarvestAddressEntity() {
         return harvestAddressEntity;
@@ -28,23 +31,15 @@ public class OrderfromEntity {
     public void setHarvestAddressEntity(HarvestaddressEntity harvestAddressEntity) {
         this.harvestAddressEntity = harvestAddressEntity;
     }
-
-    private OrderfromshopEntity orderfromshopEntity;
-    private HarvestaddressEntity harvestAddressEntity;
-
     public void setId(Integer id) {
         this.id = id;
     }
-
-    private UserEntity userEntity;
     public UserEntity getUserEntity() {
         return userEntity;
     }
-
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
-
     public OrderfromshopEntity getOrderfromshopEntity() {
 
         return orderfromshopEntity;
@@ -53,19 +48,15 @@ public class OrderfromEntity {
     public void setOrderfromshopEntity(OrderfromshopEntity orderfromshopEntity) {
         this.orderfromshopEntity = orderfromshopEntity;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getOrderNumber() {
         return orderNumber;
     }
-
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }

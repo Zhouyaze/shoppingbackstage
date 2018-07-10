@@ -59,6 +59,7 @@
         function baocun() {
 
             var form = new FormData(document.getElementById("form"));
+            console.log(form)
             if(form.get("file").name == ""){
                 form.delete("file");
             }

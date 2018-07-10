@@ -31,19 +31,16 @@ public class CommodityController {
     /**
      * 添加商品主表  更图片表
      * @param bigPicture
-     * @param File
+     * @param file
      * @param commodity_vo
      * @return
      */
     @RequestMapping(value = "saveCommodity",method = RequestMethod.POST)
-    public int saveCommodity(@RequestBody MultipartFile bigPicture, MultipartFile[] File, Commodity_Vo commodity_vo){
+    public int saveCommodity(@RequestBody MultipartFile bigPicture, MultipartFile[] file, Commodity_Vo commodity_vo){
         int saveNumber;
-        saveNumber=saveCommodityService.saveCommodityAll(bigPicture,File,commodity_vo);
+        saveNumber=saveCommodityService.saveCommodityAll(bigPicture,file,commodity_vo);
         return saveNumber;
     }
-
-
-
     /**
      * 添加商品规格表
      * @param simmallFile
