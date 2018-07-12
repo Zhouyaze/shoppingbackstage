@@ -21,7 +21,7 @@
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
                 async: true,
-                url: "http://localhost:8080/selectAll",
+                url: "${pageContext.request.contextPath}/selectAll",
                 data: {currentPage: currentPage},
                 success: function (data) {
                     var str = ""

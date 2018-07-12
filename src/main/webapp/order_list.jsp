@@ -15,7 +15,7 @@
          $.ajax({
              type: "GET",
              contentType:"application/json; charset=utf-8",
-             url: 'http://localhost:8080/getOrderFromInfoByCond?'+"currentPage="+currentPage+"&pageSize="+pageSize,
+             url: '${pageContext.request.contextPath}/getOrderFromInfoByCond?'+"currentPage="+currentPage+"&pageSize="+pageSize,
              data: {},
              async: true,
              success: function (data) {
@@ -60,7 +60,7 @@
                      $.ajax({
                          type: "GET",
                          contentType:"application/json; charset=utf-8",
-                         url: 'http://localhost:8080/getOrderFromInfoByCond?'+"paymentTypeId="+orderType+"&currentPage="+currentPage+"&pageSize="+pageSize,
+                         url: '${pageContext.request.contextPath}/getOrderFromInfoByCond?'+"paymentTypeId="+orderType+"&currentPage="+currentPage+"&pageSize="+pageSize,
                          data: {},
                          async: true,
                          success: function (data) {
@@ -112,7 +112,7 @@
          $.ajax({
              type: "GET",
              contentType:"application/json; charset=utf-8",
-             url: 'http://localhost:8080/getOrderFromType',
+             url: '${pageContext.request.contextPath}/getOrderFromType',
              data: {},
              async: false,
              success: function (data) {
@@ -136,7 +136,7 @@
                  $.ajax({
                      type: "GET",
                      contentType:"application/json; charset=utf-8",
-                     url: 'http://localhost:8080/getOrderFromInfoByCond?'+"orderNumber="+$("#tiaojian").val()+"&currentPage="+currentPage+"&pageSize="+pageSize,
+                     url: '${pageContext.request.contextPath}/getOrderFromInfoByCond?'+"orderNumber="+$("#tiaojian").val()+"&currentPage="+currentPage+"&pageSize="+pageSize,
                      data: {},
                      async: true,
                      success: function (data) {
@@ -173,7 +173,7 @@
                  $.ajax({
                      type: "GET",
                      contentType:"application/json; charset=utf-8",
-                     url: 'http://localhost:8080/getOrderFromInfoByCond?'+"paymentTypeId="+orderType+"&orderNumber="+$("#tiaojian").val()+"&currentPage="+currentPage+"&pageSize="+pageSize,
+                     url: '${pageContext.request.contextPath}/getOrderFromInfoByCond?'+"paymentTypeId="+orderType+"&orderNumber="+$("#tiaojian").val()+"&currentPage="+currentPage+"&pageSize="+pageSize,
                      data: {},
                      async: true,
                      success: function (data) {

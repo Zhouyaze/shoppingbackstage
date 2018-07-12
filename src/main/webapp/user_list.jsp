@@ -16,7 +16,7 @@
             $.ajax({
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
-                url: 'http://localhost:8080/getUser?currentPage=' + currentPage + "&pageSize=" + pageSize,
+                url: '${pageContext.request.contextPath}/getUser?currentPage=' + currentPage + "&pageSize=" + pageSize,
                 data: {},
                 async: false,
                 success: function (data) {
@@ -50,7 +50,7 @@
                         $.ajax({
                             type: "GET",
                             contentType: "application/json; charset=utf-8",
-                            url: 'http://localhost:8080/getUser?userTypeName=' + userType + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                            url: '${pageContext.request.contextPath}/getUser?userTypeName=' + userType + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                             data: {},
                             async: false,
                             success: function (data) {
@@ -96,7 +96,7 @@
             $.ajax({
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
-                url: 'http://localhost:8080/getUserType',
+                url: '${pageContext.request.contextPath}/getUserType',
                 data: {},
                 async: false,
                 success: function (data) {
@@ -128,7 +128,7 @@
                 document.getElementById("tbodydata").innerHTML = "";
                 $.ajax({
                     async: false,
-                    url: 'http://localhost:8080/getUser?nickName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                    url: '${pageContext.request.contextPath}/getUser?nickName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                     type: 'GET',
                     dataType: 'json',
                     data: {},
@@ -168,7 +168,7 @@
                                 $.ajax({
                                     type: "GET",
                                     contentType: "application/json; charset=utf-8",
-                                    url: 'http://localhost:8080/getUser?userTypeName=' + userType + "&nickName=" + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                                    url: '${pageContext.request.contextPath}/getUser?userTypeName=' + userType + "&nickName=" + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                                     data: {},
                                     async: false,
                                     success: function (data) {
@@ -210,7 +210,7 @@
                             document.getElementById("tbodydata").innerHTML = "";
                             $.ajax({
                                 async: false,
-                                url: 'http://localhost:8080/getUser?loginName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                                url: '${pageContext.request.contextPath}/getUser?loginName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                                 type: 'GET',
                                 dataType: 'json',
                                 data: {},
@@ -251,7 +251,7 @@
                                             $.ajax({
                                                 type: "GET",
                                                 contentType: "application/json; charset=utf-8",
-                                                url: 'http://localhost:8080/getUser?userTypeName=' + userType + "&loginName=" + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                                                url: '${pageContext.request.contextPath}/getUser?userTypeName=' + userType + "&loginName=" + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                                                 data: {},
                                                 async: false,
                                                 success: function (data) {
@@ -293,7 +293,7 @@
                                         document.getElementById("tbodydata").innerHTML = "";
                                         $.ajax({
                                             async: false,
-                                            url: 'http://localhost:8080/getUser?userPhoneNumber=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                                            url: '${pageContext.request.contextPath}/getUser?userPhoneNumber=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                                             type: 'GET',
                                             dataType: 'json',
                                             data: {},
@@ -336,7 +336,7 @@
                                                     alert($("#tiaojian").val())
                                                     $.ajax({
                                                         async: false,
-                                                        url: 'http://localhost:8080/getUser?userName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
+                                                        url: '${pageContext.request.contextPath}/getUser?userName=' + $("#tiaojian").val() + "&currentPage=" + currentPage + "&pageSize=" + pageSize,
                                                         type: 'GET',
                                                         dataType: 'json',
                                                         data5: {},

@@ -18,7 +18,7 @@
             $.ajax({
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
-                url: 'http://localhost:8080/selectPay',
+                url: '${pageContext.request.contextPath}/selectPay',
                 data: {},
                 async: false,
                 success: function (data) {

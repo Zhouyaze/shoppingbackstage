@@ -13,59 +13,45 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script>
         var params = {};
-        var url=decodeURI(location.search)
-        if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for (var i = 0; i < strs.length; i++) {
-                params[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        function jiazai() {
+            var url=decodeURI(location.search)
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    params[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
             }
+            $("#inventory").val(params.inventory)
+            $("#price").val(params.price)
+            $("#specification1").val(params.specification1)
+            $("#specification2").val(params.specification2)
+            $("#specification3").val(params.specification3)
+            $("#specification4").val(params.specification4)
         }
     </script>
     <script>
         function baocun() {
             var form = new FormData(document.getElementById("form"));
-            if (params.commodityId==null){
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/saveCommodityPrice",
+                    url:"${pageContext.request.contextPath}/UpdateCommodityPrice?id="+params.id,
                     type:"post",
                     data:form,
                     processData:false,
                     contentType:false,
                     success:function(data){
                         if (data>0) {
-                            alert("添加商品规格成功")
+                            alert("修改商品规格成功")
                             window.location.href = "product_list.jsp"
                         }else{
-                            alert("添加商品规格失败，请再次尝试")
+                            alert("修改商品规格失败，请再次尝试")
                         }
                     },
                     error:function(e){
-                        alert("添加商品规格失败");
+                        alert("修改商品规格失败");
                         window.location.href="product_list.jsp"
                     }
                 });
-            } else{
-                $.ajax({
-                    url:"${pageContext.request.contextPath}/saveCommodityPrice?commodityId="+params.commodityId,
-                    type:"post",
-                    data:form,
-                    processData:false,
-                    contentType:false,
-                    success:function(data){
-                        if (data>0) {
-                            alert("添加商品成功")
-                            window.location.href = "product_list.jsp"
-                        }else{
-                            alert("添加商品失败，请再次尝试")
-                        }
-                    },
-                    error:function(e){
-                        alert("添加商品失败");
-                        window.location.href="product_list.jsp"
-                    }
-                });
-            }
         }
     </script>
     <script>
@@ -86,10 +72,10 @@
 <body onload="jiazai()">
 <div class="wrap">
     <div class="page-title">
-        <span class="modular fl"><i class="add_user"></i><em>添加新会员</em></span>
+        <span class="modular fl"><i class="add_user"></i><em>编辑商品规格</em></span>
     </div>
     <form id="form" method="post" enctype="multipart/form-data" target="ajaxFrame">
-        <table class="noborder">
+        <table class="list-style">
             <tr>
                 <td style="width:15%;text-align:right;">商品规格①：</td>
                 <td><input name="specification1" id="specification1" type="text" class="textBox length-middle"/></td>
@@ -116,7 +102,7 @@
             </tr>
             <tr>
                 <td style="text-align:right;">规格商品图片：</td>
-                <td><input onchange="showImg(this)" name="simmallFile" id="simmallFile" type="file" class="textBox length-middle"/></td>
+                <td><input onchange="showImg(this)" name="img" id="simmallFile" type="file" class="textBox length-middle"/></td>
             </tr>
             <tr>
                 <td style="text-align:right;width: 100px;height: 100px">头像预览</td>

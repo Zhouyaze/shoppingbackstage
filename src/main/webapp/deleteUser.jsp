@@ -26,7 +26,7 @@
             $.ajax({
                 type: "GET",
                 contentType:"application/json; charset=utf-8",
-                url: 'http://localhost:8080/userDelete?id='+params.id,
+                url: '${pageContext.request.contextPath}/userDelete?id='+params.id,
                 data: {},
                 async: false,
                 success: function (data) {

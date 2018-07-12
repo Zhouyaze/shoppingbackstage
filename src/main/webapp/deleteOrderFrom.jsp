@@ -27,7 +27,7 @@
             $.ajax({
                 type: "GET",
                 contentType:"application/json; charset=utf-8",
-                url: 'http://localhost:8080/deleteOrderFrom?orderNumber='+params.orderNumber,
+                url: '${pageContext.request.contextPath}/deleteOrderFrom?orderNumber='+params.orderNumber,
                 data: {},
                 async: false,
                 success: function (data) {

@@ -12,7 +12,7 @@
       $.ajax({
           type: "GET",
           contentType:"application/json; charset=utf-8",
-          url: 'http://localhost:8080/getPlace',
+          url: '${pageContext.request.contextPath}/getPlace',
           data: {},
           async: false,
           success: function (data) {
