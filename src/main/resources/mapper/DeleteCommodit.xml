@@ -19,6 +19,6 @@
     <!--删除 某个商品规格 -->
     <delete id="DeleteCommoditySpecification" parameterType="java.lang.Integer">
         DELETE FROM commodity_specification_inventory_price
-        WHERE id=#{id};
+        WHERE id=#{Id};
     </delete>
 </mapper>

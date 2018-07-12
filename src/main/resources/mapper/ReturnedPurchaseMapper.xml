@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper">
+
+    <insert id="saveReturned">
+       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint)
+       VALUES(#{returned.messageType},#{returned.manifest},#{returned.operatingStatus},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint})
+    </insert>
+</mapper>

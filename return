@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS `returned_purchase`;
+CREATE TABLE `returned_purchase`(
+  `id` INT AUTO_INCREMENT UNIQUE COMMENT '消息编号',
+  `messageType` INT COMMENT '消息类型 1:进货 2:退货',
+  `manifest` VARCHAR(50) COMMENT '订单编号',#前台
+  `operatingStatus` INT DEFAULT 1 COMMENT '消息状态 1:未审核 2:审核中 3:已审核 4:已通过 5:未通过', #进销存
+  `returnUserName` VARCHAR(10) COMMENT '退货人',#前台
+  `returnUserAddress` VARCHAR(200) COMMENT '退货人地址', #前台
+  `returnCommodityName` VARCHAR(50) COMMENT '退回商品名称',#前台
+  `returnCommoditySku` VARCHAR(100) COMMENT '退回商品规格',#前台
+  `backstageHandlersint` VARCHAR(10) COMMENT '后台操作人',
+  `purchaseHandlersint` VARCHAR(10) COMMENT '进销存操作人',
+  `messageCreateTime` DATETIME DEFAULT now() COMMENT '消息创建时间'
+)CHARACTER SET 'utf8';
+# {"orderId":"231321","commodityName":"哈哈","commoditySku":"白","returnUserName":"拉拉","returnUserAddress":"洛阳"}
+# CommodityVo commodity = JSON.parseObject(json,CommodityVo.class)
+
+# {"id":"2","commodityName":"哈哈","commoditySku":"白","backstageHandlersint":"admin"}
+INSERT INTO shoppingmall.returned_purchase(messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint, messageCreateTime)
+VALUES()

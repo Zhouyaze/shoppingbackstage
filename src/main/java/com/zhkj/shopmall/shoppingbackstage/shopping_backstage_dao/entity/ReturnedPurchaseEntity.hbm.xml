@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity"
+           table="returned_purchase" schema="shoppingmall">
+        <property name="id" column="id"/>
+        <property name="messageType" column="messageType"/>
+        <property name="manifest" column="manifest"/>
+        <property name="operatingStatus" column="operatingStatus"/>
+        <property name="returnUserName" column="returnUserName"/>
+        <property name="returnUserAddress" column="returnUserAddress"/>
+        <property name="returnCommodityName" column="returnCommodityName"/>
+        <property name="returnCommoditySku" column="returnCommoditySku"/>
+        <property name="backstageHandlersint" column="backstageHandlersint"/>
+        <property name="purchaseHandlersint" column="purchaseHandlersint"/>
+        <property name="messageCreateTime" column="messageCreateTime"/>
+    </class>
+</hibernate-mapping>
