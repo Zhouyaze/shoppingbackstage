@@ -165,7 +165,6 @@ public class CommodityController {
      */
     @RequestMapping(value = "deleteCommoditySpecification",method = RequestMethod.GET)
     public int deletespecification(Integer id){
-
         return deleteCommodityService.DeleteCommoditySpecification(id);
     }
 

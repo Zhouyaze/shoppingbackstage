@@ -33,21 +33,21 @@
                              "<td>"+optionJson.items[i].price+"</td>"+
                              "<td>"
                          if(optionJson.items[i].specification1!=null){
-                             str+=optionJson.items[i].specification1+"\n"
+                             str+=optionJson.items[i].specification1+","
                          }
                          if(optionJson.items[i].specification2!=null){
-                             str+=optionJson.items[i].specification2+"\n"
+                             str+=optionJson.items[i].specification2+","
                          }
                          if(optionJson.items[i].specification3!=null){
-                             str+=optionJson.items[i].specification3+"\n"
+                             str+=optionJson.items[i].specification3+","
                          }
                          if(optionJson.items[i].specification4!=null){
-                             str+=optionJson.items[i].specification4+"\n"
+                             str+=optionJson.items[i].specification4
                          }
                          str+="</td>"+
                              "<td>"+optionJson.items[i].inventory+"</td>"+
                              "<td>"+
-                             "<a title=\"查看\" target=\"_blank\"><img src=\"images/icon_view.gif\"/></a>"+
+                             "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
                              "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
                              "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+
@@ -91,7 +91,7 @@
                          str+="</td>"+
                              "<td>"+optionJson.items[i].inventory+"</td>"+
                              "<td>"+
-                             "<a title=\"查看\" target=\"_blank\"><img src=\"images/icon_view.gif\"/></a>"+
+                             "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
                              "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
                              "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+

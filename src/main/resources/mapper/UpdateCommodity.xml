@@ -14,7 +14,6 @@
     <update id="UpdateCommodityPrice">
         UPDATE  shoppingmall.commodity_specification_inventory_price
         SET
-          commodityId=#{specification.commodityId},
           specification1=#{specification.specification1},
           specification2=#{specification.specification2},
           specification3=#{specification.specification3},

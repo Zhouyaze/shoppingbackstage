@@ -11,7 +11,7 @@
       $.ajax({
           type: "GET",
           contentType:"application/json; charset=utf-8",
-          url: 'http://localhost:8080/getUserType',
+          url: '${pageContext.request.contextPath}/getUserType',
           data: {},
           async: false,
           success: function (data) {

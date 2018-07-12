@@ -17,7 +17,7 @@
             $.ajax({
                 type: "GET",
                 contentType:"application/json; charset=utf-8",
-                url: 'http://localhost:8080/getPlace',
+                url: '${pageContext.request.contextPath}/getPlace',
                 data: {},
                 async: false,
                 success: function (data) {
@@ -38,7 +38,6 @@
                     params[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
                 }
             }
-            console.log(params)
             $("#commodityId").val(params.commodityId)
             $("#endTime").val(params.endTime)
             $("#floorId").val(params.floorId)
@@ -59,7 +58,6 @@
         function baocun() {
 
             var form = new FormData(document.getElementById("form"));
-            console.log(form)
             if(form.get("file").name == ""){
                 form.delete("file");
             }

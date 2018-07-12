@@ -36,7 +36,7 @@
         $.ajax({
             type: "GET",
             contentType:"application/json; charset=utf-8",
-            url: 'http://localhost:8080/getOrderFromShopInfo?orderFromId='+params.orderNumber,
+            url: '${pageContext.request.contextPath}/getOrderFromShopInfo?orderFromId='+params.orderNumber,
             data: {},
             async: false,
             success: function (data) {
