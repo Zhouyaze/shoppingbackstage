@@ -1,10 +1,8 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 @Repository
 public class OrderfromshopEntity {
     private Integer id;
@@ -80,23 +78,5 @@ public class OrderfromshopEntity {
         this.orderFromId = orderFromId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OrderfromshopEntity that = (OrderfromshopEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(feight, that.feight) &&
-                Objects.equals(commodityPrice, that.commodityPrice) &&
-                Objects.equals(commodityNumber, that.commodityNumber) &&
-                Objects.equals(logisticsTypeId, that.logisticsTypeId) &&
-                Objects.equals(commodityId, that.commodityId) &&
-                Objects.equals(orderFromId, that.orderFromId);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, feight, commodityPrice, commodityNumber, logisticsTypeId, commodityId, orderFromId);
-    }
 }

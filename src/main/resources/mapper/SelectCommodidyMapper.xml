@@ -49,6 +49,8 @@
             <result column="typeName" property="typeName"/>
         </association>
     </resultMap>
+
+
     <!--<resultMap id="Commodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">-->
         <!--<id column="cid" property="id"/>-->
         <!--<result column="commodityName" property="commodityName"/>-->

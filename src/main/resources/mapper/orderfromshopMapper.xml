@@ -26,4 +26,13 @@
         WHERE orderfromshop0.commodityId=commodity.id
         AND orderfromshop0.orderFromId=#{orderFromId}
     </select>
+
+    <select id="select1" resultMap="orderfromshopAndcommodity">
+        SELECT * FROM orderfromshop1,commodity
+        WHERE orderfromshop1.commodityId=commodity.id
+    </select>
+    <select id="select0" resultMap="orderfromshopAndcommodity">
+        SELECT * FROM orderfromshop0,commodity
+        WHERE orderfromshop0.commodityId=commodity.id
+    </select>
 </mapper>

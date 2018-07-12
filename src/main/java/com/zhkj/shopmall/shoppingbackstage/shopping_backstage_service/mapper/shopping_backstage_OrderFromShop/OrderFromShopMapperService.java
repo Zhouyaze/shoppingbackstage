@@ -15,4 +15,5 @@ public interface OrderFromShopMapperService {
      * @return
      */
     List<OrderfromshopEntity> selectOrderFromShopByOrderNumber(OrderfromshopEntity orderfromshopEntity);
+
 }

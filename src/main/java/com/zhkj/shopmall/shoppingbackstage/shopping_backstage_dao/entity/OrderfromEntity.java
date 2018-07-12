@@ -2,11 +2,9 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Objects;
 @Repository
 public class OrderfromEntity {
     private Integer id;
@@ -117,25 +115,4 @@ public class OrderfromEntity {
         this.transactionNumber = transactionNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OrderfromEntity that = (OrderfromEntity) o;
-        return id == that.id &&
-                Objects.equals(orderNumber, that.orderNumber) &&
-                Objects.equals(orderCreationTime, that.orderCreationTime) &&
-                Objects.equals(orderEndTime, that.orderEndTime) &&
-                Objects.equals(userId, that.userId) &&
-                Objects.equals(paymentTypeId, that.paymentTypeId) &&
-                Objects.equals(orderfromPrice, that.orderfromPrice) &&
-                Objects.equals(harvestAddressId, that.harvestAddressId) &&
-                Objects.equals(transactionNumber, that.transactionNumber);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, orderNumber, orderCreationTime, orderEndTime, userId, paymentTypeId, orderfromPrice, harvestAddressId, transactionNumber);
-    }
 }

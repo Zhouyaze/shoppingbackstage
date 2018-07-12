@@ -39,4 +39,6 @@ public interface OrderFromMapper {
      * @return
      */
     int orderFromUpdate(OrderfromEntity orderfromEntity);
+
+    List<OrderfromEntity>selectOrder();
 }
