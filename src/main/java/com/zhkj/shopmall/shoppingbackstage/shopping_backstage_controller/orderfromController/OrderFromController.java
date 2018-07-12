@@ -8,7 +8,10 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin
 @RestController
@@ -41,5 +44,17 @@ public class OrderFromController {
     @GetMapping("/updateOrderFrom")
     public String orderFromUpdate(OrderfromEntity orderfromEntity){
         return orderMapperService.orderFromUpdate(orderfromEntity);
+    }
+    /*
+     * 生成报表
+     * */
+    @RequestMapping("/generateOrder")
+    public String generateOrder(HttpServletResponse response){
+        boolean bl=orderMapperService.exportExcel(response);
+        if(bl){
+            return "报表生成成功";
+        }else {
+            return "报表生成失败";
+        }
     }
 }

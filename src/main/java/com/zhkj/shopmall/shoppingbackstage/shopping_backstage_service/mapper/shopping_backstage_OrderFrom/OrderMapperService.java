@@ -3,8 +3,8 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.sh
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.OrderfromEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
-import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface OrderMapperService {
@@ -34,4 +34,12 @@ public interface OrderMapperService {
      * @return
      */
     String orderFromUpdate(OrderfromEntity orderfromEntity);
+    /**
+     * 查询所有订单
+     * */
+     List<OrderfromEntity>selectAll();
+     /**
+      * 生成报表
+      * */
+     boolean exportExcel(HttpServletResponse response);
 }

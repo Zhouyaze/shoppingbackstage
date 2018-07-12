@@ -4,6 +4,7 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface SelectCommodidyService {
@@ -64,5 +65,12 @@ public interface SelectCommodidyService {
      * @return
      */
     int  SelectCommodityId();
-
+    /**
+     * 将商品信息生成excel表
+     */
+     boolean exportExcel(HttpServletResponse response);
+    /**
+     * 查询全部商品
+     * */
+    List<CommodityEntity>selectShop();
 }

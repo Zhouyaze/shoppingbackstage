@@ -3,10 +3,14 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SelectCommodidyService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Constants;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.ExportExcel;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -115,5 +119,41 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
         return commodityId;
     }
 
+    @Override
+    public boolean exportExcel(HttpServletResponse response) {
+        List<CommodityEntity>ls=selectCommodidyMapper.selectShop();
+        List<String[]>list=convertList(ls);
+        try {
+            ExportExcel.exportData(response,Constants.SHOP_NAME,Constants.SHOP_TABLE,list);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public List<CommodityEntity> selectShop() {
+        return null;
+    }
+
+    /**
+     * 转换类型
+     * @param studentEntityList 要转换的类型
+     * @return 转换后的类型
+     */
+    private List<String[]> convertList(List<CommodityEntity> studentEntityList){
+        List<String[]> list =null;
+        if(null != studentEntityList && studentEntityList.size() > 0){
+            list = new ArrayList<>();
+            for(CommodityEntity studentEntity : studentEntityList){
+                String[] strings = new String[]
+                        {studentEntity.getId().toString(),studentEntity.getCommodityName(),studentEntity.getTypeName(),
+                        studentEntity.getPriceEntity().getPrice().toString(),studentEntity.getPriceEntity().getSpecification1()+","+studentEntity.getPriceEntity().getSpecification2()+","+studentEntity.getPriceEntity().getSpecification3()+","+studentEntity.getPriceEntity().getSpecification4(),
+                        studentEntity.getPriceEntity().getInventory().toString()};
+                list.add(strings);
+            }
+        }
+        return list;
+    }
 
 }

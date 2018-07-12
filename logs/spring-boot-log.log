@@ -1,0 +1,717 @@
+2018-07-12 13:57:02.902  INFO 8460 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 13:57:02.917  INFO 8460 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 13:57:02.933  INFO 8460 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 13:57:03.621  INFO 8460 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 13:57:03.652  INFO 8460 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 13:57:06.948  INFO 8460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 13:57:08.558  INFO 8460 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 13:57:08.870  INFO 8460 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 13:57:08.886  INFO 8460 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 13:57:08.901  INFO 8460 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@246dd0aa
+2018-07-12 13:57:10.839  INFO 8460 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 13:57:10.980  INFO 8460 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 13:57:10.980  INFO 8460 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 13:57:11.527  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 13:57:11.542  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 13:57:11.542  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 13:57:12.011  INFO 8460 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 13:57:14.043  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 288
+2018-07-12 13:57:14.043  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 13:58:00.141 DEBUG 8460 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 13:58:00.215 DEBUG 8460 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 13:58:00.815 DEBUG 8460 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 13:58:22.024  INFO 8460 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 13:58:22.205 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 13:58:22.205 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 13:58:22.329 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 13:58:29.178 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 13:58:29.183 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 13:58:29.236 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select0                  : <==      Total: 4
+2018-07-12 13:58:49.459  INFO 8460 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 13:58:49.466 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 13:58:49.468 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 13:58:49.482 DEBUG 8460 --- [http-nio-8080-exec-3] c.z.s.s.s.m.s.O.select1                  : <==      Total: 2
+2018-07-12 13:59:08.135 DEBUG 8460 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 13:59:09.270 DEBUG 8460 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 13:59:15.809 DEBUG 8460 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 13:59:15.809  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 13:59:33.050  INFO 8460 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 13:59:48.006  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 13:59:48.101  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 13:59:58.927  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:00:17.515 DEBUG 8460 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:00:17.521 DEBUG 8460 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:00:20.058 DEBUG 8460 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:00:42.309  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 290
+2018-07-12 14:00:42.354  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:01:03.328  INFO 8460 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:01:07.351 DEBUG 8460 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:01:07.379 DEBUG 8460 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:01:08.447  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:01:08.468 DEBUG 8460 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:01:52.013  WARN 8460 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48s685ms847µs309ns).
+2018-07-12 14:01:52.013  INFO 8460 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:01:52.070  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:01:52.071  INFO 8460 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:03:37.412  INFO 5468 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 14:03:37.416  INFO 5468 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 14:03:37.420  INFO 5468 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 14:03:37.676  INFO 5468 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 14:03:37.680  INFO 5468 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 14:03:38.950  INFO 5468 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 14:03:39.266  INFO 5468 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 14:03:39.328  INFO 5468 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 14:03:39.344  INFO 5468 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5fec80bf
+2018-07-12 14:03:40.281  INFO 5468 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 14:03:40.344  INFO 5468 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 14:03:40.344  INFO 5468 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 14:03:40.641  INFO 5468 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:03:40.656  INFO 5468 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:03:40.656  INFO 5468 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:03:41.368  INFO 5468 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 14:03:41.431 DEBUG 5468 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:03:41.462 DEBUG 5468 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:03:41.477 DEBUG 5468 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:03:43.618  INFO 5468 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 292
+2018-07-12 14:03:43.618  INFO 5468 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:03:46.563  INFO 5468 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 14:03:46.615 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:03:46.615 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:03:46.624 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:03:48.489 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:03:48.493 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:03:48.510 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : <==      Total: 4
+2018-07-12 14:03:48.640 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:03:48.641 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:03:48.654 DEBUG 5468 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : <==      Total: 2
+2018-07-12 14:04:42.390  INFO 5468 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:04:42.390  WARN 5468 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s14ms530µs371ns).
+2018-07-12 14:05:33.060  WARN 5468 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50s670ms68µs148ns).
+2018-07-12 14:05:07.449 DEBUG 5468 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:05:33.062 DEBUG 5468 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:05:33.064 DEBUG 5468 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:07:34.693  INFO 8000 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 14:07:34.693  INFO 8000 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 14:07:34.709  INFO 8000 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 14:07:34.928  INFO 8000 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 14:07:34.928  INFO 8000 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 14:07:36.136  INFO 8000 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 14:07:36.308  INFO 8000 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 14:07:36.355  INFO 8000 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 14:07:36.371  INFO 8000 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@881076a
+2018-07-12 14:07:37.371  INFO 8000 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 14:07:37.433  INFO 8000 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 14:07:37.433  INFO 8000 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 14:07:37.762  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:07:37.777  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:07:37.777  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:07:38.449  INFO 8000 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 14:07:38.480 DEBUG 8000 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:07:38.496 DEBUG 8000 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:07:38.512 DEBUG 8000 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:07:38.871  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 294
+2018-07-12 14:07:38.871  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:07:43.408  INFO 8000 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 14:07:43.462 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:07:43.462 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:07:43.471 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:07:47.306 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:07:47.309 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:07:47.325 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : <==      Total: 4
+2018-07-12 14:07:47.546 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:07:47.548 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:07:47.556 DEBUG 8000 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : <==      Total: 2
+2018-07-12 14:08:06.636 DEBUG 8000 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:08:06.646 DEBUG 8000 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:08:18.299  INFO 8000 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:08:18.332 DEBUG 8000 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:09:32.492  INFO 8000 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:09:32.492  WARN 8000 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s828ms177µs778ns).
+2018-07-12 14:09:47.053  INFO 6292 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 14:09:47.053  INFO 6292 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 14:09:47.069  INFO 6292 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 14:09:47.303  INFO 6292 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 14:09:47.303  INFO 6292 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 14:09:48.553  INFO 6292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 14:09:48.709  INFO 6292 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 14:09:48.756  INFO 6292 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 14:09:48.772  INFO 6292 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5c807c2d
+2018-07-12 14:09:49.709  INFO 6292 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 14:09:49.772  INFO 6292 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 14:09:49.772  INFO 6292 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 14:09:50.131  INFO 6292 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:09:50.131  INFO 6292 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:09:50.131  INFO 6292 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:09:50.788  INFO 6292 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 14:09:50.834 DEBUG 6292 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:09:50.866 DEBUG 6292 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:09:50.881 DEBUG 6292 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:09:52.163  INFO 6292 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 296
+2018-07-12 14:09:52.178  INFO 6292 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:09:56.144  INFO 6292 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 14:09:56.195 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:09:56.196 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:09:56.205 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:09:58.914 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:09:58.918 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:09:58.935 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select0                  : <==      Total: 4
+2018-07-12 14:09:59.074 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:09:59.075 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:09:59.084 DEBUG 6292 --- [http-nio-8080-exec-2] c.z.s.s.s.m.s.O.select1                  : <==      Total: 2
+2018-07-12 14:10:01.887 DEBUG 6292 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:10:02.537 DEBUG 6292 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:10:03.529 DEBUG 6292 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:11:03.807  INFO 8092 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 14:11:03.807  INFO 8092 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 14:11:03.807  INFO 8092 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 14:11:04.026  INFO 8092 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 14:11:04.026  INFO 8092 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 14:11:04.964  INFO 8092 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 14:11:05.214  INFO 8092 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 14:11:05.245  INFO 8092 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@3e5dc4cd
+2018-07-12 14:11:05.901  INFO 8092 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 14:11:05.933  INFO 8092 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 14:11:05.948  INFO 8092 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 14:11:06.198  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:11:06.214  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:11:06.214  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:11:06.948  INFO 8092 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 14:11:06.964 DEBUG 8092 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:11:06.980 DEBUG 8092 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:11:06.995 DEBUG 8092 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:11:08.464  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 298
+2018-07-12 14:11:08.464  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:11:12.767  INFO 8092 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 14:11:12.805 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:11:12.806 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:11:12.814 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:11:12.815 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:11:12.816 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:11:12.819 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : <==      Total: 4
+2018-07-12 14:11:12.820 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:11:12.820 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:11:12.822 DEBUG 8092 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : <==      Total: 2
+2018-07-12 14:12:00.011 DEBUG 8092 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:12:00.011 DEBUG 8092 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:12:00.011 DEBUG 8092 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:13:04.949 DEBUG 8092 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:13:04.949 DEBUG 8092 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:13:04.949 DEBUG 8092 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:14:00.010 DEBUG 8092 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:14:00.010 DEBUG 8092 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:14:00.010 DEBUG 8092 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:15:04.947 DEBUG 8092 --- [scheduler_Worker-5] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:15:04.947 DEBUG 8092 --- [scheduler_Worker-5] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:15:04.947 DEBUG 8092 --- [scheduler_Worker-5] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:15:11.990 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:15:11.990 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:15:11.998 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:15:11.999 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:15:11.999 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:15:12.000 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select0                  : <==      Total: 1
+2018-07-12 14:15:12.001 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:15:12.001 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:15:12.002 DEBUG 8092 --- [http-nio-8080-exec-4] c.z.s.s.s.m.s.O.select1                  : <==      Total: 1
+2018-07-12 14:16:00.010 DEBUG 8092 --- [scheduler_Worker-6] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:16:00.010 DEBUG 8092 --- [scheduler_Worker-6] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:16:00.010 DEBUG 8092 --- [scheduler_Worker-6] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:16:51.447  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:16:51.447  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:16:51.572  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 299
+2018-07-12 14:16:51.572  INFO 8092 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:16:59.010  INFO 9552 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-12 14:16:59.025  INFO 9552 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-12 14:16:59.025  INFO 9552 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [G:\JDK\jdk1.8.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\MySQL\MySQL Server 5.7\bin;VEN_HOME%\bin;G:\JDK\jdk1.8.0_25\bin;G:\JDK\gradle-4.5\bin;G:\虚拟机\Git\cmd;C:\Users\昊宇\AppData\Local\Microsoft\WindowsApps;;.]
+2018-07-12 14:16:59.260  INFO 9552 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-07-12 14:16:59.275  INFO 9552 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-12 14:17:00.526  INFO 9552 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-12 14:17:00.791  INFO 9552 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-12 14:17:00.838  INFO 9552 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2018-07-12 14:17:00.854  INFO 9552 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-07-12 14:17:00.854  INFO 9552 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.2.1 created.
+2018-07-12 14:17:00.854  INFO 9552 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2018-07-12 14:17:00.869  INFO 9552 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.2.1) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-07-12 14:17:00.869  INFO 9552 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+2018-07-12 14:17:00.869  INFO 9552 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
+2018-07-12 14:17:00.869  INFO 9552 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@2fd0d979
+2018-07-12 14:17:01.791  INFO 9552 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [47.93.221.34:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = myGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2018-07-12 14:17:01.869  INFO 9552 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 1.0.1
+2018-07-12 14:17:01.869  INFO 9552 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : c0518aa65f25317e
+2018-07-12 14:17:02.182  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:17:02.182  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:17:02.182  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:17:02.885  INFO 9552 --- [Quartz Scheduler [scheduler]] org.quartz.core.QuartzScheduler          : Scheduler scheduler_$_NON_CLUSTERED started.
+2018-07-12 14:17:02.932 DEBUG 9552 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:17:02.979 DEBUG 9552 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:17:02.995 DEBUG 9552 --- [scheduler_Worker-1] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:17:05.634  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 301
+2018-07-12 14:17:05.634  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:17:08.395  INFO 9552 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-12 14:17:08.450 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==>  Preparing: SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom WHERE orderfrom.harvestAddressId=harvestaddress.id 
+2018-07-12 14:17:08.450 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : ==> Parameters: 
+2018-07-12 14:17:08.461 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.selectOrder              : <==      Total: 10
+2018-07-12 14:17:12.803 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==>  Preparing: SELECT * FROM orderfromshop0,commodity WHERE orderfromshop0.commodityId=commodity.id 
+2018-07-12 14:17:12.808 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : ==> Parameters: 
+2018-07-12 14:17:12.829 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select0                  : <==      Total: 7
+2018-07-12 14:17:12.969 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==>  Preparing: SELECT * FROM orderfromshop1,commodity WHERE orderfromshop1.commodityId=commodity.id 
+2018-07-12 14:17:12.971 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : ==> Parameters: 
+2018-07-12 14:17:12.984 DEBUG 9552 --- [http-nio-8080-exec-1] c.z.s.s.s.m.s.O.select1                  : <==      Total: 4
+2018-07-12 14:17:36.592  INFO 9552 --- [kafka-coordinator-heartbeat-thread | myGroup] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Marking the coordinator 47.93.221.34:9092 (id: 2147483647 rack: null) dead
+2018-07-12 14:17:36.596  WARN 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Asynchronous auto-commit of offsets {commodityspecificationinventoryprice-0=OffsetAndMetadata{offset=6, metadata=''}} failed: Offset commit failed with a retriable exception. You should retry committing the latest consumed offsets.
+2018-07-12 14:17:36.904  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Discovered group coordinator 47.93.221.34:9092 (id: 2147483647 rack: null)
+2018-07-12 14:17:37.086 ERROR 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Offset commit failed on partition commodityspecificationinventoryprice-0 at offset 6: The coordinator is not aware of this member.
+2018-07-12 14:17:37.128  WARN 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Asynchronous auto-commit of offsets {commodityspecificationinventoryprice-0=OffsetAndMetadata{offset=6, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.
+2018-07-12 14:17:37.131  WARN 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Synchronous auto-commit of offsets {commodityspecificationinventoryprice-0=OffsetAndMetadata{offset=6, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.
+2018-07-12 14:17:37.131  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:17:37.132  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:17:40.695  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 303
+2018-07-12 14:17:40.696  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:00.007 DEBUG 9552 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:18:00.007 DEBUG 9552 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:18:00.007 DEBUG 9552 --- [scheduler_Worker-2] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0
+2018-07-12 14:18:16.858  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:16.858  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:18:16.968  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 304
+2018-07-12 14:18:16.968  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:20.089  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:20.089  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:18:20.980  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 305
+2018-07-12 14:18:20.980  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:18:42.073  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:18:42.073  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:18:45.024  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 306
+2018-07-12 14:18:45.024  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:48.147  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:18:48.148  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:18:49.060  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 307
+2018-07-12 14:18:49.061  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions []
+2018-07-12 14:19:00.495 DEBUG 9552 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : ==>  Preparing: SELECT id FROM advertisement WHERE now() >advertisement.endTime AND status=1 
+2018-07-12 14:19:00.495 DEBUG 9552 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : ==> Parameters: 
+2018-07-12 14:19:00.496 DEBUG 9552 --- [scheduler_Worker-3] c.z.s.s.s.m.s.A.selectEndTime            : <==      Total: 0
+2018-07-12 14:19:07.099  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Revoking previously assigned partitions []
+2018-07-12 14:19:07.099  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] (Re-)joining group
+2018-07-12 14:19:11.077  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Successfully joined group with generation 308
+2018-07-12 14:19:11.077  INFO 9552 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=myGroup] Setting newly assigned partitions [commodityspecificationinventoryprice-0]
+2018-07-12 14:20:00.005 DEBUG 9552 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : ==>  Preparing: SELECT * FROM advertisement WHERE now() > advertisement.startTime AND status = 2 AND now() < advertisement.endTime 
+2018-07-12 14:20:00.005 DEBUG 9552 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : ==> Parameters: 
+2018-07-12 14:20:00.005 DEBUG 9552 --- [scheduler_Worker-4] c.z.s.s.s.m.s.A.selectStartTime          : <==      Total: 0

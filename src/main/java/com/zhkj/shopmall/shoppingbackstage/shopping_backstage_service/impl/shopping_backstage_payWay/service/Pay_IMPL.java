@@ -76,4 +76,24 @@ public class Pay_IMPL implements Pay_API {
         paywayEntity=pay_dao.selectPay();
         return paywayEntity;
     }
+
+
+    /**
+     * 转换类型
+     *
+     * @param studentEntityList 要转换的类型
+     * @return 转换后的类型
+     */
+    private List<String[]> convertList(List<PaywayEntity> studentEntityList){
+        List<String[]> list = null;
+        if(null != studentEntityList && studentEntityList.size() > 0){
+            list = new ArrayList<>();
+            for(PaywayEntity studentEntity : studentEntityList){
+                String[] strings = new String[]
+                        {studentEntity.getId().toString(),studentEntity.getPayWayName(),studentEntity.getPayStatus().toString(),studentEntity.getPayInterface(),studentEntity.getPictureUrl()};
+                list.add(strings);
+            }
+        }
+        return list;
+    }
 }

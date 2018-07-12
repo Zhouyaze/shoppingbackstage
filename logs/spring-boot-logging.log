@@ -103,7 +103,7 @@ java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
 
 2018-06-26 18:52:30.486  INFO 26188 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
 2018-06-26 18:52:30.486  INFO 26188 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.2.1
-2018-06-26 18:52:30.487  INFO 26188 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@36f11520
+2018-06-26 18:52:30.487  INFO 26spring-boot-logging.log188 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@36f11520
 2018-06-26 18:52:30.602  INFO 26188 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2018-06-26 18:52:30.721  INFO 26188 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4af62a83: startup date [Tue Jun 26 18:52:26 CST 2018]; root of context hierarchy
 2018-06-26 18:52:30.776  INFO 26188 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/select]}" onto public java.util.List<com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AdvertisementEntity> com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.advertisementcontroller.AdvertiseMentController.select()

@@ -88,4 +88,9 @@
         FROM orderfrom,orderfromshop1
         WHERE orderfrom.orderNumber=orderfromshop1.orderFromId AND orderNumber=#{orderNumber}
     </delete>
+
+    <select id="selectOrder" resultMap="orderFromHarvestaddress">
+        SELECT * FROM shoppingmall.harvestaddress,shoppingmall.orderfrom
+        WHERE orderfrom.harvestAddressId=harvestaddress.id
+    </select>
 </mapper>

@@ -10,7 +10,7 @@ public class CommoditySpecificationInventoryPriceEntity {
     private String specification2;
     private String specification3;
     private String specification4;
-    private int inventory;
+    private Integer inventory;
     private BigDecimal price;
     private String picture;
     private CommodityEntity commodityEntity;
@@ -71,11 +71,11 @@ public class CommoditySpecificationInventoryPriceEntity {
         this.specification4 = specification4;
     }
 
-    public int getInventory() {
+    public Integer getInventory() {
         return inventory;
     }
 
-    public void setInventory(int inventory) {
+    public void setInventory(Integer inventory) {
         this.inventory = inventory;
     }
 

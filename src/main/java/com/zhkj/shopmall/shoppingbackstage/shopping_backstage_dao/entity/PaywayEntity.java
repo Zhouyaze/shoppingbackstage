@@ -1,17 +1,17 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 public class PaywayEntity {
-    private int id;
+    private Integer id;
     private String payWayName;
     private String pictureUrl;
-    private int payStatus;
+    private Integer payStatus;
     private String payInterface;
 
-    public int getPayStatus() {
+    public Integer getPayStatus() {
         return payStatus;
     }
 
-    public void setPayStatus(int payStatus) {
+    public void setPayStatus(Integer payStatus) {
         this.payStatus = payStatus;
     }
 
@@ -23,11 +23,11 @@ public class PaywayEntity {
         this.payInterface = payInterface;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
