@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -67,7 +68,7 @@ public class CommodityController {
         return list;
     }
     /**
-     * 查询商品规格
+     * 查询商品规格 废物
      * @return
      */
     @RequestMapping(value = "selecttopic",method = RequestMethod.GET)
@@ -147,7 +148,7 @@ public class CommodityController {
     @RequestMapping(value = "savesdetaild",method = RequestMethod.GET)
     public  int savesdetailed(SpecificationsdetailedEntity sedtailed){
         return saveCommodityService.savesedtailed(sedtailed);
-    }
+}
 
     /**
      * 查询全部 以及 商品的条件查询
@@ -226,5 +227,16 @@ public class CommodityController {
         number=updateCommodityService.UpdateCommodityPicture(pictureEntity,picture);
         return number;
     }
-
+    /*
+     * 生成报表
+     * */
+    @RequestMapping("/generateCommodity")
+    public String generateOrder(HttpServletResponse response){
+        boolean bl=selectCommodidyService.exportExcel(response);
+        if(bl){
+            return "报表生成成功";
+        }else {
+            return "报表生成失败";
+        }
+    }
 }

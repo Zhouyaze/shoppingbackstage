@@ -7,6 +7,12 @@
  <link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
  <script src="js/jquery.js"></script>
  <script src="js/public.js"></script>
+    <script>
+        function printOrderFrom() {
+            window.location.href="${pageContext.request.contextPath}/generateOrder"
+            alert("订单已打印")
+        }
+    </script>
  <!--查询全部  初始化-->
  <script type="text/javascript">
      var pagecount=1;
@@ -289,7 +295,7 @@
   <div class="BatchOperation fl">
    <input type="checkbox" id="del"/>
    <label for="del" class="btnStyle middle">全选</label>
-   <input type="button" value="打印订单" class="btnStyle"/>
+   <input onclick="printOrderFrom()" type="button" value="打印订单" class="btnStyle"/>
    <input type="button" value="配货" class="btnStyle"/>
    <input type="button" value="删除订单" class="btnStyle"/>
   </div>

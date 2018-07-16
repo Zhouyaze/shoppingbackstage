@@ -133,7 +133,7 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
     @Override
     public boolean exportExcel(HttpServletResponse response) {
-        List<CommodityEntity>ls=selectCommodidyMapper.selectShop();
+        List<CommodityDTO>ls=selectCommodidyMapper.selectShop();
         List<String[]>list=convertList(ls);
         try {
             ExportExcel.exportData(response,Constants.SHOP_NAME,Constants.SHOP_TABLE,list);
@@ -144,7 +144,7 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
     }
 
     @Override
-    public List<CommodityEntity> selectShop() {
+    public List<CommodityDTO> selectShop() {
         return null;
     }
 
@@ -153,19 +153,20 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
      * @param studentEntityList 要转换的类型
      * @return 转换后的类型
      */
-    private List<String[]> convertList(List<CommodityEntity> studentEntityList){
+    private List<String[]> convertList(List<CommodityDTO> studentEntityList){
         List<String[]> list =null;
         if(null != studentEntityList && studentEntityList.size() > 0){
             list = new ArrayList<>();
-            for(CommodityEntity studentEntity : studentEntityList){
+            for(CommodityDTO studentEntity : studentEntityList){
                 String[] strings = new String[]
                         {studentEntity.getId().toString(),studentEntity.getCommodityName(),studentEntity.getTypeName(),
-                        studentEntity.getPriceEntity().getPrice().toString(),studentEntity.getPriceEntity().getSpecification1()+","+studentEntity.getPriceEntity().getSpecification2()+","+studentEntity.getPriceEntity().getSpecification3()+","+studentEntity.getPriceEntity().getSpecification4(),
-                        studentEntity.getPriceEntity().getInventory().toString()};
+                                studentEntity.getPrice().toString(),studentEntity.getSpecification1()+","+studentEntity.getSpecification2()+","+studentEntity.getSpecification3()+","+studentEntity.getSpecification4(),
+                                studentEntity.getInventory().toString()};
                 list.add(strings);
             }
         }
         return list;
     }
+
 
 }

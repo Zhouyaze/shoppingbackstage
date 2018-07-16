@@ -82,5 +82,5 @@ public interface SelectCommodidyService {
     /**
      * 查询全部商品
      * */
-    List<CommodityEntity>selectShop();
+    List<CommodityDTO>selectShop();
 }

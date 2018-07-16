@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//com.order.test.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper">
-<select id="getCount" resultType="int">
-    SELECT count(id) FROM shoppingmall.commodity
-    <where>
-        <if test="commodity.commodityName !=null" >
-            commodity.commodityName LIKE '%${commodity.commodityName}%'
-        </if>
-    </where>
-</select>
+    <select id="getCount" resultType="int">
+        SELECT count(id) FROM shoppingmall.commodity
+        <where>
+            <if test="commodity.commodityName !=null" >
+                commodity.commodityName LIKE '%${commodity.commodityName}%'
+            </if>
+        </where>
+    </select>
     <!-- 商品的所有查询方法-->
     <!--帮助查询 商品类型 层级（标题） -->
     <select id="selectleves" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity" >
@@ -52,21 +52,21 @@
 
 
     <!--<resultMap id="Commodity" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">-->
-        <!--<id column="cid" property="id"/>-->
-        <!--<result column="commodityName" property="commodityName"/>-->
-        <!--<result column="bigPictureUrl" property="bigPictureUrl"/>-->
-        <!--<result column="typeName" property="typeName"/>-->
-        <!--<association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">-->
-           <!--<id column="pid" property="id"/>-->
-            <!--<result column="commodityId" property="commodityId"/>-->
-            <!--<result column="specification1" property="specification1"/>-->
-            <!--<result column="specification2" property="specification2"/>-->
-            <!--<result column="specification3" property="specification3"/>-->
-            <!--<result column="specification4" property="specification4"/>-->
-            <!--<result column="inventory" property="inventory"/>-->
-            <!--<result column="price" property="price"/>-->
-            <!--<result column="picture" property="picture"/>-->
-        <!--</association>-->
+    <!--<id column="cid" property="id"/>-->
+    <!--<result column="commodityName" property="commodityName"/>-->
+    <!--<result column="bigPictureUrl" property="bigPictureUrl"/>-->
+    <!--<result column="typeName" property="typeName"/>-->
+    <!--<association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">-->
+    <!--<id column="pid" property="id"/>-->
+    <!--<result column="commodityId" property="commodityId"/>-->
+    <!--<result column="specification1" property="specification1"/>-->
+    <!--<result column="specification2" property="specification2"/>-->
+    <!--<result column="specification3" property="specification3"/>-->
+    <!--<result column="specification4" property="specification4"/>-->
+    <!--<result column="inventory" property="inventory"/>-->
+    <!--<result column="price" property="price"/>-->
+    <!--<result column="picture" property="picture"/>-->
+    <!--</association>-->
     <!--</resultMap>-->
     <select id="selectCommodity" resultMap="Commodity1">
         SELECT c.id as cid,c.commodityName,c.bigPictureUrl,c.typeName,p.id AS pid,p.commodityId,
@@ -99,7 +99,5 @@
         SELECT * FROM shoppingmall.commodity_specification_relation
         WHERE shoppingmall.commodity_specification_relation.parentId=#{commodity.id};
     </select>
-
-
 
 </mapper>

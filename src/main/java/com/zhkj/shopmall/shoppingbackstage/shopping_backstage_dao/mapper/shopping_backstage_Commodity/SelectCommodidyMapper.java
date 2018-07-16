@@ -85,6 +85,6 @@ public interface SelectCommodidyMapper {
      */
     int SelectCommodityId();
 
-    List<CommodityEntity>selectShop();
+    List<CommodityDTO>selectShop();
 
 }

@@ -17,7 +17,7 @@
              $.ajax({
                  type: "GET",
                  contentType:"application/json; charset=utf-8",
-                 url: 'http://localhost:8080/selectCommodity?currentPage='+currentPage,
+                 url: '${pageContext.request.contextPath}/selectCommodity?currentPage='+currentPage,
                  data: {},
                  async: true,
                  success: function (data) {
@@ -49,7 +49,7 @@
                              "<td>"+
                              "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
                              "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
-                             "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
+                             "<a href=\"delete_Commodity.jsp?commodityId="+optionJson.items[i].commodityId+"\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+
                              "</tr>";
                          document.getElementById("tbodydata").innerHTML = str;
@@ -61,7 +61,7 @@
              $.ajax({
                  type: "GET",
                  contentType:"application/json; charset=utf-8",
-                 url: 'http://localhost:8080/selectCommodity?currentPage='+currentPage+"&commodityName="+tiaojian,
+                 url: '${pageContext.request.contextPath}/selectCommodity?currentPage='+currentPage+"&commodityName="+tiaojian,
                  data: {},
                  async: true,
                  success: function (data) {
@@ -93,7 +93,7 @@
                              "<td>"+
                              "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
                              "<a title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
-                             "<a title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
+                             "<a href=\"delete_Commodity.jsp?commodityId="+optionJson.items[i].commodityId+"\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+
                              "</tr>";
                          document.getElementById("tbodydata").innerHTML = str;
@@ -145,6 +145,12 @@
             document.getElementById("result").innerHTML = pagecount + "/" + optionJson.totalPage;
         }
     </script>
+    <script>
+        function printCommodity() {
+            window.location.href="${pageContext.request.contextPath}/generateCommodity"
+            alert("报表已打印")
+        }
+    </script>
 </head>
 <body onload="refurbishIndex(1)">
  <div class="wrap">
@@ -179,6 +185,7 @@
 	   <input type="checkbox" id="del"/>
 	   <label for="del" class="btnStyle middle">全选</label>
 	   <input type="button" value="批量删除" class="btnStyle"/>
+       <input type="button" value="打印报表" class="btnStyle" onclick="printCommodity()"/>
 	  </div>
 	  <!-- turn page -->
 
