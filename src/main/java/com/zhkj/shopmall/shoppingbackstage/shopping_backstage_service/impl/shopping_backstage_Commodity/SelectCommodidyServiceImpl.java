@@ -22,6 +22,18 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
     PageBean<CommodityEntity> pageBean=new PageBean();
 
+
+    /**
+     * 查询商品  颜色{子类}尺码{子类}
+     * @param commodityEntity
+     * @return
+     */
+    @Override
+    public List<CommodityEntity> selectspecifications(CommodityEntity commodityEntity) {
+      List<CommodityEntity> list=selectCommodidyMapper.selectspecifications(commodityEntity);
+        return list;
+    }
+
     /**
      * 查询商品规格
      * @return

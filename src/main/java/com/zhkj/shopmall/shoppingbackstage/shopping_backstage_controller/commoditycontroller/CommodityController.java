@@ -83,6 +83,17 @@ public class CommodityController {
         return selectCommodidyService.selsctspecificationlevels();
     }
 
+    /**
+     * 新增方法
+     * 查询根据 颜色 id   或者  尺码id
+     * @param commodityEntity
+     * @return
+     */
+    @RequestMapping(value = "selectspecifications")
+    public List<CommodityEntity> select(CommodityEntity commodityEntity) {
+
+        return selectCommodidyService.selectspecifications(commodityEntity);
+    }
 
     /**
      * 查询商品详细规格

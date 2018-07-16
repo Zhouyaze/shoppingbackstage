@@ -3,7 +3,9 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper">
 
     <insert id="saveReturned">
-       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint)
-       VALUES(#{returned.messageType},#{returned.manifest},#{returned.operatingStatus},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint})
+       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint)
+       VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint})
     </insert>
+
+
 </mapper>
