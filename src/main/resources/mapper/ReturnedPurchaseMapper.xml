@@ -7,5 +7,9 @@
        VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint})
     </insert>
 
+    <select id="querReturned" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
+        SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint
+        FROM shoppingmall.returned_purchase WHERE id=1  <!--#{returned.id}-->
+    </select>
 
 </mapper>

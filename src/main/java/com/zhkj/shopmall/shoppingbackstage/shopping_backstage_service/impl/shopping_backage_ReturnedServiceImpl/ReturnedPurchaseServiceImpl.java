@@ -3,6 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.alibaba.fastjson.JSON;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService.ReturnedPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 
     @Autowired
     ReturnedPurchaseMapper returnedPurchaseMapper;
+
+    @Autowired
+    SelectCommodidyMapper selectCommodidyMapper;
 
     /**
      * 添加退货商品信息
@@ -28,8 +32,12 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
         returnedPurchaseVO= JSON.parseObject(json,ReturnedPurchaseVO.class);
         ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
 
+        //根据商品名区查询 商品id
+        int id=selectCommodidyMapper.seletCommodityId(returnedPurchaseEntity.getReturnCommodityName());
+
         return returnedPurchaseMapper.saveReturned(returnedPurchaseEntity);
     }
+
 
     /**
      * 传送进销存  （退货/进货）信息
@@ -37,18 +45,10 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
      * @return
      */
     @Override
-    public int sendKafka(ReturnedPurchaseEntity returnedPurchaseEntity) {
-
-        //实体转换json
-        String sendJson =JSON.toJSONString(ReturnedPurchaseEntity.class);
-
-        return 0;
-    }
-
-
-    @Override
-    public ReturnedPurchaseEntity querReturned() {
-        return null;
+    public String querReturned(ReturnedPurchaseEntity returnedPurchaseEntity) {
+        returnedPurchaseEntity=returnedPurchaseMapper.querReturned(returnedPurchaseEntity);
+        String sendJson=JSON.toJSONString(returnedPurchaseEntity);
+        return sendJson;
     }
 
 

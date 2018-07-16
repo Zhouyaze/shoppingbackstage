@@ -87,4 +87,11 @@ public interface SelectCommodidyMapper {
 
     List<CommodityDTO>selectShop();
 
+
+    /**
+     * 根据商品 id 规格 规格查询  商品数量
+     * @param commoditySpecificationInventoryPriceEntity
+     * @return
+     */
+    int selectCount(CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
 }
