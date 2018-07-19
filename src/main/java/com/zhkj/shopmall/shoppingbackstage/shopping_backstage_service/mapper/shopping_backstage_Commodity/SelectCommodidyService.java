@@ -83,4 +83,6 @@ public interface SelectCommodidyService {
      * 查询全部商品
      * */
     List<CommodityDTO>selectShop();
+
+
 }

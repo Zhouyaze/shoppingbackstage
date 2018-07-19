@@ -1,7 +1,6 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 
 public class ReturnedPurchaseEntity {
     private int id;
@@ -15,6 +14,20 @@ public class ReturnedPurchaseEntity {
     private String backstageHandlersint;
     private String purchaseHandlersint;
     private Timestamp messageCreateTime;
+    private int inventory;
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
+    private String specification1;
+    private String specification2;
+    private String specification3;
+    private String specification4;
 
     public int getId() {
         return id;
@@ -104,27 +117,35 @@ public class ReturnedPurchaseEntity {
         this.messageCreateTime = messageCreateTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReturnedPurchaseEntity that = (ReturnedPurchaseEntity) o;
-        return id == that.id &&
-                Objects.equals(messageType, that.messageType) &&
-                Objects.equals(manifest, that.manifest) &&
-                Objects.equals(operatingStatus, that.operatingStatus) &&
-                Objects.equals(returnUserName, that.returnUserName) &&
-                Objects.equals(returnUserAddress, that.returnUserAddress) &&
-                Objects.equals(returnCommodityName, that.returnCommodityName) &&
-                Objects.equals(returnCommoditySku, that.returnCommoditySku) &&
-                Objects.equals(backstageHandlersint, that.backstageHandlersint) &&
-                Objects.equals(purchaseHandlersint, that.purchaseHandlersint) &&
-                Objects.equals(messageCreateTime, that.messageCreateTime);
+    public String getSpecification1() {
+        return specification1;
     }
 
-    @Override
-    public int hashCode() {
+    public void setSpecification1(String specification1) {
+        this.specification1 = specification1;
+    }
 
-        return Objects.hash(id, messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint, messageCreateTime);
+    public String getSpecification2() {
+        return specification2;
+    }
+
+    public void setSpecification2(String specification2) {
+        this.specification2 = specification2;
+    }
+
+    public String getSpecification3() {
+        return specification3;
+    }
+
+    public void setSpecification3(String specification3) {
+        this.specification3 = specification3;
+    }
+
+    public String getSpecification4() {
+        return specification4;
+    }
+
+    public void setSpecification4(String specification4) {
+        this.specification4 = specification4;
     }
 }

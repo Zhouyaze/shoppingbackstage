@@ -90,8 +90,10 @@ public interface SelectCommodidyMapper {
 
     /**
      * 根据商品 id 规格 规格查询  商品数量
-     * @param commoditySpecificationInventoryPriceEntity
+     * @param
      * @return
      */
-    int selectCount(CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
+    int selectCount(@Param("price") CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
+
+
 }

@@ -19,4 +19,5 @@ public interface ReturnedPurchaseService {
      */
     String querReturned(ReturnedPurchaseEntity returnedPurchaseEntity);
 
+
 }
