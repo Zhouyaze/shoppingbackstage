@@ -32,5 +32,23 @@
         WHERE id=#{pictureEntity.id}
     </update>
 
+    <update id="updateSpecification">
+    UPDATE commodity_specification_inventory_price SET inventory=#{price.inventory}
+        WHERE
+        commodityId=#{price.commodityId}
+        <if test="price.specification1!=null">
+            and specification1=#{price.specification1}
+        </if>
+        <if test="price.specification2!=null">
+            and specification2=#{price.specification2}
+        </if>
+        <if test="price.specification3!=null and price.specification3.length>0">
+            and specification3=#{price.specification3}
+        </if>
+        <if test="price.specification4!=null and  price.specification3.length>0">
+            and specification4=#{price.specification4}
+        </if>
+    </update>
+
 
 </mapper>

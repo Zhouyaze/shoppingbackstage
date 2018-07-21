@@ -17,5 +17,9 @@
         <property name="backstageHandlersint" column="backstageHandlersint"/>
         <property name="purchaseHandlersint" column="purchaseHandlersint"/>
         <property name="messageCreateTime" column="messageCreateTime"/>
+        <property name="setSpecification1" column="setSpecification1"/>
+        <property name="setSpecification2" column="setSpecification2"/>
+        <property name="setSpecification3" column="setSpecification3"/>
+        <property name="setSpecification4" column="setSpecification4"/>
     </class>
 </hibernate-mapping>

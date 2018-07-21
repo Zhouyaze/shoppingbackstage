@@ -3,9 +3,19 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper">
 
     <insert id="saveReturned">
-       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint)
-       VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint})
+       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint,inventory)
+       VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint},#{returned.inventory})
     </insert>
 
+    <select id="querReturned" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
+        SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint
+        FROM shoppingmall.returned_purchase WHERE id=1  <!--#{returned.id}-->
+    </select>
+
+        <update id="returned">
+        UPDATE shoppingmall.returned_purchase
+            SET operatingStatus=#{returned.operatingStatus}
+        WHERE manifest=#{returned.manifest}
+        </update>
 
 </mapper>

@@ -13,12 +13,61 @@ public class ReturnedPurchaseVO {
     private String returnUserAddress;
     // 退货商品名称
     private String commodityName;
+    //退货数量
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     // 退货商品规格
     private String commoditySku;
+    private String specification1;
+    private String specification2;
+
+    public String getSpecification1() {
+        return specification1;
+    }
+
+    public void setSpecification1(String specification1) {
+        this.specification1 = specification1;
+    }
+
+    public String getSpecification2() {
+        return specification2;
+    }
+
+    public void setSpecification2(String specification2) {
+        this.specification2 = specification2;
+    }
+
+    public String getSpecification3() {
+        return specification3;
+    }
+
+    public void setSpecification3(String specification3) {
+        this.specification3 = specification3;
+    }
+
+    public String getSpecification4() {
+        return specification4;
+    }
+
+    public void setSpecification4(String specification4) {
+        this.specification4 = specification4;
+    }
+
+    private String specification3;
+    private String specification4;
 
     public int getMessageType() {
         return messageType;
     }
+
 
     public void setMessageType(int messageType) {
         this.messageType = messageType;

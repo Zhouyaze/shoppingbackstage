@@ -18,3 +18,32 @@ CREATE TABLE `returned_purchase`(
 # {"id":"2","commodityName":"哈哈","commoditySku":"白","backstageHandlersint":"admin"}
 INSERT INTO shoppingmall.returned_purchase(messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint, messageCreateTime)
 VALUES()
+
+
+
+  @KafkaListener(topics="退货")
+    public int insertReturned(ReturnedPurchaseVO returnedPurchaseVO) {
+        String json="{\"messageType\": \"2\",\"manifest\": \"1234567890\", \"returnUserName\":\"郑国超\"," +
+                "\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\"" +
+                ",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\"" +
+                ",\"specification3\":\"\",\"specification4\":\"\"}";
+        //转换json为VO实体
+        returnedPurchaseVO= JSON.parseObject(json,ReturnedPurchaseVO.class);
+        ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
+        CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
+
+        //根据商品名区查询 商品id
+        int id=selectCommodidyMapper.seletCommodityId(returnedPurchaseVO.getCommodityName());
+        priceEntity.setCommodityId(id);
+        //查询剩余 商品数量
+        int count1=selectCommodidyMapper.selectCount(priceEntity);
+        count1=count1-returnedPurchaseEntity.getInventory();
+        priceEntity.setInventory(count1);
+        String sku=priceEntity.getSpecification1()+","+priceEntity.getSpecification2()
+                +","+priceEntity.getSpecification3()+","+priceEntity.getSpecification4();
+        returnedPurchaseEntity.setReturnCommoditySku(sku);
+
+        updateCommodityMapper.updateSpecification(priceEntity);
+        returnedPurchaseEntity.setInventory(returnedPurchaseEntity.getInventory());
+        return returnedPurchaseMapper.saveReturned(returnedPurchaseEntity);
+    }

@@ -13,7 +13,8 @@ public interface UpdateCommodityMapper {
     int UpdateCommodity(@Param("CommodityEntity")CommodityEntity commodityEntity);
     int UpdateCommodityPrice(@Param("specification") CommoditySpecificationInventoryPriceEntity priceEntity);
 
-
     int UpdateCommodityPicture(@Param("pictureEntity") CommodityintroducepictureEntity pictureEntity);
+
+    int updateSpecification(@Param("price") CommoditySpecificationInventoryPriceEntity priceEntity);
 
 }
