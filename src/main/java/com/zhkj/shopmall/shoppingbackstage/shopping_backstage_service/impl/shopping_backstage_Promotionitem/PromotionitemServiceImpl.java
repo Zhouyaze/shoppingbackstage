@@ -3,6 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Promotionitem.PromotionitemMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Promotionitem.PromotionitemService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Service
 public class PromotionitemServiceImpl implements PromotionitemService {
 
-
+    PageBean<PromotionitemEntity> pageBean=new PageBean<>();
 
     @Autowired
     private PromotionitemMapper promotionitemMapper;
@@ -32,8 +33,12 @@ public class PromotionitemServiceImpl implements PromotionitemService {
     }
 
     @Override
-    public List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity) {
-        return promotionitemMapper.getMsg(promotionitemEntity);
+    public PageBean<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity,int currentPage) {
+        pageBean.setPageSize(5);
+        pageBean.setTotalNum(promotionitemMapper.countMsg(promotionitemEntity));
+        pageBean.countPage(pageBean.getTotalNum(),currentPage,pageBean.getPageSize());
+        pageBean.setItems(promotionitemMapper.getMsg(promotionitemEntity,pageBean.getStartIndex(),pageBean.getPageSize()));
+        return pageBean;
     }
 
     @Override

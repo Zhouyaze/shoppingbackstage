@@ -33,11 +33,23 @@
     <li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>
    </ul>
   </li>
-  
+
+  <li class="menu-list-title">
+   <span>促销商品管理</span>
+   <i>◢</i>
+  </li>
+  <li>
+   <ul class="menu-children">
+    <li><a href="promotionCommodity_list.jsp" title="促销商品列表" target="mainCont">促销商品列表</a></li>
+    <li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>
+    <li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>
+   </ul>
+  </li>
   <li class="menu-list-title">
    <span>会员管理</span>
    <i>◢</i>
   </li>
+
   <li>
    <ul class="menu-children">
     <li><a href="user_list.jsp" title="会员列表" target="mainCont">会员列表</a></li>

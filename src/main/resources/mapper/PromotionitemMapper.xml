@@ -37,12 +37,14 @@
     </update>
     <!--查询所有促销商品-->
     <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
-        select * from shoppingmall.promotionitem
+        select * from shoppingmall.promotionitem limit #{currentPage},#{pageSize}
     </select>
     <!--查询过期促销商品-->
     <select id="getMsgOut">
         SELECT * FROM promotionitem
         WHERE endTime &lt; now();
     </select>
-
+    <select id="countMsg" resultType="int">
+        SELECT count(id) from shoppingmall.promotionitem
+    </select>
 </mapper>

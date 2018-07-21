@@ -2,6 +2,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller;
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Promotionitem.PromotionitemService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +29,8 @@ public class PromotionitemController {
      * @return
      */
     @RequestMapping("/getProMsg")
-    public List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity) {
-        return promotionitemService.getMsg(promotionitemEntity);
+    public PageBean<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity, int currentPage) {
+        return promotionitemService.getMsg(promotionitemEntity,currentPage);
     }
 
     @RequestMapping("/updatePromotionitemMsg")

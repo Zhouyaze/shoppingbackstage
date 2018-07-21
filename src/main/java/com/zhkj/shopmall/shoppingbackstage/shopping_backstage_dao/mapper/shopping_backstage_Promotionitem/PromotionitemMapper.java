@@ -9,11 +9,16 @@ import java.util.List;
 @Repository
 public interface PromotionitemMapper {
 
-
+    /**
+     * 获得总条数
+     * @param promotionitemEntity
+     * @return
+     */
+    int countMsg(PromotionitemEntity promotionitemEntity);
     /**添加一条信息*/
     int saveMsg(@Param("promotionitem") PromotionitemEntity promotionitemEntity);
     /**查询*/
-    List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity);
+    List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity,@Param("currentPage")int currentPage,@Param("pageSize")int pageSize);
     /**修改*/
     int updateMsg(PromotionitemEntity promotionitemEntity);
     /**删除*/
