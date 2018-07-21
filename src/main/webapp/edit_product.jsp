@@ -16,7 +16,7 @@
                  for (var i = 0; i < data.length; i++) {
                      var obj=document.getElementById('typeName');
                      for (var i = 0; i < data.length; i++) {
-                         obj.options.add(new Option(data[i].typeName,data[i].id)); //这个兼容IE与firefox
+                         obj.options.add(new Option(data[i].typeName,data[i].typeName)); //这个兼容IE与firefox
                      }
                  }
              }

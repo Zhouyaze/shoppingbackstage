@@ -86,7 +86,7 @@
 <body onload="jiazai()">
 <div class="wrap">
     <div class="page-title">
-        <span class="modular fl"><i class="add_user"></i><em>添加新会员</em></span>
+        <span class="modular fl"><i class="add_user"></i><em>添加商品规格</em></span>
     </div>
     <form id="form" method="post" enctype="multipart/form-data" target="ajaxFrame">
         <table class="noborder">
@@ -119,7 +119,7 @@
                 <td><input onchange="showImg(this)" name="simmallFile" id="simmallFile" type="file" class="textBox length-middle"/></td>
             </tr>
             <tr>
-                <td style="text-align:right;width: 100px;height: 100px">头像预览</td>
+                <td style="text-align:right;width: 100px;height: 100px">规格图片预览：</td>
                 <td><img src="" id="imgHeader" alt=""/></td>
             </tr>
             <tr>

@@ -105,7 +105,7 @@
                 <td><input onchange="showImg(this)" name="img" id="simmallFile" type="file" class="textBox length-middle"/></td>
             </tr>
             <tr>
-                <td style="text-align:right;width: 100px;height: 100px">头像预览</td>
+                <td style="text-align:right;width: 100px;height: 100px">规格图片预览：</td>
                 <td><img src="" id="imgHeader" alt=""/></td>
             </tr>
             <tr>
