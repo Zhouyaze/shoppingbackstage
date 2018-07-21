@@ -15,17 +15,6 @@ public class PromotionitemEntity {
     private String specifications2;
     private String specifications3;
     private String specifications4;
-    private CommodityEntity commodityEntity;
-
-    public CommodityEntity getCommodityEntity() {
-        return commodityEntity;
-    }
-
-    public void setCommodityEntity(CommodityEntity commodityEntity) {
-        this.commodityEntity = commodityEntity;
-    }
-
-
 
     public int getId() {
         return id;

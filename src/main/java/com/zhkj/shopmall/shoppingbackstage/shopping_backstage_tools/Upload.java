@@ -30,7 +30,8 @@ public class Upload {
             String imgName = simpleDateFormat.format(new Date());
             // 得到项目路径
             String xiangmuPath = ClassLoader.getSystemClassLoader().getResource("").getPath();
-            String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("out")) + "img/bigImgPath";
+            String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("shoppingbackstage")) + "img/bigImgPath";
+            System.out.println(bigXiangmuPath);
             // 创建File对象 为存储图片做准备
             File file = new File(bigXiangmuPath);
             if(!file.exists()){

@@ -10,15 +10,6 @@ public class AuditEntity {
     private Integer status;
     private int auditGoodsId;
     private int type;
-    private AuditgoodsEntity auditgoodsEntity;
-
-    public AuditgoodsEntity getAuditgoodsEntity() {
-        return auditgoodsEntity;
-    }
-
-    public void setAuditgoodsEntity(AuditgoodsEntity auditgoodsEntity) {
-        this.auditgoodsEntity = auditgoodsEntity;
-    }
 
     public int getId() {
         return id;

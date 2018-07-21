@@ -12,6 +12,10 @@
             <id property="id" column="id"/>
             <result property="goodsMsg" column="goodsMsg"/>
         </association>
+        <association property="auditTypeEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuditTypeEntity">
+            <id property="id" column="id"/>
+            <result property="auditType" column="auditType"/>
+        </association>
     </resultMap>
     <select id="getAuditCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM shoppingmall.audit
@@ -25,8 +29,11 @@
         insert into shoppingmall.audit(startTime, endTime, status, auditGoodsId, type)
         values (#{startTime},#{endTime},#{status},#{auditGoodsId},#{type});
     </insert>
+    <select id="getAuditType" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuditTypeEntity">
+        SELECT * from shoppingmall.audittype
+    </select>
     <select id="getMsg" resultMap="auditMap">
-        SELECT * from audit,auditgoods
+        SELECT * from shoppingmall.audit,shoppingmall.auditgoods,shoppingmall.audittype
         <where>
             <if test="auditEntity.status!=null and auditEntity.status!=''">
                 and status=#{auditEntity.status}
@@ -37,7 +44,7 @@
             <if test="auditEntity.startTime!=null and auditEntity.startTime!=''">
                 and CAST (startTime TO DATA )=#{auditEntity.startTime}
             </if>
-            AND auditGoodsId=auditgoods.id
+            AND auditGoodsId=auditgoods.id and audit.type=audittype.id
         </where>
         <if test="currentPage!=null and pageSize!=null">
             limit #{currentPage},#{pageSize}

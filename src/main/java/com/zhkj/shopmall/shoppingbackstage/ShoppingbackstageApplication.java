@@ -18,8 +18,10 @@ import org.springframework.kafka.annotation.EnableKafka;
 public class ShoppingbackstageApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(ShoppingbackstageApplication.class, args);
     }
-
+    //楼层floor
+    //审核Audit
+    //字典数据Dictionary
+    //销售Promotionitem
 }

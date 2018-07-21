@@ -21,7 +21,7 @@ $(document).ready(function() {
   });
   $(".loginform input[type='button']").click(function(){
 	  alert("登陆成功，程序对接时将其删除，此处测试！");
-	  location.href="index.jsp";
+	  location.href="http://localhost:8080/login";
 	  });
 });
 </script>
@@ -33,14 +33,14 @@ $(document).ready(function() {
    <ul>
     <li>
      <label>账号：</label>
-     <input type="text" class="textBox" placeholder="管理员账号"/>
+     <input id="user" type="text" name="loginUser" class="textBox" placeholder="管理员账号"/>
     </li>
     <li>
      <label>密码：</label>
-     <input type="password" class="textBox" placeholder="登陆密码"/>
+     <input id="pwd" type="password" name="password" class="textBox" placeholder="登陆密码"/>
     </li>
     <li>
-     <input type="button" value="立即登陆"/>
+     <input type="button" value="立即登陆" />
     </li>
    </ul>
   </section>

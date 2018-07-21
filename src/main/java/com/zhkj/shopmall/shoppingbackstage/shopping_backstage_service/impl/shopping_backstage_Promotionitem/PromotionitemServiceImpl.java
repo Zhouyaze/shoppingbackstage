@@ -26,8 +26,8 @@ public class PromotionitemServiceImpl implements PromotionitemService {
      */
     @Override
     public int saveMsg(PromotionitemEntity promotionitemEntity) {
-            Date startTime=(promotionitemEntity.getStartTime());
-            Date endTime=promotionitemEntity.getEndTime();
+        Date startTime=(promotionitemEntity.getStartTime());
+        Date endTime=promotionitemEntity.getEndTime();
         return promotionitemMapper.saveMsg(promotionitemEntity);
 
     }

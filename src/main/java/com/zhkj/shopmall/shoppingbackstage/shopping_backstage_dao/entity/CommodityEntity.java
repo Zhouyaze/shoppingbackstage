@@ -8,6 +8,7 @@ public class CommodityEntity {
     private String bigPictureUrl;
     private String typeName;
 
+
     private CommoditySpecificationInventoryPriceEntity priceEntity;
 
     public CommoditySpecificationInventoryPriceEntity getPriceEntity() {
