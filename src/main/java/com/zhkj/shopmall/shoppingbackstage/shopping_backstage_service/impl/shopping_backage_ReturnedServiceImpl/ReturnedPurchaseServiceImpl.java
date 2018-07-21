@@ -9,7 +9,6 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoppin
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService.ReturnedPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -53,7 +52,7 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
      * @param returnedPurchaseVO
      * @return
      */
-    @KafkaListener(topics="退货")
+    //@KafkaListener(topics="退货")
     public int insertReturned(ReturnedPurchaseVO returnedPurchaseVO) {
         String json="{\"messageType\": \"2\",\"manifest\": \"1234567890\", \"returnUserName\":\"郑国超\"," +
                 "\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\"" +

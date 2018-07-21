@@ -11,12 +11,22 @@ import java.util.List;
 @RestController
 public class PromotionitemController {
 
+    /**
+     * 添加促销商品信息
+     */
     @Autowired
     private PromotionitemService promotionitemService;
     @RequestMapping("/savePromotionitemMsg")
     public int saveMsg(PromotionitemEntity promotionitemEntity) {
         return promotionitemService.saveMsg(promotionitemEntity);
     }
+
+    /**
+     * 查询所有促销商品
+     *
+     * @param promotionitemEntity
+     * @return
+     */
     @RequestMapping("/getProMsg")
     public List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity) {
         return promotionitemService.getMsg(promotionitemEntity);

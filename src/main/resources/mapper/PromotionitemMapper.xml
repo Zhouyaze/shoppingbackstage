@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Promotionitem.PromotionitemMapper">
+
+
+    <!--添加促销商品 -->
     <insert id="saveMsg">
-        insert into shoppingmall.promotionitem(startTime, endTime, discountPrice, commodityNumber, commodityId)
-         values (#{startTime},#{endTime},#{discountPrice},#{commodityNumber},#{commodityId});
+       INSERT  INTO shoppingmall.promotionitem(startTime, endTime, discountPrice, commodityNumber, commodityId, specifications1, specifications2, specifications3, specifications4)
+       VALUES(#{promotionitem.startTime},#{promotionitem.endTime},#{promotionitem.discountPrice},
+       #{promotionitem.commodityNumber},#{promotionitem.commodityId},#{promotionitem.specifications1},
+       #{promotionitem.specifications2},#{promotionitem.specifications3},#{promotionitem.specifications4})
     </insert>
+
+    <!--删除促销商品-->
     <delete id="delMsg">
         delete from shoppingmall.promotionitem WHERE id=#{id}
     </delete>
@@ -21,17 +28,21 @@
                 discountPrice =#{discountPrice},
             </if>
             <if test="commodityNumber!=null">
-                commodityNumber =#{commodityNumber},
-            </if>
-            <if test="commodityId!=null">
-                commodityId =#{commodityId}
+                commodityNumber =#{commodityNumber}
             </if>
         </set>
         <where>
             id=#{id}
         </where>
     </update>
+    <!--查询所有促销商品-->
     <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
         select * from shoppingmall.promotionitem
     </select>
+    <!--查询过期促销商品-->
+    <select id="getMsgOut">
+        SELECT * FROM promotionitem
+        WHERE endTime &lt; now();
+    </select>
+
 </mapper>

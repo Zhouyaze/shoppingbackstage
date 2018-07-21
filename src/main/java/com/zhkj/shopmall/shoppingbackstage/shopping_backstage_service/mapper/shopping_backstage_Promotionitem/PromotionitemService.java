@@ -5,6 +5,8 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.Promoti
 import java.util.List;
 
 public interface PromotionitemService {
+
+
     /**添加一条信息*/
     int saveMsg(PromotionitemEntity promotionitemEntity);
     /**查询*/

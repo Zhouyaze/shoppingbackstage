@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.kafka.annotation.EnableKafka;
 
-import java.util.Properties;
+
 
 @EnableKafka
 @ComponentScan("com.zhkj.shopmall.shoppingbackstage")

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity"
+           table="promotionitem" schema="shoppingmall">
+        <property name="id" column="id"/>
+        <property name="startTime" column="startTime"/>
+        <property name="endTime" column="endTime"/>
+        <property name="discountPrice" column="discountPrice"/>
+        <property name="commodityNumber" column="commodityNumber"/>
+        <property name="commodityId" column="commodityId"/>
+        <property name="specifications1" column="specifications1"/>
+        <property name="specifications2" column="specifications2"/>
+        <property name="specifications3" column="specifications3"/>
+        <property name="specifications4" column="specifications4"/>
+    </class>
+</hibernate-mapping>
