@@ -1,9 +1,11 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuthenticationEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_User.UserMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_authentication.AuthenticationMapper;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_Kafka.KafkaServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_user.UserService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Upload;
@@ -11,11 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    private KafkaServiceImpl kafkaService;
+    @Autowired
+    private ObjectMapper objectMapper;
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -55,6 +60,15 @@ public class UserServiceImpl implements UserService {
             String path=imgPathUrl;
             userEntity.setHeadPortraitUrl(path);
         }
+        int result=userMapper.userAdd(userEntity);
+        if (result>0){
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(userEntity),userEntity.getId().toString(),UserEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         return userMapper.userAdd(userEntity);
     }
 

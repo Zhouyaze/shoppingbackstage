@@ -48,4 +48,8 @@ public class UpdateCommodityServiceImpl implements UpdateCommodityService {
         number=updateCommodityMapper.UpdateCommodityPicture(pictureEntity);
         return number;
     }
+
+
+
+
 }

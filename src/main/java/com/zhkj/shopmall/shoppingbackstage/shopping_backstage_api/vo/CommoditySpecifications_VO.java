@@ -8,6 +8,8 @@ public class CommoditySpecifications_VO {
     /*
      详细
   */
+    private int commodityId;
+    private String commodityName;
     private String specification1;
     private String specification2;
     private String specification3;
@@ -18,6 +20,22 @@ public class CommoditySpecifications_VO {
     private BigDecimal price;
     private MultipartFile picture;
 
+
+    public int getCommodityId() {
+        return commodityId;
+    }
+
+    public void setCommodityId(int commodityId) {
+        this.commodityId = commodityId;
+    }
+
+    public String getCommodityName() {
+        return commodityName;
+    }
+
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName;
+    }
     public String getSpecification1() {
         return specification1;
     }

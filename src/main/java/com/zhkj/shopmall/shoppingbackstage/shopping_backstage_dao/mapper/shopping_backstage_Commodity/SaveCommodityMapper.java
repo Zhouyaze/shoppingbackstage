@@ -58,4 +58,11 @@ public interface SaveCommodityMapper {
      */
     int Savecommodityintroducepicture(@Param("picture") CommodityintroducepictureEntity picture);
 
+
+
+
+
+
+
+
 }

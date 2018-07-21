@@ -261,4 +261,13 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
         return pictureEntity;
     }
 
+
+    /**
+     * 发送json进货数据到进销存
+     */
+
+
+
+
+
 }

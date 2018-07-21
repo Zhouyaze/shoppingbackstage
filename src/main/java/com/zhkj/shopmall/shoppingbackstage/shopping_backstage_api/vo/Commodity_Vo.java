@@ -6,17 +6,17 @@ public class Commodity_Vo {
 
     private int commodityId;
     private String commodityName;
-    private String bigPictureUrl;
-    private String typeName;
     private String specification1;
     private String specification2;
     private String specification3;
     private String specification4;
     private int inventory;
+
     private BigDecimal price;
     private String picture;
     private String pictureUrl;
-
+    private String bigPictureUrl;
+    private String typeName;
     public int getCommodityId() {
         return commodityId;
     }
