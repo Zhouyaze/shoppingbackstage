@@ -68,4 +68,5 @@ public class IndexMessageVO {
     public void setObjects(String objects) {
         this.object = objects;
     }
+
 }
