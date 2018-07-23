@@ -61,6 +61,10 @@
        SELECT * FROM promotionitem p ,commodity c WHERE c.id=p.commodityId limit #{currentPage},#{pageSize}
 
     </select>
+
+    <select id="getMsgByid" resultMap="selectPromoyion">
+        SELECT * FROM promotionitem p ,commodity c WHERE c.id=p.commodityId AND p.id=#{id}
+    </select>
     <!--查询过期促销商品-->
     <select id="getMsgOut">
         SELECT * FROM promotionitem

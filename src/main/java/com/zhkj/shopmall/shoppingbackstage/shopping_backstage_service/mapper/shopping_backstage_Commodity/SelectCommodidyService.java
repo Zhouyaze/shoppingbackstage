@@ -84,5 +84,4 @@ public interface SelectCommodidyService {
      * */
     List<CommodityDTO>selectShop();
 
-
 }

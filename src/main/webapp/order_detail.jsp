@@ -41,13 +41,26 @@
             async: false,
             success: function (data) {
                 optionJson = data;
-                console.log(optionJson)
                 var str = "";
                 for (var index = 0; index < optionJson.length; index++) {
                     str+="<tr>"+
                         "<td><img src="+optionJson[index].commodityEntity.bigPictureUrl+" alt="+optionJson[index].commodityEntity.bigPictureUrl+" class=\"thumbnail\"/></td>" +
                           "<td>"+optionJson[index].commodityEntity.commodityName+"</td>"+
-                          "<td>"+
+                         "<td>"
+                         if(optionJson[index].commodityEntity.priceEntity.specification1!=null){
+                             str+=optionJson[index].commodityEntity.priceEntity.specification1+","
+                         }
+                         if(optionJson[index].commodityEntity.priceEntity.specification2!=null){
+                             str+=optionJson[index].commodityEntity.priceEntity.specification2+","
+                         }
+                         if(optionJson[index].commodityEntity.priceEntity.specification3!=null){
+                             str+=optionJson[index].commodityEntity.priceEntity.specification3+","
+                         }
+                         if(optionJson[index].commodityEntity.priceEntity.specification4!=null){
+                             str+=optionJson[index].commodityEntity.priceEntity.specification4
+                         }
+                          str+="</td>"+
+                              "<td>"+
                             "<span>"+
                               "<i>￥</i>"+
                               "<em>"+optionJson[index].commodityPrice+"</em>"+
@@ -62,7 +75,6 @@
                           "</td>"+
                           "</tr>"+
                           "<tr>"+
-
                         "</tr>"
                     document.getElementById("shangpin").innerHTML = str;
                 }
@@ -106,12 +118,12 @@
     </li>
    </ul>
   </dd>
-
   <dd>
    <table class="list-style">
     <tr>
      <th>缩略图</th>
-     <th>产品</th>
+     <th>产品名称</th>
+     <th>产品规格</th>
      <th>单价</th>
      <th>数量</th>
      <th>小计</th>
