@@ -25,9 +25,13 @@
         </where>
     </select>
 
-    <insert id="userAdd">
+    <!--keyProperty="id" useGeneratedKeys="true"-->
+    <insert id="userAdd"  parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO USER VALUES (#{id},#{nickName},#{loginName},#{logingPassword},#{headPortraitUrl},#{userTypeName},#{authenticationId})
-</insert>
+    </insert>
 
     <update id="userInfoUpdate">
         UPDATE USER

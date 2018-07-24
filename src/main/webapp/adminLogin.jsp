@@ -28,21 +28,21 @@ $(document).ready(function() {
 
 </head>
 <body>
-  <section class="loginform">
+  <form class="loginform" action="/login" method="post">
    <h1>后台管理系统</h1>
    <ul>
     <li>
      <label>账号：</label>
-     <input id="user" type="text" name="loginUser" class="textBox" placeholder="管理员账号"/>
+     <input id="user" type="text" name="loginName" class="textBox" placeholder="管理员账号"/>
     </li>
     <li>
      <label>密码：</label>
-     <input id="pwd" type="password" name="password" class="textBox" placeholder="登陆密码"/>
+     <input id="pwd" type="password" name="logingPassword" class="textBox" placeholder="登陆密码"/>
     </li>
     <li>
-     <input type="button" value="立即登陆" />
+     <input type="submit" value="立即登陆" />
     </li>
    </ul>
-  </section>
+  </form>
 </body>
 </html>

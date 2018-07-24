@@ -5,10 +5,16 @@
 //import com.auth0.jwt.interfaces.Claim;
 //import com.auth0.jwt.interfaces.DecodedJWT;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
+
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
-public class Main {
+@Component
+public class MainTest {
 //
 //    public static String SECRET="TEST";
 //
@@ -55,4 +61,14 @@ public class Main {
 //        DecodedJWT jwt=verifier.verify(token);
 //        return jwt.getClaims();
 //    }
+
+    @Autowired
+    KafkaTemplate<String,Object> kafkaTemplate;
+    public void send(){
+        kafkaTemplate.send("zhuohua","dazhubg");
+    }
+    @KafkaListener(topics = "zhuohua")
+    public void get(String msg){
+        System.out.println(msg);
+    }
 }

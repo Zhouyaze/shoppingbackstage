@@ -20,6 +20,15 @@ import java.util.Random;
 @RestController
 public class AdvertiseMentController {
     @Autowired
+    private MainTest mainTest;
+
+    @ResponseBody
+    @RequestMapping("/send")
+    public String send(){
+        mainTest.send();
+        return "success";
+    }
+    @Autowired
     Advertisement_IMPL advertisement_impl;
 
     @InitBinder

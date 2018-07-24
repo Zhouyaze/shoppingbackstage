@@ -1,9 +1,11 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuthenticationEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_User.UserMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_authentication.AuthenticationMapper;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_Kafka.KafkaServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_user.UserService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Upload;
@@ -11,11 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    private KafkaServiceImpl kafkaService;
+    @Autowired
+    private ObjectMapper objectMapper;
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -30,6 +37,7 @@ public class UserServiceImpl implements UserService {
         pageBean.setTotalNum(userMapper.getUserCount(userEntity));
         return pageBean;
     }
+
     /**
      * 查询全部用户
      * @return
@@ -55,7 +63,17 @@ public class UserServiceImpl implements UserService {
             String path=imgPathUrl;
             userEntity.setHeadPortraitUrl(path);
         }
-        return userMapper.userAdd(userEntity);
+        int result=userMapper.userAdd(userEntity);
+        if (result>0){
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(userEntity)
+                        ,userEntity.getId().toString()
+                        ,UserEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
 
@@ -74,7 +92,17 @@ public class UserServiceImpl implements UserService {
             String path=imgPathUrl;
             userEntity.setHeadPortraitUrl(path);
         }
-        return userMapper.userInfoUpdate(userEntity);
+        int result=userMapper.userInfoUpdate(userEntity);
+        if (result>0){
+            try {
+                kafkaService.kafka_update(objectMapper.writeValueAsString(userEntity)
+                        ,userEntity.getId().toString()
+                        ,UserEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
@@ -84,6 +112,16 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int userInfoDelete( UserEntity userEntity) {
-        return userMapper.userInfoDelete(userEntity);
+        int result=userMapper.userInfoDelete(userEntity);
+        if (result>0){
+            try {
+                kafkaService.kafka_del(objectMapper.writeValueAsString(userEntity)
+                        ,userEntity.getId().toString()
+                        ,UserEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }

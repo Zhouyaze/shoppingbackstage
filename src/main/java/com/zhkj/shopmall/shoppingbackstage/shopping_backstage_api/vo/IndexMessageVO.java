@@ -10,6 +10,7 @@ public class IndexMessageVO {
     public static final String TOPIC_SPECIFICATIONSRELATION="specificationsrelation";
     public static final String TOPIC_SPECIFICATIONSTOPIC="specificationstopic";
     public static final String TOPIC_TYPE="type";
+    public static final String TOPIC_USER="user";
 
 
     public static final String SAVE="save";
