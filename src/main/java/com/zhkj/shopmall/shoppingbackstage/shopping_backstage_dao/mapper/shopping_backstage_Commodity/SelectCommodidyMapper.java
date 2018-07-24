@@ -8,6 +8,23 @@ import java.util.List;
 
 @Repository
 public interface SelectCommodidyMapper {
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+    /**
+     * 查询商品  颜色{子类}尺码{子类}
+     * @param commodityEntity
+     * @return
+     */
+    List<CommodityEntity> selectspecifications(@Param("commodity")CommodityEntity commodityEntity);
+
+
+
+>>>>>>> Stashed changes
     /**
      * 查询商品数量
      * @return

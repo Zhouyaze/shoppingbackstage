@@ -79,6 +79,27 @@
         limit #{currentPage},#{pageSize}
     </select>
 
+    <!--查询商品补货信息发给进销存kafka-->
+    <select id="selectkafka" resultMap="Commodity1">
+
+        SELECT c.commodityName,p.specification1,p.specification2,p.specification3,p.specification4,p.inventory
+        FROM commodity c,commodity_specification_inventory_price p
+        WHERE
+        commodityId=#{commodity.commodityId}
+        <if test="commodity.specification1!=null">
+            and specification1=#{commodity.specification1}
+        </if>
+        <if test="commodity.specification2!=null">
+            and specification2=#{commodity.specification2}
+        </if>
+        <if test="commodity.specification3!=null and commodity.specification3.length>0">
+            and specification3=#{commodity.specification3}
+        </if>
+        <if test="commodity.specification4!=null and  commodity.specification3.length>0">
+            and specification4=#{commodity.specification4}
+        </if>
+    </select>
+
     <select id="selectAllspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
         SELECT * FROM commodity_specification_inventory_price
         WHERE commodityId=#{Id}

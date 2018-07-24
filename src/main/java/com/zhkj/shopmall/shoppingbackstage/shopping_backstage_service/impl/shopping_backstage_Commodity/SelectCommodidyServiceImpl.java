@@ -2,6 +2,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SendKafkaMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SelectCommodidyService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Constants;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.ExportExcel;
@@ -20,8 +21,27 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
     @Autowired
     SelectCommodidyMapper selectCommodidyMapper;
 
+    @Autowired
+    SendKafkaMapper sendKafkaMapper;
+
     PageBean<CommodityEntity> pageBean=new PageBean();
 
+<<<<<<< Updated upstream
+=======
+
+
+    /**
+     * 查询商品  颜色{子类}尺码{子类}
+     * @param commodityEntity
+     * @return
+     */
+    @Override
+    public List<CommodityEntity> selectspecifications(CommodityEntity commodityEntity) {
+      List<CommodityEntity> list=selectCommodidyMapper.selectspecifications(commodityEntity);
+        return list;
+    }
+
+>>>>>>> Stashed changes
     /**
      * 查询商品规格
      * @return
@@ -107,6 +127,7 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
         return list;
     }
+
 
     /**
      * 查询商品最后  一个id

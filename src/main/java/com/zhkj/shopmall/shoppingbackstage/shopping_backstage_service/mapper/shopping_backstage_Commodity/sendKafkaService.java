@@ -2,7 +2,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.sh
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.CommoditySpecifications_VO;
 
-public interface sendKafkaService {
+public interface SendKafkaService {
 
     /**
      * 发送补货信息到进销存
@@ -10,4 +10,9 @@ public interface sendKafkaService {
      * @return
      */
     String sendKafka(CommoditySpecifications_VO commoditySpecifications_vo);
+
+
+
+
+
 }

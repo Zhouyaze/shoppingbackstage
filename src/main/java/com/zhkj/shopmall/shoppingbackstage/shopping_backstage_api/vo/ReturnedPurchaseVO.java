@@ -3,7 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo;
 
 public class ReturnedPurchaseVO {
 
-    // 退货标识(退货 换货)
+    // 退货标识(退货 换货,补货)
     private int messageType;
     //订单编号
     private String manifest;
@@ -15,6 +15,27 @@ public class ReturnedPurchaseVO {
     private String commodityName;
     //退货数量
     private int count;
+    // 退货商品规格
+    private String commoditySku;
+
+    //返回  状态 通过 还是  不通过
+    private int operatingStatus;
+
+    public int getOperatingStatus() {
+        return operatingStatus;
+    }
+
+    public void setOperatingStatus(int operatingStatus) {
+        this.operatingStatus = operatingStatus;
+    }
+
+    private String specification1;
+
+    private String specification2;
+
+    private String specification3;
+
+    private String specification4;
 
     public int getCount() {
         return count;
@@ -23,12 +44,6 @@ public class ReturnedPurchaseVO {
     public void setCount(int count) {
         this.count = count;
     }
-
-    // 退货商品规格
-    private String commoditySku;
-    private String specification1;
-    private String specification2;
-
     public String getSpecification1() {
         return specification1;
     }
@@ -61,8 +76,6 @@ public class ReturnedPurchaseVO {
         this.specification4 = specification4;
     }
 
-    private String specification3;
-    private String specification4;
 
     public int getMessageType() {
         return messageType;

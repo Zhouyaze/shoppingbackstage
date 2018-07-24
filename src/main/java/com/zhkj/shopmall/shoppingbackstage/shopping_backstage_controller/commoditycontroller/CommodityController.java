@@ -6,6 +6,7 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopp
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.SaveCommodityServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.SelectCommodidyServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.UpdateCommodityServiceImpl;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SendKafkaService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,8 @@ public class CommodityController {
 
 
     @Autowired
+    SendKafkaService sendKafkaService;
+    @Autowired
     SaveCommodityServiceImpl saveCommodityService;
     @Autowired
     SelectCommodidyServiceImpl selectCommodidyService;
@@ -28,6 +31,11 @@ public class CommodityController {
 
     @Autowired
     UpdateCommodityServiceImpl updateCommodityService;
+
+
+
+
+
 
     /**
      * 添加商品主表  更图片表
@@ -239,4 +247,5 @@ public class CommodityController {
             return "报表生成失败";
         }
     }
+
 }

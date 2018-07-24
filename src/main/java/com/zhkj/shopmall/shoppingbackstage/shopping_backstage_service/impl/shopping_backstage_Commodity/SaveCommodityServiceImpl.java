@@ -101,8 +101,12 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                 // 根据商品名查询商品 主id
                 // int commodityId = selectCommodidyMapper.seletCommodityId(name);
 
-                int commodityId=selectCommodidyMapper.SelectCommodityId();
-                commodity_vo.setCommodityId(commodityId);
+                if(commodity_vo.getCommodityId()!=0){
+                    commodity_vo.setCommodityId(commodity_vo.getCommodityId());
+                }else {
+                    int commodityId=selectCommodidyMapper.SelectCommodityId();
+                    commodity_vo.setCommodityId(commodityId);
+                }
                 CommoditySpecificationInventoryPriceEntity priceEntity=getCommoditySpecificationInventoryPriceEntity(commodity_vo);
 
                 try {
