@@ -24,9 +24,15 @@ public class ReturnedPurchaseController {
     @Autowired
     ReturnedPurchaseService returnedPurchaseService;
 
+
+    @RequestMapping("selectAll")
+    public int select(int messageTypeId){
+        return returnedPurchaseService.selectAll(messageTypeId);
+    }
+
     @RequestMapping("saveReturned")
     public String saveReturn(){
-        String json="{\"messageType\":\"2\",\"manifest\":\"1234567890\",\"returnUserName\":\"崔文杰\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
+        String json="{\"messageType\":\"2\",\"manifest\":\"1234567890\",\"returnUserName\":\"狗浩宇\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
         ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
 
         return returnedPurchaseService.saveReturned(returnedPurchaseVO);

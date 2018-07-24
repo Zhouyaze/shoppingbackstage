@@ -25,7 +25,12 @@ public interface ReturnedPurchaseMapper {
      */
     int querReturned(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
 
-
+    /**
+     * 根据 条件查询（发货  退货）
+     * @param messageTypeId
+     * @return
+     */
+    int selectAll(int messageTypeId);
 
 
 }
