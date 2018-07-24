@@ -8,10 +8,8 @@ import java.util.List;
 
 @Repository
 public interface SelectCommodidyMapper {
-<<<<<<< Updated upstream
-=======
-
-
+//<<<<<<< Updated upstream
+//=======
 
 
 
@@ -24,7 +22,7 @@ public interface SelectCommodidyMapper {
 
 
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
     /**
      * 查询商品数量
      * @return
@@ -91,5 +89,14 @@ public interface SelectCommodidyMapper {
     int SelectCommodityId();
 
     List<CommodityEntity>selectShop();
+
+
+    /**
+     * 根据商品 id 规格 规格查询  商品数量
+     * @param
+     * @return
+     */
+    int selectCount(@Param("price") CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
+
 
 }
