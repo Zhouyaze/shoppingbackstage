@@ -1,6 +1,5 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_ReturnedServiceImpl;
 
-import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity;
@@ -16,6 +15,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Service
 
@@ -123,17 +123,17 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
      * @return
      */
     @Override
-    public String querReturn(ReturnedPurchaseEntity returnedPurchaseEntity) {
-      //  returnedPurchaseEntity=returnedPurchaseMapper.querReturned(returnedPurchaseEntity);
+    public int querReturn(ReturnedPurchaseEntity returnedPurchaseEntity) {
 
-        String sendJson= JSON.toJSONString(returnedPurchaseEntity);
-        return sendJson;
+         returnedPurchaseEntity=returnedPurchaseMapper.querReturn(returnedPurchaseEntity);
+         //kafkaTemplate.send("",returnedPurchas.);
+        return 1;
     }
 
 
     @Override
-    public int selectAll(int messageTypeId) {
-        return returnedPurchaseMapper.selectAll(messageTypeId);
+    public List<ReturnedPurchaseEntity> selectType(ReturnedPurchaseEntity returnedPurchaseEntity) {
+        return returnedPurchaseMapper.selectType(returnedPurchaseEntity);
     }
 
 
