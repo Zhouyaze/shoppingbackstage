@@ -1,6 +1,7 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_ReturnedServiceImpl;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
@@ -11,13 +12,21 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoppin
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService.ReturnedPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
 @Service
+
 public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 
+//    @Autowired
+//    KafkaServiceImpl kafkaService;
+    @Autowired
+    KafkaTemplate kafkaTemplate;
+    @Autowired
+    ObjectMapper objectMapper;
     @Autowired
     ReturnedPurchaseMapper returnedPurchaseMapper;
 
@@ -32,56 +41,51 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 
     HttpSession session;
     /**
-     * 添加  退货   进货  商品信息
+     * 添加   退货   发货  商品信息
      * @param returnedPurchaseVO
      * @return
      */
     //@Override
     @KafkaListener(topics="订单")
     public String saveReturned(ReturnedPurchaseVO returnedPurchaseVO) {
-
-       // String json="{\"messageType\":\"2\",\"manifest\":\"1234567890\",\"returnUserName\":\"郑国超\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
-        //转换json为VO实体
-       // returnedPurchaseVO= JSON.parseObject(json,ReturnedPurchaseVO.class);
-
         ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
         CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
-
         StringBuffer stringBufferSku = new StringBuffer();
+        int sendtype=returnedPurchaseEntity.getMessageType();
         if(null != priceEntity.getSpecification1()) stringBufferSku.append(priceEntity.getSpecification1() + ",");
         if(null != priceEntity.getSpecification2()) stringBufferSku.append(priceEntity.getSpecification2() + ",");
         if(null != priceEntity.getSpecification3()) stringBufferSku.append(priceEntity.getSpecification3() + ",");
         if(null != priceEntity.getSpecification4()) stringBufferSku.append(priceEntity.getSpecification4());
         returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
-
         returnedPurchaseEntity.setInventory(returnedPurchaseEntity.getInventory());
         /**
          * 获取当前登陆人
          */
-        returnedPurchaseEntity.setBackstageHandlersint(session.getAttribute("loginName").toString());
+        //returnedPurchaseEntity.setBackstageHandlersint(session.getAttribute("loginName").toString());
         //传入消息表
-        returnedPurchaseMapper.saveReturned(returnedPurchaseEntity);
-        /**
-         * kafka发送json数据
-         */
-        String sendJson=JSON.toJSONString(returnedPurchaseEntity);
-        return sendJson;
+             int no= returnedPurchaseMapper.saveReturned(returnedPurchaseEntity);
+             if (no>0){
+                 return "成功添加消息表";
+             }
+             return "添加失败";
     }
 
 
+
+    @KafkaListener(topics = "test")
+    public void getMsg(String content){
+        System.out.println("测试"+content);
+    }
+
     /**
-     * 退货处理 接收信息状态  同意 还是不同意
+     * 退货处理 接收信息状态 同意 还是不同意
+     * 订单发货 接收信息状态 同意 还是不同意
      * @param returnedPurchaseVO
      * @return
      */
-    @KafkaListener(topics="退货")
+    @KafkaListener(topics="test")
     public String querReturned(ReturnedPurchaseVO returnedPurchaseVO) {
-//        String json="{\"messageType\": \"2\",\"manifest\": \"1234567890\", \"returnUserName\":\"郑国超\"," +
-//                "\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\"" +
-//                ",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\"" +
-//                ",\"specification3\":\"\",\"specification4\":\"\"}";
-        //转换json为VO实体
-       // returnedPurchaseVO= JSON.parseObject(json,ReturnedPurchaseVO.class);
+
         ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
         CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
         int number=returnedPurchaseEntity.getMessageType();
@@ -116,15 +120,21 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 
     /**
      * 传送进销存  （退货/进货）信息
-     *
      * @return
      */
-   // @Override
-//    public String querReturned(ReturnedPurchaseEntity returnedPurchaseEntity) {
-////        returnedPurchaseEntity=returnedPurchaseMapper.querReturned(returnedPurchaseEntity);
-////        String sendJson=JSON.toJSONString(returnedPurchaseEntity);
-////        return sendJson;
-////    }
+    @Override
+    public String querReturn(ReturnedPurchaseEntity returnedPurchaseEntity) {
+      //  returnedPurchaseEntity=returnedPurchaseMapper.querReturned(returnedPurchaseEntity);
+
+        String sendJson= JSON.toJSONString(returnedPurchaseEntity);
+        return sendJson;
+    }
+
+
+    @Override
+    public int selectAll(int messageTypeId) {
+        return returnedPurchaseMapper.selectAll(messageTypeId);
+    }
 
 
     /**
