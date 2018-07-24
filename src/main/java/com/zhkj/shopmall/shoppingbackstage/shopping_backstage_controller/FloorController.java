@@ -2,6 +2,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller;
 
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.FloorEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_floor.FloorService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,8 @@ public class FloorController {
     private FloorService floorService;
 
     @RequestMapping("/getFloorMsg")
-    public Object getMsg(Integer currentPage,Integer pageSize) {
-        Object list = floorService.getMsg(currentPage,pageSize);
-        return list;
+    public PageBean<FloorEntity> getMsg(Integer currentPage, Integer pageSize) {
+        return floorService.getMsg(currentPage,pageSize);
     }
 
     @RequestMapping("/delFloorMsg")
