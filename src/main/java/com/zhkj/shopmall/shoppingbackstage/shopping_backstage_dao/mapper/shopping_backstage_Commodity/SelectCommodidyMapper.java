@@ -8,6 +8,12 @@ import java.util.List;
 
 @Repository
 public interface SelectCommodidyMapper {
+<<<<<<< Updated upstream
+=======
+
+
+
+
 
     /**
      * 查询商品  颜色{子类}尺码{子类}
@@ -18,13 +24,12 @@ public interface SelectCommodidyMapper {
 
 
 
+>>>>>>> Stashed changes
     /**
      * 查询商品数量
      * @return
      */
     int getCount(@Param("commodity") CommodityEntity commodityName);
-
-
     /**
      * 查询商品规格
      * @return
@@ -85,15 +90,6 @@ public interface SelectCommodidyMapper {
      */
     int SelectCommodityId();
 
-    List<CommodityDTO> selectShop();
-
-
-    /**
-     * 根据商品 id 规格 规格查询  商品数量
-     * @param
-     * @return
-     */
-    int selectCount(@Param("price") CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
-
+    List<CommodityEntity>selectShop();
 
 }

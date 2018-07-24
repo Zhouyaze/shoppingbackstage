@@ -111,5 +111,8 @@ public class CommodityDTO {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

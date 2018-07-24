@@ -41,4 +41,9 @@ public interface OrderFromMapper {
     int orderFromUpdate(OrderfromEntity orderfromEntity);
 
     List<OrderfromEntity>selectOrder();
+
+
+
+    int updateOrderFrom( String orderNumber);
+
 }

@@ -39,5 +39,4 @@
         INSERT INTO shoppingmall.commodityintroducepicture(pictureUrl, commodityId, levels)
         VALUES (#{picture.pictureUrl},#{picture.commodityId},#{picture.levels})
     </insert>
-
 </mapper>

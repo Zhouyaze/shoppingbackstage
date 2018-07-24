@@ -55,6 +55,7 @@
             <result column="typeName" property="typeName"/>
         </association>
     </resultMap>
+
     <!--查询所有促销商品-->
     <select id="getMsg" resultMap="selectPromoyion">
 

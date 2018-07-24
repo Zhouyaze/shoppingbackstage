@@ -49,6 +49,12 @@
         </if>
         LiMIT #{currentPage},#{pageSize}
     </select>
+    <!--修改订单支付信息-->
+    <update id="updateOrderFrom">
+        UPDATE shoppingmall.orderfrom
+        SET paymentTypeId=2
+        WHERE orderNumber=#{paymentTypeId}
+    </update>
     <!--修改订单-->
     <update id="orderFromUpdate">
         UPDATE orderfrom

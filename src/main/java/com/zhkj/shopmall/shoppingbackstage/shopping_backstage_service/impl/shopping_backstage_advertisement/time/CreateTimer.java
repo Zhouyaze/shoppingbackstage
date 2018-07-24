@@ -1,14 +1,13 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_advertisement.time;
 
 
-import org.springframework.context.annotation.Configuration;
-
-/**
- * 定时任务配置类
- */
-@Configuration
-public class CreateTimer {
-
+//
+///**
+// * 定时任务配置类
+// */
+//@Configuration
+//public class CreateTimer {
+//
 //    /**
 //     * 要执行的任务
 //     * UpdateAdvertisementEndTime 自己定义的类
@@ -24,12 +23,12 @@ public class CreateTimer {
 //        jobDetail .setTargetMethod("updateAdvertisement");
 //        return jobDetail ;
 //    }
-//
-////    /**
-//     * 出发器
-//     *  执行任务触发的条件
-//     * @return
-//     */
+////
+//    /**
+////     * 出发器
+////     *  执行任务触发的条件
+////     * @return
+////     */
 //    @Bean(name = "firstTrigger")
 //    public SimpleTriggerFactoryBean firstTrigger(JobDetail firstJobDetail){
 //        SimpleTriggerFactoryBean   trigger  = new SimpleTriggerFactoryBean ();
@@ -37,7 +36,7 @@ public class CreateTimer {
 //        trigger.setRepeatInterval(1000 * 60 * 2);
 //        trigger.setName("EndTime");
 //        return trigger;
-//    }
+// }
 
 
 //    /**
@@ -88,4 +87,4 @@ public class CreateTimer {
 //        schedulerFactoryBean.setTriggers(firstTrigger,secondTrigger);
 //        return schedulerFactoryBean;
 //    }
-}
+//}

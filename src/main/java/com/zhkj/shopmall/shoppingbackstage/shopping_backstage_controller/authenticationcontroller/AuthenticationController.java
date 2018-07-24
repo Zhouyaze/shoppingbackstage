@@ -24,8 +24,12 @@ AuthenticationServerMapperService authenticationServerMapperService;
     public List<AuthenticationEntity> getAuthenicationById(AuthenticationEntity authenticationEntity){
         return authenticationServerMapperService.getAuthenicationById(authenticationEntity);
     }
+
+
+
     @GetMapping("/updateAuthentication")
     public int updateAuthentication(AuthenticationEntity authenticationEntity){
+
         return authenticationServerMapperService.updateAuthentication(authenticationEntity);
     }
 }
