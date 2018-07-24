@@ -14,16 +14,30 @@
         <result column="commodityName" property="commodityName"></result>
         <result column="bigPictureUrl" property="bigPictureUrl"></result>
         <result column="typeName" property="typeName"></result>
+        <association property="priceEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+            <id column="id" property="id"></id>
+            <result column="commodityId" property="commodityId"></result>
+            <result column="specification1" property="specification1"></result>
+            <result column="specification2" property="specification2"></result>
+            <result column="specification3" property="specification3"></result>
+            <result column="specification4" property="specification4"></result>
+            <result column="inventory" property="inventory"></result>
+            <result column="price" property="price"></result>
+            <result column="picture" property="picture"></result>
+        </association>
     </association>
+
 </resultMap>
     <select id="selectOrderFromShopByOrderNumber1" resultMap="orderfromshopAndcommodity">
-        SELECT * FROM orderfromshop1,commodity
+        SELECT * FROM orderfromshop1,commodity,commodity_specification_inventory_price
         WHERE orderfromshop1.commodityId=commodity.id
+        AND commodity_specification_inventory_price.commodityId=orderfromshop0.commodityId
         AND orderfromshop1.orderFromId=#{orderFromId}
     </select>
     <select id="selectOrderFromShopByOrderNumber0" resultMap="orderfromshopAndcommodity">
-        SELECT * FROM orderfromshop0,commodity
+        SELECT * FROM orderfromshop0,commodity,commodity_specification_inventory_price
         WHERE orderfromshop0.commodityId=commodity.id
+        AND commodity_specification_inventory_price.commodityId=orderfromshop0.commodityId
         AND orderfromshop0.orderFromId=#{orderFromId}
     </select>
 

@@ -35,9 +35,36 @@
             id=#{id}
         </where>
     </update>
+    
+    
+    <resultMap id="selectPromoyion" type="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
+        <id column="id" property="id"/>
+        <result property ="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="discountPrice" column="discountPrice"/>
+        <result property="commodityNumber" column="commodityNumber"/>
+        <result property="commodityId" column="commodityId"/>
+        <result property="specifications1" column="specifications1"/>
+        <result property="specifications2" column="specifications2"/>
+        <result property="specifications3" column="specifications3"/>
+        <result property="specifications4" column="specifications4"/>
+        <association property="commodityEntity" javaType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+            <id column="id" property="id"/>
+            <result column="commodityName" property="commodityName"/>
+            <result column="bigPictureUrl" property="bigPictureUrl"/>
+            <result column="typeName" property="typeName"/>
+        </association>
+    </resultMap>
+
     <!--查询所有促销商品-->
-    <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
-        select * from shoppingmall.promotionitem limit #{currentPage},#{pageSize}
+    <select id="getMsg" resultMap="selectPromoyion">
+
+       SELECT * FROM promotionitem p ,commodity c WHERE c.id=p.commodityId limit #{currentPage},#{pageSize}
+
+    </select>
+
+    <select id="getMsgByid" resultMap="selectPromoyion">
+        SELECT * FROM promotionitem p ,commodity c WHERE c.id=p.commodityId AND p.id=#{id}
     </select>
     <!--查询过期促销商品-->
     <select id="getMsgOut">

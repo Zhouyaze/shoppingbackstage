@@ -41,8 +41,6 @@
   <li>
    <ul class="menu-children">
     <li><a href="promotionCommodity_list.jsp" title="促销商品列表" target="mainCont">促销商品列表</a></li>
-    <li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>
-    <li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>
    </ul>
   </li>
   <li class="menu-list-title">

@@ -19,6 +19,13 @@ public interface PromotionitemMapper {
     int saveMsg(@Param("promotionitem") PromotionitemEntity promotionitemEntity);
     /**查询*/
     List<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity,@Param("currentPage")int currentPage,@Param("pageSize")int pageSize);
+
+    /**
+     * 根据促销商品id查询促销商品信息
+     * @param
+     * @return
+     */
+    List<PromotionitemEntity> getMsgByid(PromotionitemEntity promotionitemEntity);
     /**修改*/
     int updateMsg(PromotionitemEntity promotionitemEntity);
     /**删除*/

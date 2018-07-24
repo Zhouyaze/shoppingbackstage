@@ -32,7 +32,16 @@ public class PromotionitemController {
     public PageBean<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity, int currentPage) {
         return promotionitemService.getMsg(promotionitemEntity,currentPage);
     }
-
+    /**
+     * 查询促销商品根据id
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("/getProMsgById")
+    public List<PromotionitemEntity> getMsgById(PromotionitemEntity promotionitemEntity) {
+        return promotionitemService.getMsgByid(promotionitemEntity);
+    }
     @RequestMapping("/updatePromotionitemMsg")
     public int updateMsg(PromotionitemEntity promotionitemEntity) {
         return promotionitemService.updateMsg(promotionitemEntity);

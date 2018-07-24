@@ -1,10 +1,13 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 import java.util.Objects;
 
 public class CommodityevaluationEntity {
     private int id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp evaluationTime;
     private String evaluationContent;
     private int evaluationTypeId;

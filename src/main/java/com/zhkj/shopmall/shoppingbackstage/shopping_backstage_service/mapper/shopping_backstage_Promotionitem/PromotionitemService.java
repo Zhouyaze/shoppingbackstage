@@ -11,6 +11,13 @@ public interface PromotionitemService {
     int saveMsg(PromotionitemEntity promotionitemEntity);
     /**查询*/
     PageBean<PromotionitemEntity> getMsg(PromotionitemEntity promotionitemEntity, int currentPage);
+
+    /**
+     * 查询促销商品根据id
+     * @param
+     * @return
+     */
+    List<PromotionitemEntity> getMsgByid(PromotionitemEntity promotionitemEntity);
     /**修改*/
     int updateMsg(PromotionitemEntity promotionitemEntity);
     /**删除*/

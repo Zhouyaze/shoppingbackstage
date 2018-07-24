@@ -23,7 +23,7 @@ public interface ReturnedPurchaseMapper {
      * 查询退货商品   发送到进销存
      * @return
      */
-    ReturnedPurchaseEntity querReturned(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
+    int querReturned(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
 
 
 

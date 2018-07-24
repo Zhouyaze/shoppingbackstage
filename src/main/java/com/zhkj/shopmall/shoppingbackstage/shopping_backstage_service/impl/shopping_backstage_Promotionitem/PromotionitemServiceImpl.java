@@ -42,6 +42,11 @@ public class PromotionitemServiceImpl implements PromotionitemService {
     }
 
     @Override
+    public List<PromotionitemEntity> getMsgByid(PromotionitemEntity promotionitemEntity) {
+        return promotionitemMapper.getMsgByid(promotionitemEntity);
+    }
+
+    @Override
     public int updateMsg(PromotionitemEntity promotionitemEntity) {
         return promotionitemMapper.updateMsg(promotionitemEntity);
     }

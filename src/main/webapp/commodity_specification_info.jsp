@@ -24,6 +24,9 @@
             }
             $("#commodityId").text("商品编号:"+params.commodityId)
             $("#commodityName").text("商品名称:"+params.commodityName)
+
+            $("#addProm").attr("href","add_comSpecification.jsp?commodityId="+params.commodityId);
+
             var str="";
             $.ajax({
                 url: '${pageContext.request.contextPath}/selectAllspecification',
@@ -40,7 +43,12 @@
                            "<td>"+data[index].inventory+"</td>"+
                            "<td>"+data[index].price+"</td>"+
                            "<td>"+
-                           "<a href=\"add_comSpecification.jsp?commodityId="+params.commodityId+"\" title=\"添加\"><img src=\"images/icon_add.jpg\"/></a>"+
+                           "<a href=\"addPromCom.jsp?commodityId="+params.commodityId+"&commodityName="+params.commodityName+
+                           "&specification1="+data[index].specification1+
+                           "&specification2="+data[index].specification1+
+                           "&specification3="+data[index].specification1+
+                           "&specification4="+data[index].specification1+
+                           "\" title=\"添加促销\"><img src=\"images/icon_add.jpg\"/></a>"+
                            "<a href=\"edit_comSpecification.jsp?commodityId="+params.commodityId+"&commodityName="+params.commodityName+
                            "&specification1="+data[index].specification1+
                            "&specification2="+data[index].specification1+
@@ -50,10 +58,7 @@
                            "&price="+data[index].price+
                            "&id="+data[index].id+
                            "\" title=\"编辑\"><img src=\"images/icon_edit.gif\"/></a>"+
-                           "<a href=\"delete_comSpecification.jsp?commodityId="+params.commodityId+
-                           "&commodityName="+params.commodityName+
-                           "&id="+params.id+
-                           "\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
+                           "<a href=\"delete_comSpecification.jsp?id="+params.id+ "\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                            "</td>"+
                            "</tr>"
                        document.getElementById("commSpecification").innerHTML=str
@@ -87,6 +92,12 @@
             </table>
         </dd>
     </dl>
+    <div class="BatchOperation" style="float: right">
+        <a id="addProm" class="btnStyle"
+            href="#"
+            title=\"添加规格\">添加规格</a>
+    </div>
+    <a href=""></a>
 </div>
 </body>
 </html>

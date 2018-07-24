@@ -12,7 +12,6 @@
      var optionJson = null;
      function refurbishIndex(currentPage) {
          var tiaojian=$("#tiaojian").val();
-         console.log(tiaojian)
          if (tiaojian==""){
              $.ajax({
                  type: "GET",

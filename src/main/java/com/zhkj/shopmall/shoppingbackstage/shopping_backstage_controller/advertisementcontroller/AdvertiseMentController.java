@@ -74,7 +74,7 @@ public class AdvertiseMentController {
     public int upload(@RequestParam(name = "file") MultipartFile file, HttpSession session) throws IOException {
         if (!file.isEmpty()) {
             String saveFileName = file.getOriginalFilename();//文件名
-            Random random = new Random(99999999);
+            Random random = new Random(999999999);
             int num = random.nextInt();
             Date date = new Date();
             SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
@@ -85,7 +85,7 @@ public class AdvertiseMentController {
             if (!fi.exists()) {
                 fi.mkdirs();
             }
-            String fileName = fi + "/" + sf.format(date) + num + saveFileName;//少个路径
+            String fileName = fi + "/" + sf.format(date) + num + saveFileName;
             file.transferTo(new File(fileName));
             session.setAttribute("FileUrl", fileName);
             return 1;

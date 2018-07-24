@@ -54,14 +54,14 @@
                     contentType:false,
                     success:function(data){
                         if (data>0) {
-                            alert("添加商品成功")
+                            alert("添加商品规格成功")
                             window.location.href = "product_list.jsp"
                         }else{
-                            alert("添加商品失败，请再次尝试")
+                            alert("添加商品规格失败，请再次尝试")
                         }
                     },
                     error:function(e){
-                        alert("添加商品失败");
+                        alert("添加商品规格失败");
                         window.location.href="product_list.jsp"
                     }
                 });
@@ -83,7 +83,7 @@
         }
     </script>
 </head>
-<body onload="jiazai()">
+<body>
 <div class="wrap">
     <div class="page-title">
         <span class="modular fl"><i class="add_user"></i><em>添加商品规格</em></span>
