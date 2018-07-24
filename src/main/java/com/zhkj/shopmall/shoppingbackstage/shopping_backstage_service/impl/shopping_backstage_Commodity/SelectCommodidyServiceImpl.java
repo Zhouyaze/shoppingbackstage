@@ -26,8 +26,8 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
     PageBean<CommodityEntity> pageBean=new PageBean();
 
-<<<<<<< Updated upstream
-=======
+//<<<<<<< Updated upstream
+//=======
 
 
     /**
@@ -41,7 +41,7 @@ public class SelectCommodidyServiceImpl implements SelectCommodidyService {
         return list;
     }
 
->>>>>>> Stashed changes
+
     /**
      * 查询商品规格
      * @return

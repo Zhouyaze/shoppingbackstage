@@ -114,4 +114,29 @@
         SELECT id FROM  shoppingmall.type WHERE typeName=#{typeNamelevels}
     </select>
 
+
+    <!-- * 查询商品  颜色{子类}尺码{子类}-->
+    <select id="selectspecifications" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
+        SELECT * FROM shoppingmall.commodity_specification_relation
+        WHERE shoppingmall.commodity_specification_relation.parentId=#{commodity.id};
+    </select>
+
+    <select id="selectCount" resultType="int">
+        SELECT inventory FROM shoppingmall.commodity_specification_inventory_price
+        WHERE
+        commodityId=#{price.commodityId}
+        <if test="price.specification1!=null">
+            and specification1=#{price.specification1}
+        </if>
+        <if test="price.specification2!=null">
+            and specification2=#{price.specification2}
+        </if>
+        <if test="price.specification3!=null and price.specification3.length>0">
+            and specification3=#{price.specification3}
+        </if>
+        <if test="price.specification4!=null and  price.specification3.length>0">
+            and specification4=#{price.specification4}
+        </if>
+    </select>
+
 </mapper>

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface SelectCommodidyService {
-<<<<<<< Updated upstream
-=======
+//<<<<<<< Updated upstream
+//=======
 
 
 
@@ -22,7 +22,7 @@ public interface SelectCommodidyService {
 
 
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
     /**
      * 查询商品规格
      * @return
@@ -87,13 +87,16 @@ public interface SelectCommodidyService {
     /**
      * 查询全部商品
      * */
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
+      // List<CommodityEntity>selectShop();
+//=======
+//    List<CommodityDTO>selectShop();
+    /**
+     * 查询全部商品
+     * */
     List<CommodityEntity>selectShop();
-=======
-    List<CommodityDTO>selectShop();
 
 
 
-
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 }
