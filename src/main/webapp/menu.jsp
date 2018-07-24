@@ -45,7 +45,7 @@
   </li>
   <li class="menu-list-title">
    <span>会员管理</span>
-   <i>◢</i>3
+   <i>◢</i>
   </li>
 
   <li>
@@ -56,17 +56,6 @@
     <!--<li><a href="user_message.jsp" title="会员留言" target="mainCont">会员留言</a></li>-->
    </ul>
   </li>
-  <%----%>
-  <%--<li class="menu-list-title">--%>
-   <%--<span>系统设置</span>--%>
-   <%--<i>◢</i>--%>
-  <%--</li>--%>
-  <%--<li>--%>
-   <%--<ul class="menu-children">--%>
-    <%--<li><a href="basic_settings.jsp" title="站点基本设置" target="mainCont">站点基本设置</a></li>--%>
-    <%--<li><a href="admin_list.jsp" title="站点基本设置" target="mainCont">站点管理员</a></li>--%>
-   <%--</ul>--%>
-  <%--</li>--%>
 
   <li class="menu-list-title">
    <span>广告管理</span>
