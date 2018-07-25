@@ -1,5 +1,7 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 public class ReturnedPurchaseEntity {
@@ -13,6 +15,7 @@ public class ReturnedPurchaseEntity {
     private String returnCommoditySku;
     private String backstageHandlersint;
     private String purchaseHandlersint;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp messageCreateTime;
     private int inventory;
 
