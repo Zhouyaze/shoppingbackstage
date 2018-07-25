@@ -22,10 +22,10 @@
     </select>
 
 
-    <!--查询退货 发货展示前台-->
+    <!--查询退货 发货  展示前台-->
     <select id="selectNews" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
         SELECT * FROM shoppingmall.returned_purchase
-        WHERE messageType=#{type.messageType}
+        WHERE messageType=#{type.messageType} AND operatingStatus=#{type.operatingStatus}
     </select>
 
 
@@ -37,12 +37,14 @@
     </update>
 
 
+    <!--查询商品规格 id -->
     <select id="slecctspecificationsId" resultType="int">
       SELECT shoppingmall.returned_purchase.specificationsId   FROM returned_purchase
         WHERE manifest=#{manifest}
 
     </select>
 
+    <!--查询商品  数量 -->
     <select id="sslectInventory" resultType="int">
          SELECT shoppingmall.returned_purchase.inventory FROM returned_purchase
         WHERE manifest=#{manifest}
