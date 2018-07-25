@@ -43,6 +43,17 @@
     <li><a href="promotionCommodity_list.jsp" title="促销商品列表" target="mainCont">促销商品列表</a></li>
    </ul>
   </li>
+
+  <li class="menu-list-title">
+   <span>退货商品管理</span>
+   <i>◢</i>
+  </li>
+  <li>
+   <ul class="menu-children">
+    <li><a href="returnCommodity_list.jsp" title="退货商品列表" target="mainCont">退货商品列表</a></li>
+   </ul>
+  </li>
+
   <li class="menu-list-title">
    <span>会员管理</span>
    <i>◢</i>
