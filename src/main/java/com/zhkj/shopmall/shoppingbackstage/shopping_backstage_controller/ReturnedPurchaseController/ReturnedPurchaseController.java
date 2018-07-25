@@ -2,10 +2,13 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.Return
 
 import com.alibaba.fastjson.JSON;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService.ReturnedPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class ReturnedPurchaseController {
@@ -25,9 +28,9 @@ public class ReturnedPurchaseController {
     ReturnedPurchaseService returnedPurchaseService;
 
 
-    @RequestMapping("selectAll")
-    public int select(int messageTypeId){
-        return returnedPurchaseService.selectAll(messageTypeId);
+    @RequestMapping("selectOne")
+    public List<ReturnedPurchaseEntity> select(ReturnedPurchaseEntity returnedPurchaseEntity){
+        return returnedPurchaseService.selectType(returnedPurchaseEntity);
     }
 
     @RequestMapping("saveReturned")
@@ -39,10 +42,15 @@ public class ReturnedPurchaseController {
     }
 
 
-    @RequestMapping("sendJosn")
+   // @RequestMapping("sendJosn")
     public String sendJson(){
         String json="{\"messageType\":\"3\",\"operatingStatus\":\"4\",\"manifest\":\"123456\",\"returnUserName\":\"崔文杰\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
         ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
         return returnedPurchaseService.querReturned(returnedPurchaseVO);
     }
+
+//    @RequestMapping("sendJosn")
+//    public String sendJson1(ReturnedPurchaseEntity returnedPurchaseEntity){
+//       // return returnedPurchaseService.querReturn(returnedPurchaseEntity);
+//    }
 }

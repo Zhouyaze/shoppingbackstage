@@ -4,6 +4,8 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.Returne
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ReturnedPurchaseMapper {
 
@@ -25,12 +27,19 @@ public interface ReturnedPurchaseMapper {
      */
     int querReturned(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
 
+
     /**
-     * 根据 条件查询（发货  退货）
-     * @param messageTypeId
+     * 查询退货商品   发送到进销存
      * @return
      */
-    int selectAll(int messageTypeId);
+    ReturnedPurchaseEntity querReturn(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
+
+    /**
+     * 根据 条件查询（发货  退货）
+     * @param returnedPurchaseEntity
+     * @return
+     */
+    List<ReturnedPurchaseEntity> selectType(@Param("type") ReturnedPurchaseEntity returnedPurchaseEntity);
 
 
 }

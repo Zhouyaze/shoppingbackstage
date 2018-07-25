@@ -4,6 +4,8 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPur
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface ReturnedPurchaseService {
 
     /**
@@ -25,8 +27,8 @@ public interface ReturnedPurchaseService {
      * 查询退货商品   发送到进销存
      * @return
      */
-    String querReturn(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
+    int querReturn(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
 
 
-    int selectAll(int messageTypeId);
+    List<ReturnedPurchaseEntity> selectType(ReturnedPurchaseEntity returnedPurchaseEntity);
 }
