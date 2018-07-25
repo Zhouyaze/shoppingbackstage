@@ -1,5 +1,6 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_ReturnedServiceImpl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity;
@@ -41,29 +42,29 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 
     HttpSession session;
     /**
-     * 添加   退货   发货  商品信息
+     * 退货   发货  商品信息
+     * 文杰给我的kafka数据并存入消息表"
      * @param returnedPurchaseVO
-     * @return
+     * @return 文杰
      */
     //@Override
-    @KafkaListener(topics="订单")
-    public String saveReturned(ReturnedPurchaseVO returnedPurchaseVO) {
+    @KafkaListener(topics="文杰给我的kafka数据并存入消息表")
+    public String saveNews(ReturnedPurchaseVO returnedPurchaseVO) {
         ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
         CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
+
         StringBuffer stringBufferSku = new StringBuffer();
-        int sendtype=returnedPurchaseEntity.getMessageType();
         if(null != priceEntity.getSpecification1()) stringBufferSku.append(priceEntity.getSpecification1() + ",");
         if(null != priceEntity.getSpecification2()) stringBufferSku.append(priceEntity.getSpecification2() + ",");
         if(null != priceEntity.getSpecification3()) stringBufferSku.append(priceEntity.getSpecification3() + ",");
         if(null != priceEntity.getSpecification4()) stringBufferSku.append(priceEntity.getSpecification4());
         returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
-        returnedPurchaseEntity.setInventory(returnedPurchaseEntity.getInventory());
         /**
          * 获取当前登陆人
          */
         //returnedPurchaseEntity.setBackstageHandlersint(session.getAttribute("loginName").toString());
         //传入消息表
-             int no= returnedPurchaseMapper.saveReturned(returnedPurchaseEntity);
+             int no= returnedPurchaseMapper.saveNews(returnedPurchaseEntity);
              if (no>0){
                  return "成功添加消息表";
              }
@@ -71,30 +72,49 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
     }
 
 
-
+    /**
+     * 测试  监听
+     * @param content
+     */
     @KafkaListener(topics = "test")
     public void getMsg(String content){
         System.out.println("测试"+content);
     }
 
     /**
-     * 退货处理 接收信息状态 同意 还是不同意
-     * 订单发货 接收信息状态 同意 还是不同意
-     * @param returnedPurchaseVO
-     * @return
+     * 传送进销存  （退货/进货）信息
+     * @return 发送 国超  退货 发货  信息 逐条发
      */
-    @KafkaListener(topics="test")
+    @Override
+    public ReturnedPurchaseEntity sendNews(ReturnedPurchaseEntity returnedPurchaseEntity) {
+        returnedPurchaseEntity=returnedPurchaseMapper.sendNews(returnedPurchaseEntity);
+        try {
+            kafkaTemplate.send("ShipmentReturnKafka",objectMapper.writeValueAsString(returnedPurchaseEntity));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return returnedPurchaseEntity;
+    }
+
+    /**
+     * 进销存 返回Kafka 消息
+     * 判断 是否已发货
+     *      是否退货通过
+     * @param returnedPurchaseVO
+     * @return 监听   国超 返回信息
+     */
+    @KafkaListener(topics="ShipmentReturnKafka1")
     public String querReturned(ReturnedPurchaseVO returnedPurchaseVO) {
 
         ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
         CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
-        int number=returnedPurchaseEntity.getMessageType();
-        int no=returnedPurchaseEntity.getOperatingStatus();
+        int MessageType=returnedPurchaseEntity.getMessageType();
+        int YesOrNo=returnedPurchaseEntity.getOperatingStatus();
         //消息类型 1:进货 2:退货 3:订单
-        if (number==1){//类型 进货
+        if (MessageType==1){//类型 进货
 
-        }else if(number==2){//类型等于退货
-            if (no==4){
+        }else if(MessageType==2){//类型等于退货
+            if (YesOrNo==4){
                 //根据商品名区查询 商品id
                 int id=selectCommodidyMapper.seletCommodityId(returnedPurchaseVO.getCommodityName());
                 priceEntity.setCommodityId(id);
@@ -102,40 +122,53 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
                 int count1=selectCommodidyMapper.selectCount(priceEntity);
                 count1=count1+returnedPurchaseEntity.getInventory();
                 priceEntity.setInventory(count1);
+                //添加商品库存
                 updateCommodityMapper.updateSpecification(priceEntity);
+                /** 调用支付接口 退给客户钱**/
+                //
+                //退款接口
+                //
             }else {
+                /**
+                 * 不同意退货
+                 * 修改 消息表为  不通过
+                 */
                 returnedPurchaseEntity.setOperatingStatus(5);
             }
-        }else if (number==3){//类型等于订单
-            if (no==4){
+        }else if (MessageType==3){//类型等于订单
+            if (YesOrNo==4){
+                /**
+                 * 已发货
+                 * 需要数据 订单唯一标识    商品状态
+                 * 根据唯一标识修改商品物流状态
+                 */
                 orderFromMapper.updateOrderFrom(returnedPurchaseEntity.getManifest());
             }else {
+                /**
+                 * 未发货
+                 * 不做修改订单物流状态
+                 * 修改消息表  不通过
+                 */
                 returnedPurchaseEntity.setOperatingStatus(5);
             }
         }
-        returnedPurchaseMapper.update(returnedPurchaseEntity);
+        returnedPurchaseMapper.updateNews(returnedPurchaseEntity);
         return "成功";
 
     }
 
+
+
+
     /**
-     * 传送进销存  （退货/进货）信息
+     * 前台 数据查询
+     * @param returnedPurchaseEntity
      * @return
      */
     @Override
-    public int querReturn(ReturnedPurchaseEntity returnedPurchaseEntity) {
-
-         returnedPurchaseEntity=returnedPurchaseMapper.querReturn(returnedPurchaseEntity);
-         //kafkaTemplate.send("",returnedPurchas.);
-        return 1;
+    public List<ReturnedPurchaseEntity> selectNews(ReturnedPurchaseEntity returnedPurchaseEntity) {
+        return returnedPurchaseMapper.selectNews(returnedPurchaseEntity);
     }
-
-
-    @Override
-    public List<ReturnedPurchaseEntity> selectType(ReturnedPurchaseEntity returnedPurchaseEntity) {
-        return returnedPurchaseMapper.selectType(returnedPurchaseEntity);
-    }
-
 
     /**
      * 转换前台Vo数据 到实体
