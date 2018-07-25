@@ -35,10 +35,10 @@ public interface ReturnedPurchaseMapper {
 
     /**
      * 修改状态
-     * @param returnedPurchaseEntity
+     * @param
      * @return
      */
-    int updateNews(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
+    int updateNews(@Param("operatingStatus")int operatingStatus,@Param("manifest") String manifest);
 
     /**
      * 根据 条件查询（发货  退货）展示前台
@@ -46,6 +46,17 @@ public interface ReturnedPurchaseMapper {
      * @return
      */
     List<ReturnedPurchaseEntity> selectNews(@Param("type") ReturnedPurchaseEntity returnedPurchaseEntity);
+
+
+    /**
+     * 根据订单号 查询
+     * @param manifest
+     * @return
+     */
+    int slecctspecificationsId(@Param("manifest") String  manifest);
+
+    int sslectInventory (@Param("manifest") String  manifest);
+
 
 
 

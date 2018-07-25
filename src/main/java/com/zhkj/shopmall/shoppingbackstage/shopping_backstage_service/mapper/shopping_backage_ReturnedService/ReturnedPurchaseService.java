@@ -20,7 +20,7 @@ public interface ReturnedPurchaseService {
      * 查询退货 发货商品  发送到进销存 逐条发送
      * @return 国超
      */
-    ReturnedPurchaseEntity sendNews(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
+    String sendNews(@Param("returned") ReturnedPurchaseEntity returnedPurchaseEntity);
 
 
     /**
@@ -30,10 +30,10 @@ public interface ReturnedPurchaseService {
      */
     List<ReturnedPurchaseEntity> selectNews(ReturnedPurchaseEntity returnedPurchaseEntity);
 
-    /**
-     * 测试 国超 返回数据
-     * @param returnedPurchaseVO
-     * @return
-     */
-    String querReturned(ReturnedPurchaseVO returnedPurchaseVO);
+//    /**
+//     * 测试 国超 返回数据
+//     * @param returnedPurchaseVO
+//     * @return
+//     */
+//    String querReturned(ReturnedPurchaseVO returnedPurchaseVO);
 }

@@ -1,0 +1,17 @@
+package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoping_backstage_Warningcommodity;
+
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.WarningcommodityEntity;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface WarningcommodityMapper {
+
+    /**
+     * 添加商品 补货信息
+     * @param warningcommodityEntity
+     * @return
+     */
+    int saveWarning(@Param("warning") WarningcommodityEntity warningcommodityEntity);
+
+}

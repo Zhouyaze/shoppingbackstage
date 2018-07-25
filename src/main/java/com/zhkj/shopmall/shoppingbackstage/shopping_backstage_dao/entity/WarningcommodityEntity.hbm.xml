@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.WarningcommodityEntity"
+           table="warningcommodity" schema="shoppingmall">
+        <id name="id" column="id"/>
+        <property name="commodityName" column="commodityName"/>
+        <property name="commoditySpecification" column="commoditySpecification"/>
+        <property name="commodityCount" column="commodityCount"/>
+        <property name="commoditySupplier" column="commoditySupplier"/>
+        <property name="commodityWaitCount" column="commodityWaitCount"/>
+        <property name="createTime" column="createTime"/>
+        <property name="commodityState" column="commodityState"/>
+    </class>
+</hibernate-mapping>

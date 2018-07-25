@@ -96,7 +96,7 @@ public interface SelectCommodidyMapper {
      * @param
      * @return
      */
-    int selectCount(@Param("price") CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity);
+    int selectCount(@Param("specificationsId") int specificationsId);
 
 
 }

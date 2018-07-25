@@ -44,16 +44,24 @@ public class ReturnedPurchaseController {
      * @return 国超
      */
     @RequestMapping("sendJosn")
-    public ReturnedPurchaseEntity sendJson1(ReturnedPurchaseEntity returnedPurchaseEntity){
+    public String sendJson1(ReturnedPurchaseEntity returnedPurchaseEntity){
 
-        return returnedPurchaseService.sendNews(returnedPurchaseEntity);
+        String name=returnedPurchaseService.sendNews(returnedPurchaseEntity);
+        if (name!=null){
+            return "成功发送消息";
+        }
+        return "发送消息失败";
     }
-
-    @RequestMapping("sendJosn1")
-    public String sendJson(){
-        String json="{\"messageType\":\"2\",\"operatingStatus\":\"4\",\"manifest\":\"123456\",\"returnUserName\":\"崔文杰\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
-        ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
-        return returnedPurchaseService.querReturned(returnedPurchaseVO);
-    }
+//
+//    /**
+//     * 测试 进销存传过来的数据
+//     * @return
+//     */
+//    @RequestMapping("sendJosn1")
+//    public String sendJson(){
+//        String json="{\"messageType\":\"2\",\"operatingStatus\":\"4\",\"manifest\":\"123456\",\"returnUserName\":\"崔文杰\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
+//        ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
+//        return returnedPurchaseService.querReturned(returnedPurchaseVO);
+//    }
 
 }
