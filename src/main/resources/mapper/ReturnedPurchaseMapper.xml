@@ -2,29 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_ReturnedPurchase.ReturnedPurchaseMapper">
 
-    <insert id="saveReturned">
+    <!--添加 退货 发货信息到 消息表-->
+    <insert id="saveNews">
        INSERT INTO shoppingmall.returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint,inventory)
        VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint},#{returned.inventory})
     </insert>
 
-    <select id="querReturned" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
-        SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint
+    <!--<select id="querReturned" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">-->
+        <!--SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint-->
+        <!--FROM shoppingmall.returned_purchase WHERE id=1  &lt;!&ndash;#{returned.id}&ndash;&gt;-->
+    <!--</select>-->
+
+
+    <!--查询退货 发货商品 发送进销存  根据id 逐条发 -->
+    <select id="sendNews" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
+        SELECT *
         FROM shoppingmall.returned_purchase WHERE id=1  <!--#{returned.id}-->
     </select>
 
-    <select id="querReturn" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
-        SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint
-        FROM shoppingmall.returned_purchase WHERE id=1  <!--#{returned.id}-->
-    </select>
 
-    <select id="selectType" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
+    <!--查询退货 发货展示前台-->
+    <select id="selectNews" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
         SELECT * FROM shoppingmall.returned_purchase
         WHERE messageType=#{type.messageType}
     </select>
-        <update id="update">
-        UPDATE shoppingmall.returned_purchase
-            SET operatingStatus=#{returned.operatingStatus}
-        WHERE manifest=#{returned.manifest}
-        </update>
+
+
+    <!--修改 消息表  状态-->
+    <update id="updateNews">
+    UPDATE shoppingmall.returned_purchase
+    SET operatingStatus=#{returned.operatingStatus}
+    WHERE manifest=#{returned.manifest}
+    </update>
 
 </mapper>
