@@ -11,6 +11,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 
 
 
+
 @EnableKafka
 @ComponentScan("com.zhkj.shopmall.shoppingbackstage")
 @MapperScan("com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper")

@@ -115,7 +115,7 @@
      </tr>
      <tr>
       <td style="text-align:right;">轮播图片：</td>
-      <td><input onchange="showLunBoImg(this)" name="file" id="lunboPicture" type="file" class="textBox length-middle"/>
+      <td><input onchange="showLunBoImg(this)" name="File" id="lunboPicture" type="file" class="textBox length-middle"/>
      </tr>
      <tr>
       <td style="text-align:right;width: 100px;height: 100px">图片预览:</td>
@@ -123,7 +123,7 @@
      </tr>
      <tr>
       <td style="text-align:right;">详情图片：</td>
-      <td><input onchange="showxiangqingImg(this)" name="file" id="xiangqingPicture" type="file" class="textBox length-middle"/></td>
+      <td><input onchange="showxiangqingImg(this)" name="File" id="xiangqingPicture" type="file" class="textBox length-middle"/></td>
      </tr>
      <tr>
       <td style="text-align:right;width: 100px;height: 100px">图片预览:</td>

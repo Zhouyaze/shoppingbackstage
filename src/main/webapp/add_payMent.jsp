@@ -77,7 +77,7 @@
         <tr>
             <td style="text-align:right;">是否禁用：</td>
             <!--class="textBox length-middle"-->
-            <td id="status"><input name="status" type="radio" value="2"/>是<input name="status" type="radio" value="1"/>否</td>
+            <td id="status"><input name="payStatus" type="radio" value="2"/>是<input name="status" type="radio" value="1"/>否</td>
             <td></td>
         </tr>
         <tr>

@@ -15,6 +15,6 @@ public interface UpdateCommodityMapper {
 
     int UpdateCommodityPicture(@Param("pictureEntity") CommodityintroducepictureEntity pictureEntity);
 
-    int updateSpecification(@Param("price") CommoditySpecificationInventoryPriceEntity priceEntity);
+    int updateSpecification(@Param("specificationsId") int id ,@Param("count2")int count2);
 
 }

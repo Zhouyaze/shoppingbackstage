@@ -11,6 +11,7 @@
         WHERE id= #{CommodityEntity.id}
     </update>
 
+
     <update id="UpdateCommodityPrice">
         UPDATE shoppingmall.commodity_specification_inventory_price
         SET
@@ -33,10 +34,12 @@
     </update>
 
     <update id="updateSpecification">
-    UPDATE commodity_specification_inventory_price SET inventory=#{price.inventory}
-        WHERE
-        commodityId=#{price.commodityId}
-        <if test="price.specification1!=null">
+    UPDATE commodity_specification_inventory_price SET inventory=#{count2}
+    WHERE id=#{specificationsId}
+
+    </update>
+<!--
+  <if test="price.specification1!=null">
             and specification1=#{price.specification1}
         </if>
         <if test="price.specification2!=null">
@@ -48,7 +51,6 @@
         <if test="price.specification4!=null and  price.specification3.length>0">
             and specification4=#{price.specification4}
         </if>
-    </update>
-
+ -->
 
 </mapper>

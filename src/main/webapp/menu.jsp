@@ -29,8 +29,8 @@
   <li>
    <ul class="menu-children">
     <li><a href="product_list.jsp" title="商品列表" target="mainCont">商品列表</a></li>
-    <li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>
-    <li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>
+    <%--<li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>--%>
+    <%--<li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>--%>
    </ul>
   </li>
 
@@ -43,6 +43,17 @@
     <li><a href="promotionCommodity_list.jsp" title="促销商品列表" target="mainCont">促销商品列表</a></li>
    </ul>
   </li>
+
+  <li class="menu-list-title">
+   <span>审核商品</span>
+   <i>◢</i>
+  </li>
+  <li>
+   <ul class="menu-children">
+    <li><a href="returnCommodity_list.jsp" title="审核商品列表" target="mainCont">审核商品列表</a></li>
+   </ul>
+  </li>
+
   <li class="menu-list-title">
    <span>会员管理</span>
    <i>◢</i>
@@ -56,17 +67,6 @@
     <!--<li><a href="user_message.jsp" title="会员留言" target="mainCont">会员留言</a></li>-->
    </ul>
   </li>
-  <%----%>
-  <%--<li class="menu-list-title">--%>
-   <%--<span>系统设置</span>--%>
-   <%--<i>◢</i>--%>
-  <%--</li>--%>
-  <%--<li>--%>
-   <%--<ul class="menu-children">--%>
-    <%--<li><a href="basic_settings.jsp" title="站点基本设置" target="mainCont">站点基本设置</a></li>--%>
-    <%--<li><a href="admin_list.jsp" title="站点基本设置" target="mainCont">站点管理员</a></li>--%>
-   <%--</ul>--%>
-  <%--</li>--%>
 
   <li class="menu-list-title">
    <span>广告管理</span>
