@@ -3,6 +3,7 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.userLo
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpsParameters;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.dto.UserDTO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.UserEntity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -63,13 +64,16 @@ public class LoginController {
         Map<String, String> map = new HashMap<>();
         map.put("loginUser", loginUser);
         map.put("password", password);
+        UserDTO userDTO=new UserDTO();
+        userDTO.setLoginUser(loginUser);
+        userDTO.setPassword(password);
         try {
             CloseableHttpClient httpclient = HttpClients.createDefault();
 //            PostMethod postMethod = new PostMethod(commandURL);
-            HttpPost httpPost = new HttpPost("http://localhost:8081/test");
+            HttpPost httpPost = new HttpPost("http://192.168.0.113:8080/commonAuthentication");
             List<NameValuePair> params = new ArrayList<NameValuePair>(); //建立一个NameValuePair数组，用于存储欲传送的参数
-            params.add(new BasicNameValuePair("loginUser", loginUser));//添加参数
-            params.add(new BasicNameValuePair("password", password));
+            params.add(new BasicNameValuePair("userDTO", objectMapper.writeValueAsString(userDTO)));//添加参数
+//            params.add(new BasicNameValuePair("password", password));
             System.out.println(params.toString());
             httpPost.setEntity(new UrlEncodedFormEntity(params,HTTP.UTF_8));
             System.out.println("httpPost"+httpPost.getURI());

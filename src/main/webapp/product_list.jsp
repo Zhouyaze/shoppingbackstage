@@ -47,7 +47,7 @@
                              "<td>"+optionJson.items[i].inventory+"</td>"+
                              "<td>"+
                              "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
-                             "<a title=\"编辑\" href=\"edit_commodity.jsp?id="+optionJson.items[i].id+"\"><img src=\"images/icon_edit.gif\"/></a>"+
+                             "<a title=\"编辑\" href=\"edit_commodity.jsp?id="+optionJson.items[i].id+"&commodityId="+optionJson.items[i].commodityId+"\"><img src=\"images/icon_edit.gif\"/></a>"+
                              "<a href=\"delete_Commodity.jsp?commodityId="+optionJson.items[i].commodityId+"\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+
                              "</tr>";
@@ -91,7 +91,7 @@
                              "<td>"+optionJson.items[i].inventory+"</td>"+
                              "<td>"+
                              "<a title=\"查看\" href=\"commodity_specification_info.jsp?commodityId="+optionJson.items[i].commodityId+"&commodityName="+optionJson.items[i].commodityEntity.commodityName+"&id="+optionJson.items[i].id+"\"><img src=\"images/icon_view.gif\"/></a>"+
-                             "<a title=\"编辑\" href=\"edit_commodity.jsp?id="+optionJson.items[i].id+"\"><img src=\"images/icon_edit.gif\"/></a>"+
+                             "<a title=\"编辑\" href=\"edit_commodity.jsp?id="+optionJson.items[i].id+"&commodityId="+optionJson.items[i].commodityId+"\"><img src=\"images/icon_edit.gif\"/></a>"+
                              "<a href=\"delete_Commodity.jsp?commodityId="+optionJson.items[i].commodityId+"\" title=\"删除\"><img src=\"images/icon_drop.gif\"/></a>"+
                              "</td>"+
                              "</tr>";

@@ -45,7 +45,7 @@
         function baocun() {
             var form = new FormData(document.getElementById("form"));
             $.ajax({
-                url:"${pageContext.request.contextPath}/updateCommodity?id="+params.id,
+                url:"${pageContext.request.contextPath}/updateCommodity?id="+params.id+"&commodityId="+params.commodityId,
                 type:"post",
                 data:form,
                 processData:false,

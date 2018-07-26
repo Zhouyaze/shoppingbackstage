@@ -85,6 +85,8 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                         kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity)
                                 ,String.valueOf(pictureEntity.getId())
                                 ,CommodityintroducepictureEntity.class);
+                        int id=pictureEntity.getId();
+                        pictureEntity.setId(id+1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
