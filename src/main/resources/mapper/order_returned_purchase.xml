@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.Order_Returned_PurchaseMapper">
+    <select id="selectHarvestaddressById" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.HarvestaddressEntity">
+        select * from harvestaddress WHERE id=#{id};
+    </select>
+    <select id="selectCommoditySpecifiation" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+       select * from commodity_specification_inventory_price WHERE id=#{id};
+    </select>
+    <select id="selectCommodityById" resultType="java.lang.String">
+        select commodityName from commodity WHERE id=#{id};
+    </select>
+    <insert id="insertReturnedPuchase">
+      insert into returned_purchase (messageType, manifest, operatingStatus, returnUserName, returnUserAddress, returnCommodityName, specificationsId) values (#{ReturnedPurchaseEntity.messageType}, #{ReturnedPurchaseEntity.manifest}, #{ReturnedPurchaseEntity.operatingStatus}, #{ReturnedPurchaseEntity.returnUserName}, #{ReturnedPurchaseEntity.returnUserAddress}, #{ReturnedPurchaseEntity.returnCommodityName}, #{ReturnedPurchaseEntity.specificationsId});
+    </insert>
+
+</mapper>

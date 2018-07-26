@@ -38,7 +38,7 @@
                         "<th>退货人</th>" +
                         "<th>退货人地址</th>" +
                         "<th>商品名称</th>" +
-                        "<th>商品规格</th>" +
+
                         "<th>创建时间</th>"+
                         "<th>后台操作人</th>" +
                         "<th>进销存操作人</th>" +
@@ -53,7 +53,7 @@
                             "<th>收货人</th>" +
                             "<th>收货人地址</th>" +
                             "<th>商品名称</th>" +
-                            "<th>商品规格</th>" +
+
                             "<th>创建时间</th>"+
                             "<th>后台操作人</th>" +
                             "<th>进销存操作人</th>" +
@@ -85,7 +85,6 @@
                                 str+="<td>"+optionJson[i].returnUserName+"</td>"+
                                 "<td>"+optionJson[i].returnUserAddress+"</td>"+
                                 "<td>"+optionJson[i].returnCommodityName+"</td>"+
-                                "<td>"+optionJson[i].returnCommoditySku+"</td>"+
                                 "<td>"+optionJson[i].messageCreateTime+"</td>"+
                                 "<td>"+optionJson[i].backstageHandlersint+"</td>"+
                                 "<td>"+optionJson[i].purchaseHandlersint+"</td>"+

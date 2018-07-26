@@ -1,6 +1,5 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService;
 
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
 import org.apache.ibatis.annotations.Param;
 
@@ -8,12 +7,12 @@ import java.util.List;
 
 public interface ReturnedPurchaseService {
 
-    /**
-     * 添加退货发货商品信息到消息表
-     * @param returnedPurchaseVO
-     * @return 文杰
-     */
-    String saveNews(ReturnedPurchaseVO returnedPurchaseVO);
+//    /**
+//     * 添加退货发货商品信息到消息表
+//     * @param returnedPurchaseEntity
+//     * @return 文杰
+//     */
+//    String saveNews(ReturnedPurchaseEntity returnedPurchaseEntity);
 
 
     /**

@@ -7,16 +7,16 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoping
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shoping_backstage_WarningcommodityService.WarningcommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-
+@Service
 public class WarningcommodityServiceImpl implements WarningcommodityService {
 
 
     @Autowired
     WarningcommodityMapper mapper;
 
-    @KafkaListener(topics = "")
+    @KafkaListener(topics = "stock")
     public String ReceiveMessages(String json){
         //接收进货数据
         WarnigcommodityVO warnigcommodityVO= JSONObject.parseObject(json,WarnigcommodityVO.class);
@@ -32,8 +32,8 @@ public class WarningcommodityServiceImpl implements WarningcommodityService {
 
 
 
-   private WarningcommodityEntity getWarningcommodityEntity(WarnigcommodityVO warnigcommodityVO){
 
+   private WarningcommodityEntity getWarningcommodityEntity(WarnigcommodityVO warnigcommodityVO){
         WarningcommodityEntity warningcommodityEntity=new WarningcommodityEntity();
         warningcommodityEntity.setCommodityName(warnigcommodityVO.getCommodityName());
         warningcommodityEntity.setCommoditySpecification(warnigcommodityVO.getCommoditySpecification());
@@ -41,8 +41,7 @@ public class WarningcommodityServiceImpl implements WarningcommodityService {
         warningcommodityEntity.setCommoditySupplier(warnigcommodityVO.getCommoditySupplier());
         warningcommodityEntity.setCommodityWaitCount(warnigcommodityVO.getCommodityWaitCount());
 
-        warningcommodityEntity.setCreateTime((Timestamp) warnigcommodityVO.getCreateTime());
-        warningcommodityEntity.setCommodityState(warnigcommodityVO.getCommodityState());
+       warningcommodityEntity.setCreateTime(warnigcommodityVO.getCreateTime());
         return warningcommodityEntity;
    }
 

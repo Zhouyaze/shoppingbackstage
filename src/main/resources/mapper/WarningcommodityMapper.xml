@@ -3,7 +3,13 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoping_backstage_Warningcommodity.WarningcommodityMapper">
 
     <insert id="saveWarning">
-    INSERT INTO warningcommodity(commodityName, commoditySpecification, commodityCount, commoditySupplier, commodityWaitCount, createTime, commodityState)
-    VALUES (#{warning.commodityName},#{warning.commoditySpecification},)#{warning.commodityCount},
-#{warning.commoditySupplier},#{warning.commodityWaitCount},#{warning.createTime},#{warning.commodityState}  </insert>
+    INSERT INTO warningcommodity(commodityName, commoditySpecification, commodityCount, commoditySupplier, commodityWaitCount, createTime)
+    VALUES (#{warning.commodityName},#{warning.commoditySpecification},#{warning.commodityCount},
+#{warning.commoditySupplier},#{warning.commodityWaitCount},#{warning.createTime})
+   </insert>
+
+    <select id="selectWarning" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.WarningcommodityEntity">
+        SELECT * FROM shoppingmall.warningcommodity
+
+    </select>
 </mapper>

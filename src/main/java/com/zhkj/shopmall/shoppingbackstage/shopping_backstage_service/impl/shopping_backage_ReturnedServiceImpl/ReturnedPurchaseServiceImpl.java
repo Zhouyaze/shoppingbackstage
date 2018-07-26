@@ -3,11 +3,11 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shop
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReceiveMessageVO;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.SendMessageVO;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.HarvestaddressEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.Order_Returned_PurchaseMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.UpdateCommodityMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_OrderFrom.OrderFromMapper;
@@ -43,60 +43,99 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
     @Autowired
     OrderFromMapper orderFromMapper;
 
+    @Autowired
+    Order_Returned_PurchaseMapper order_returned_purchaseMapper;
+
     HttpSession session;
 
 
     /**
      * 退货   发货  商品信息
      * 文杰给我的kafka数据并存入消息表"
-     * @param returnedPurchaseVO
-     * @return 文杰        stock
+     * @param json
+     * @return 文杰
      */
-    //@Override
-    @KafkaListener(topics="文杰给我的kafka数据并存入消息表")
-    public String saveNews(ReturnedPurchaseVO returnedPurchaseVO) {
-        ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
-        CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
+    @KafkaListener(topics="order")
+    public String saveNews(String json) {
+        OrderReturnVO orderReturnVO=JSONObject.parseObject(json,OrderReturnVO.class);
+        List<FormShopDTOList> formShopDTOLists=orderReturnVO.getFromShopDtoList();
+        ReturnedPurchaseEntity returnedPurchaseEntity=new ReturnedPurchaseEntity();
+        for (int i=0;i<formShopDTOLists.size();i++){
+            //根据id查询商品id 规格
+            CommoditySpecificationInventoryPriceEntity commoditySpecificationInventoryPriceEntity=  order_returned_purchaseMapper.selectCommoditySpecifiation(formShopDTOLists.get(i).getCommodityId());
+            //根据商品id查商品名字
+           int id=commoditySpecificationInventoryPriceEntity.getCommodityId();
+            String commodityName=order_returned_purchaseMapper.selectCommodityById(commoditySpecificationInventoryPriceEntity.getCommodityId());
+            //根据地址id 查询地址
+            HarvestaddressEntity harvestaddressEntity= order_returned_purchaseMapper.selectHarvestaddressById(orderReturnVO.getHarvestAddressId());
+           //规格
+            String name=returnedPurchaseEntity.getReturnCommodityName();
+            if (commoditySpecificationInventoryPriceEntity.getSpecification1()!=""&&commoditySpecificationInventoryPriceEntity.getSpecification1()==null){
+                name+= commodityName+"-"+commoditySpecificationInventoryPriceEntity.getSpecification1();
+            } if (commoditySpecificationInventoryPriceEntity.getSpecification2()!=""&&commoditySpecificationInventoryPriceEntity.getSpecification2()==null){
+                name+= ":"+commoditySpecificationInventoryPriceEntity.getSpecification2();
+            } if (commoditySpecificationInventoryPriceEntity.getSpecification3()!=""&&commoditySpecificationInventoryPriceEntity.getSpecification3()==null){
+                name+= ":"+commoditySpecificationInventoryPriceEntity.getSpecification3();
 
-        StringBuffer stringBufferSku = new StringBuffer();
-        if(null != priceEntity.getSpecification1()){
-            if(null == priceEntity.getSpecification2()){
-                stringBufferSku.append(priceEntity.getSpecification1() + "-");
-            }else {
-                stringBufferSku.append(priceEntity.getSpecification1());
+            } if (commoditySpecificationInventoryPriceEntity.getSpecification4()!=""&&commoditySpecificationInventoryPriceEntity.getSpecification4()==null){
+                name+=  ":"+commoditySpecificationInventoryPriceEntity.getSpecification4();
             }
+            name+=""+formShopDTOLists.get(i).getCommodityNumber()+"个";
+            returnedPurchaseEntity.setReturnCommodityName(name);
+            returnedPurchaseEntity.setMessageType(orderReturnVO.getMessageType());
+            returnedPurchaseEntity.setManifest(orderReturnVO.getOrderNumber());
+            returnedPurchaseEntity.setOperatingStatus(1);
+            returnedPurchaseEntity.setReturnUserName(harvestaddressEntity.getUserName());
+            returnedPurchaseEntity.setReturnUserAddress(harvestaddressEntity.getHarvestAddressName());
+            returnedPurchaseEntity.setSpecificationsId(formShopDTOLists.get(i).getCommodityId());
+//            returnedPurchaseEntity.setInventory(formShopDTOLists.get(i).getCommodityId());
         }
-        if(null != priceEntity.getSpecification2()){
-            if(null == priceEntity.getSpecification3()){
-                stringBufferSku.append(priceEntity.getSpecification2() + "-");
-            }else {
-                stringBufferSku.append(priceEntity.getSpecification2());
-            }
-        }
-        if(null != priceEntity.getSpecification3()){
-            if(null == priceEntity.getSpecification4()){
-                stringBufferSku.append(priceEntity.getSpecification3() + "-");
-            }else {
-                stringBufferSku.append(priceEntity.getSpecification3());
-            }
-        }
-        if(null != priceEntity.getSpecification4())
-        {
-            stringBufferSku.append(priceEntity.getSpecification4());
-        }
-        returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
-        /**
-         * 获取当前登陆人
-         */
-        //returnedPurchaseEntity.setBackstageHandlersint(session.getAttribute("loginName").toString());
-        //传入消息表
-             int no= returnedPurchaseMapper.saveNews(returnedPurchaseEntity);
-             if (no>0){
-                 return "成功添加消息表";
-             }
-             return "添加失败";
+        //添加数据库
+        order_returned_purchaseMapper.insertReturnedPuchase(returnedPurchaseEntity);
+//        ReturnedPurchaseVO returnedPurchaseVO=JSONObject.parseObject(json,ReturnedPurchaseVO.class);
+//        ReturnedPurchaseEntity returnedPurchaseEntity=getReturnPurchaseEntity(returnedPurchaseVO);
+//        CommoditySpecificationInventoryPriceEntity priceEntity=getCommodity(returnedPurchaseVO);
+//
+//
+//        StringBuffer stringBufferSku = new StringBuffer();
+//        if(null != priceEntity.getSpecification1()){
+//            if(null == priceEntity.getSpecification2()){
+//                stringBufferSku.append(priceEntity.getSpecification1() + "-");
+//            }else {
+//                stringBufferSku.append(priceEntity.getSpecification1());
+//            }
+//        }
+//        if(null != priceEntity.getSpecification2()){
+//            if(null == priceEntity.getSpecification3()){
+//                stringBufferSku.append(priceEntity.getSpecification2() + "-");
+//            }else {
+//                stringBufferSku.append(priceEntity.getSpecification2());
+//            }
+//        }
+//        if(null != priceEntity.getSpecification3()){
+//            if(null == priceEntity.getSpecification4()){
+//                stringBufferSku.append(priceEntity.getSpecification3() + "-");
+//            }else {
+//                stringBufferSku.append(priceEntity.getSpecification3());
+//            }
+//        }
+//        if(null != priceEntity.getSpecification4())
+//        {
+//            stringBufferSku.append(priceEntity.getSpecification4());
+//        }
+//        returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
+//        /**
+//         * 获取当前登陆人
+//         */
+//        //returnedPurchaseEntity.setBackstageHandlersint(session.getAttribute("loginName").toString());
+//        //传入消息表
+//             int no= returnedPurchaseMapper.saveNews(returnedPurchaseEntity);
+//             if (no>0){
+//                 return "成功添加消息表";
+//             }
+//             return "添加失败";
+        return "添加成功";
     }
-
 
 //    /**
 //     * 测试  监听
@@ -107,6 +146,7 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
 //        System.out.println("测试"+content);
 //    }
 
+
     /**
      * 传送进销存  （退货/进货）信息
      * @return 发送 国超  退货 发货  信息 逐条发
@@ -115,16 +155,15 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
     public String sendNews(ReturnedPurchaseEntity returnedPurchaseEntity) {
         returnedPurchaseEntity=returnedPurchaseMapper.sendNews(returnedPurchaseEntity);
         try {
-            StringBuffer stringBufferSku = new StringBuffer();
-            if(null != returnedPurchaseEntity.getReturnUserName()) stringBufferSku.append(returnedPurchaseEntity.getReturnUserName() + "-");
-            if(null != returnedPurchaseEntity.getReturnCommoditySku()) stringBufferSku.append(returnedPurchaseEntity.getReturnCommoditySku() + "-");
-            if(null != returnedPurchaseEntity.getReturnUserAddress()) stringBufferSku.append(returnedPurchaseEntity.getReturnUserAddress());
-            returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
-
-            returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
+//            StringBuffer stringBufferSku = new StringBuffer();
+//            if(null != returnedPurchaseEntity.getReturnUserName()) stringBufferSku.append(returnedPurchaseEntity.getReturnUserName() + "-");
+//           if(null != returnedPurchaseEntity.getReturnCommoditySku()) stringBufferSku.append(returnedPurchaseEntity.getReturnCommoditySku() + "-");
+//            if(null != returnedPurchaseEntity.getReturnUserAddress()) stringBufferSku.append(returnedPurchaseEntity.getReturnUserAddress());
+//           returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
+//           returnedPurchaseEntity.setReturnCommoditySku(stringBufferSku.toString());
 
             SendMessageVO sendMessageVO=new SendMessageVO();
-            sendMessageVO.setMessageContent(returnedPurchaseEntity.getReturnCommoditySku());
+            sendMessageVO.setMessageContent(returnedPurchaseEntity.getReturnCommodityName());
             sendMessageVO.setMessageStatus(3);
             sendMessageVO.setMessageToken(returnedPurchaseEntity.getManifest());
             sendMessageVO.setMessageTypeId(1);
@@ -289,7 +328,7 @@ public class ReturnedPurchaseServiceImpl implements ReturnedPurchaseService {
         //商品名
         returnedPurchaseEntity.setReturnCommodityName(purchaseVO.getCommodityName());
         //商品规格
-        returnedPurchaseEntity.setReturnCommoditySku(purchaseVO.getCommoditySku());
+        //returnedPurchaseEntity.setReturnCommoditySku(purchaseVO.getCommoditySku());
         //商品数量
         returnedPurchaseEntity.setInventory(purchaseVO.getCount());
         returnedPurchaseEntity.setOperatingStatus(purchaseVO.getOperatingStatus());
