@@ -29,8 +29,8 @@
   <li>
    <ul class="menu-children">
     <li><a href="product_list.jsp" title="商品列表" target="mainCont">商品列表</a></li>
-    <li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>
-    <li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>
+    <%--<li><a href="product_category.jsp" title="商品分类" target="mainCont">商品分类</a></li>--%>
+    <%--<li><a href="recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>--%>
    </ul>
   </li>
 
@@ -45,12 +45,12 @@
   </li>
 
   <li class="menu-list-title">
-   <span>退货商品管理</span>
+   <span>审核商品</span>
    <i>◢</i>
   </li>
   <li>
    <ul class="menu-children">
-    <li><a href="returnCommodity_list.jsp" title="退货商品列表" target="mainCont">退货商品列表</a></li>
+    <li><a href="returnCommodity_list.jsp" title="审核商品列表" target="mainCont">审核商品列表</a></li>
    </ul>
   </li>
 
