@@ -115,8 +115,7 @@ public class UserServiceImpl implements UserService {
         int result=userMapper.userInfoDelete(userEntity);
         if (result>0){
             try {
-                kafkaService.kafka_del(objectMapper.writeValueAsString(userEntity)
-                        ,userEntity.getId().toString()
+                kafkaService.kafka_del(userEntity.getId().toString()
                         ,UserEntity.class);
             } catch (IOException e) {
                 e.printStackTrace();

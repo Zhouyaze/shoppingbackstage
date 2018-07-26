@@ -4,39 +4,59 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SaveCommodityMapper">
 
     <!--添加商品标题 -->
-    <insert id="savecommoditytype" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO shoppingmall.type(typeName, levels, parentId)
-        VALUES (#{typeEntity.typeName},#{typeEntity.levels},#{typeEntity.parentId})
+    <insert id="savecommoditytype" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity">
+        <selectKey keyProperty="typeEntity.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.type(id,typeName, levels, parentId)
+        VALUES (#{typeEntity.id},#{typeEntity.typeName},#{typeEntity.levels},#{typeEntity.parentId})
     </insert>
     <!-- 添加商品规格 -->
-    <insert id="savespecifications">
-        INSERT INTO shoppingmall.specificationstopic(name)
-        VALUES (#{topic.name})
+    <insert id="savespecifications" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationstopicEntity">
+        <selectKey keyProperty="topic.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.specificationstopic(id,name)
+        VALUES (#{topic.id},#{topic.name})
     </insert>
     <!-- 添加商品详细规格-->
-    <insert id="savespecificationsdetailed" >
-        INSERT INTO shoppingmall.specificationsdetailed(dName)
-        VALUES (#{sedtaile.dName})
+    <insert id="savespecificationsdetailed" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationsdetailedEntity" >
+        <selectKey keyProperty="sedtaile.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.specificationsdetailed(id,dName)
+        VALUES (#{sedtaile.id},#{sedtaile.dName})
     </insert>
 
     <!--添加商品主表 -->
-    <insert id="SaveCommodity">
-        INSERT INTO shoppingmall.commodity(commodityName,bigPictureUrl,typeName)
-        VALUES (#{commodityEntity.commodityName},#{commodityEntity.bigPictureUrl},#{commodityEntity.typeName})
+    <insert id="SaveCommodity" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
+        <selectKey keyProperty="commodityEntity.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO commodity VALUES (#{commodityEntity.id},#{commodityEntity.commodityName},#{commodityEntity.bigPictureUrl},#{commodityEntity.typeName})
     </insert>
     <!--添加商品规格库存价格表(包括小图片) -->
-    <insert id="Savecommodity_specification_inventory_price">
-        INSERT INTO shoppingmall.commodity_specification_inventory_price(commodityId, specification1, specification2, specification3, specification4, inventory, price, picture)
-        VALUES (#{priceEntity.commodityId},#{priceEntity.specification1},#{priceEntity.specification2},#{priceEntity.specification3},#{priceEntity.specification4},#{priceEntity.inventory},#{priceEntity.price},#{priceEntity.picture})
+    <insert id="Savecommodity_specification_inventory_price" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationInventoryPriceEntity">
+        <selectKey keyProperty="priceEntity.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.commodity_specification_inventory_price(id,commodityId, specification1, specification2, specification3, specification4, inventory, price, picture)
+        VALUES (#{priceEntity.id},#{priceEntity.commodityId},#{priceEntity.specification1},#{priceEntity.specification2},#{priceEntity.specification3},#{priceEntity.specification4},#{priceEntity.inventory},#{priceEntity.price},#{priceEntity.picture})
     </insert>
     <!-- 添加商品规格关系表-->
-    <insert id="Savecommodity_specification_relation">
-        INSERT INTO shoppingmall.commodity_specification_relation(specificationName, levels, parentId)
-        VALUES (#{relationEntity.specificationName},#{relationEntity.levels},#{relationEntity.parentId})
+    <insert id="Savecommodity_specification_relation" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
+        <selectKey keyProperty="relationEntity.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.commodity_specification_relation(id,specificationName, levels, parentId)
+        VALUES (#{relationEntity.id},#{relationEntity.specificationName},#{relationEntity.levels},#{relationEntity.parentId})
     </insert>
     <!-- 添加商品图片表-->
-    <insert id="Savecommodityintroducepicture">
-        INSERT INTO shoppingmall.commodityintroducepicture(pictureUrl, commodityId, levels)
-        VALUES (#{picture.pictureUrl},#{picture.commodityId},#{picture.levels})
+    <insert id="Savecommodityintroducepicture" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityintroducepictureEntity">
+        <selectKey keyProperty="picture.id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO shoppingmall.commodityintroducepicture(id,pictureUrl, commodityId, levels)
+        VALUES (#{picture.id},#{picture.pictureUrl},#{picture.commodityId},#{picture.levels})
     </insert>
 </mapper>

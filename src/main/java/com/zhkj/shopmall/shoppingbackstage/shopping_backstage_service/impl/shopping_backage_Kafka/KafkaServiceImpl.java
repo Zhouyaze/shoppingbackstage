@@ -24,7 +24,7 @@ public class KafkaServiceImpl {
 
     public static final String TOPIC="asd";
 
-    @KafkaListener(topics = "commodityspecificationinventoryprice")
+//    @KafkaListener(topics = "")
     private void handleMessage(String content) {
         try {
             System.out.println("接收到的信息:"+content);
@@ -86,6 +86,7 @@ public class KafkaServiceImpl {
         IndexMessageVO indexMessageVO = new IndexMessageVO(IndexMessageVO.SAVE ,object,id);
         try {
             kafkaTemplate.send(topic, objectMapper.writeValueAsString(indexMessageVO));
+            System.out.println("主题为"+topic+"添加发送成功:\n"+objectMapper.writeValueAsString(indexMessageVO));
         } catch (JsonProcessingException e) {
             logger.error("Json encode error for " + indexMessageVO);
         }
@@ -98,18 +99,21 @@ public class KafkaServiceImpl {
         IndexMessageVO indexMessageVO = new IndexMessageVO(IndexMessageVO.UPDATE ,object,id);
         try {
             kafkaTemplate.send(topic, objectMapper.writeValueAsString(indexMessageVO));
+            System.out.println("主题为"+topic+"修改发送成功:\n"+objectMapper.writeValueAsString(indexMessageVO));
         } catch (JsonProcessingException e) {
             logger.error("Json encode error for " + indexMessageVO);
         }
     }
     /**发送删除消息*/
-    public <T> void kafka_del(String object, String id,Class<T> value) throws IOException {
-        T t = objectMapper.readValue(object,value);
-        String className = t.getClass().getSimpleName();
+    public <T> void kafka_del(String id,Class<T> value) throws IOException {
+//        T t = objectMapper.readValue(object,value);
+//        String className = t.getClass().getSimpleName();
+        String className=value.getSimpleName();
         String topic=this.getTable(className);
-        IndexMessageVO indexMessageVO = new IndexMessageVO(IndexMessageVO.DEL ,object,id);
+        IndexMessageVO indexMessageVO = new IndexMessageVO(IndexMessageVO.DEL ,id);
         try {
             kafkaTemplate.send(topic, objectMapper.writeValueAsString(indexMessageVO));
+            System.out.println("主题为"+topic+"删除发送成功:\n"+objectMapper.writeValueAsString(indexMessageVO));
         } catch (JsonProcessingException e) {
             logger.error("Json encode error for " + indexMessageVO);
         }

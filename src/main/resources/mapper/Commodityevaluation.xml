@@ -5,7 +5,10 @@
     <delete id="deleteEvaluate">
         delete from commodityevaluation where id=#{id}
     </delete>
-    <insert id="addEvaluate">
+    <insert id="addEvaluate" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityevaluationEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into commodityevaluation(evaluationTime,evaluationContent,evaluationTypeId,userId,commodityId)
         value (#{evaluationTime},#{evaluationContent},#{evaluationTypeId},#{userId},#{commodityId})
     </insert>

@@ -37,7 +37,10 @@ public class IndexMessageVO {
         this.object=object;
         this.id=id;
     }
-
+    public IndexMessageVO(String operation, String id){
+        this.operation=operation;
+        this.id=id;
+    }
     public String getId() {
         return id;
     }

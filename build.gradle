@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -60,6 +60,8 @@ repositories {
 dependencies {
     //	compile('org.springframework.boot:spring-boot-starter-jetty')
     compile('org.springframework.kafka:spring-kafka:2.1.6.RELEASE')
+    // https://mvnrepository.com/artifact/org.apache.kafka/kafka
+    compile group: 'org.apache.kafka', name: 'kafka_2.12', version: '1.1.1'
 
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     //开发者工具 用于修改文件build就能编译,避免重启springboot带来的麻烦

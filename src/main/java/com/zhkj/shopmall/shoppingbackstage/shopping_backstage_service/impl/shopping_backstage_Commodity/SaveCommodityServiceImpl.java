@@ -51,6 +51,13 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
             }
             commodityEntity.setBigPictureUrl(commodity_vo.getBigPictureUrl());
             saveCommodityMapper.SaveCommodity(commodityEntity);
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(commodityEntity)
+                        ,String.valueOf(commodityEntity.getId())
+                        ,CommodityEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             //获取商品名称
             String name = commodity_vo.getCommodityName();
             //根据商品名查询商品 主id
@@ -59,6 +66,7 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
             CommodityintroducepictureEntity pictureEntity=getCommodityintroducepictureEntity(commodity_vo);
             String PathUrl = "";
             int no=2;
+
             int levels=0;
             if(null != File){
                 for (int i=0;i< File.length;i++){
@@ -72,7 +80,14 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                     }
                     levels++;
                     pictureEntity.setPictureUrl(commodity_vo.getPictureUrl());
-                    saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
+                    int num=saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
+                    try {
+                        kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity)
+                                ,String.valueOf(pictureEntity.getId())
+                                ,CommodityintroducepictureEntity.class);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -109,13 +124,12 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
                 }
                 CommoditySpecificationInventoryPriceEntity priceEntity=getCommoditySpecificationInventoryPriceEntity(commodity_vo);
 
+                saveCommodityMapper.Savecommodity_specification_inventory_price(priceEntity);
                 try {
                     kafkaService.kafka_save(objectMapper.writeValueAsString(priceEntity),String.valueOf(priceEntity.getId()),CommoditySpecificationInventoryPriceEntity.class);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                saveCommodityMapper.Savecommodity_specification_inventory_price(priceEntity);
             }
         }
         return 1;
@@ -138,7 +152,7 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
             String suffix = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
             // 得到项目路径
             String xiangmuPath = ClassLoader.getSystemClassLoader().getResource("").getPath();
-            String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("out")) + "img/bigImgPath";
+            String bigXiangmuPath = xiangmuPath.substring(0,xiangmuPath.indexOf("classes")) + "img/bigImgPath";
             // 创建File对象 为存储图片做准备
             File file = new File(bigXiangmuPath);
             if(!file.exists()){
@@ -186,12 +200,21 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
         if (relationEntity.getId() != 0) {
             relationEntity.setParentId(relationEntity.getId());
             relationEntity.setLevels(2);
-            return saveCommodityMapper.Savecommodity_specification_relation(relationEntity);
         } else {
             relationEntity.setParentId(0);
             relationEntity.setLevels(1);
-            return saveCommodityMapper.Savecommodity_specification_relation(relationEntity);
         }
+        int result=saveCommodityMapper.Savecommodity_specification_relation(relationEntity);
+        if (result>0){
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(relationEntity)
+                        ,String.valueOf(relationEntity.getId())
+                        ,CommoditySpecificationRelationEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
@@ -202,7 +225,17 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
      */
     @Override
     public int savetopic(SpecificationstopicEntity topic) {
-        return saveCommodityMapper.savespecifications(topic);
+        int result=saveCommodityMapper.savespecifications(topic);
+        if (result>0){
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(topic)
+                        ,String.valueOf(topic.getId())
+                        ,SpecificationstopicEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
@@ -214,7 +247,17 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
      */
     @Override
     public int savesedtailed(SpecificationsdetailedEntity sedtailed) {
-        return saveCommodityMapper.savespecificationsdetailed(sedtailed);
+        int result=saveCommodityMapper.savespecificationsdetailed(sedtailed);
+        if (result>0){
+            try {
+                kafkaService.kafka_save(objectMapper.writeValueAsString(sedtailed)
+                        ,String.valueOf(sedtailed.getId())
+                        ,SpecificationsdetailedEntity.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**

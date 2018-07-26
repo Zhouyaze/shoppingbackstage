@@ -1,8 +1,10 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.*;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SendKafkaMapper;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backage_Kafka.KafkaServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SelectCommodidyService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Constants;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.ExportExcel;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,10 @@ import java.util.List;
 public class SelectCommodidyServiceImpl implements SelectCommodidyService {
 
 
+    @Autowired
+    KafkaServiceImpl kafkaService;
+    @Autowired
+    private ObjectMapper objectMapper;
     @Autowired
     SelectCommodidyMapper selectCommodidyMapper;
 

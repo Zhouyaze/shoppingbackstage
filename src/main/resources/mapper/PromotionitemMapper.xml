@@ -4,7 +4,10 @@
 
 
     <!--添加促销商品 -->
-    <insert id="saveMsg">
+    <insert id="saveMsg" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.PromotionitemEntity">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
        INSERT  INTO shoppingmall.promotionitem(startTime, endTime, discountPrice, commodityNumber, commodityId, specifications1, specifications2, specifications3, specifications4)
        VALUES(#{promotionitem.startTime},#{promotionitem.endTime},#{promotionitem.discountPrice},
        #{promotionitem.commodityNumber},#{promotionitem.commodityId},#{promotionitem.specifications1},

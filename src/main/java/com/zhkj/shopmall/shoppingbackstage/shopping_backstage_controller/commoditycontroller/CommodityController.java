@@ -6,7 +6,6 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopp
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.SaveCommodityServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.SelectCommodidyServiceImpl;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.impl.shopping_backstage_Commodity.UpdateCommodityServiceImpl;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SendKafkaService;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,7 @@ public class CommodityController {
 
 
     @Autowired
-    SendKafkaService sendKafkaService;
+    com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backstage_Commodity.SendKafkaService sendKafkaService;
     @Autowired
     SaveCommodityServiceImpl saveCommodityService;
     @Autowired
