@@ -1,7 +1,5 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_controller.ReturnedPurchaseController;
 
-import com.alibaba.fastjson.JSON;
-import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.ReturnedPurchaseVO;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shopping_backage_ReturnedService.ReturnedPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +24,16 @@ public class ReturnedPurchaseController {
           return returnedPurchaseService.selectNews(returnedPurchaseEntity);
     }
 
-    /**
-     * 前台 退货  下订单数据
-     * @return 文杰
-     */
-    @RequestMapping("saveReturned")
-    public String saveReturn(){
-        String json="{\"messageType\":\"2\",\"manifest\":\"1234567890\",\"returnUserName\":\"狗浩宇\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
-        ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
-        return returnedPurchaseService.saveNews(returnedPurchaseVO);
-    }
+//    /**
+//     * 前台 退货  下订单数据
+//     * @return 文杰
+//     */
+//    @RequestMapping("saveReturned")
+//    public String saveReturn(){
+//        String json="{\"messageType\":\"2\",\"manifest\":\"1234567890\",\"returnUserName\":\"狗浩宇\",\"returnUserAddress\":\"河南省洛阳市涧西区几安南街33号3单元2号楼202\",\"commodityName\":\"苹果\",\"count\":\"9\",\"specification1\":\"褐色\",\"specification2\":\"xxxl\",\"specification3\":\"\",\"specification4\":\"\"}";
+//        ReturnedPurchaseVO returnedPurchaseVO = JSON.parseObject(json,ReturnedPurchaseVO.class);
+//        return returnedPurchaseService.saveNews(returnedPurchaseVO);
+//    }
 
 
     /**

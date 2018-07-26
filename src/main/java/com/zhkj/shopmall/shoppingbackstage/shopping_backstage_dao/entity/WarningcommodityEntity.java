@@ -1,6 +1,7 @@
 package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 public class WarningcommodityEntity {
@@ -10,7 +11,7 @@ public class WarningcommodityEntity {
     private int commodityCount;
     private String commoditySupplier;
     private Integer commodityWaitCount;
-    private Timestamp createTime;
+    private Date createTime;
     private int commodityState;
 
     public int getId() {
@@ -37,6 +38,14 @@ public class WarningcommodityEntity {
         this.commoditySpecification = commoditySpecification;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public int getCommodityCount() {
         return commodityCount;
     }
@@ -61,9 +70,6 @@ public class WarningcommodityEntity {
         this.commodityWaitCount = commodityWaitCount;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;

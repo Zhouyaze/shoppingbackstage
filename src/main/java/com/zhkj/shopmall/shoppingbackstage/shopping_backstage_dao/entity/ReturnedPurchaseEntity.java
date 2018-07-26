@@ -12,7 +12,16 @@ public class ReturnedPurchaseEntity {
     private String returnUserName;
     private String returnUserAddress;
     private String returnCommodityName;
-    private String returnCommoditySku;
+    private int specificationsId;
+
+    public int getSpecificationsId() {
+        return specificationsId;
+    }
+
+    public void setSpecificationsId(int specificationsId) {
+        this.specificationsId = specificationsId;
+    }
+
     private String backstageHandlersint;
     private String purchaseHandlersint;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -88,13 +97,6 @@ public class ReturnedPurchaseEntity {
         this.returnCommodityName = returnCommodityName;
     }
 
-    public String getReturnCommoditySku() {
-        return returnCommoditySku;
-    }
-
-    public void setReturnCommoditySku(String returnCommoditySku) {
-        this.returnCommoditySku = returnCommoditySku;
-    }
 
     public String getBackstageHandlersint() {
         return backstageHandlersint;

@@ -10,7 +10,6 @@ public class WarnigcommodityVO {
     private String commoditySupplier;
     private int commodityWaitCount;
     private Date createTime;
-    private int commodityState;
 
     public String getCommodityName() {
         return commodityName;
@@ -60,11 +59,4 @@ public class WarnigcommodityVO {
         this.createTime = createTime;
     }
 
-    public int getCommodityState() {
-        return commodityState;
-    }
-
-    public void setCommodityState(int commodityState) {
-        this.commodityState = commodityState;
-    }
 }
