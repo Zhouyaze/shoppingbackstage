@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_auditGoods.AuditGoodsMapper">
     <select id="getAuditGoodsMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.AuditgoodsEntity">
-        SELECT * FROM shoppingmall.auditgoods limit #{currentPage},#{pageSize}
+        SELECT * FROM auditgoods limit #{currentPage},#{pageSize}
     </select>
     <insert id="saveAuditGoodsMsg">
-        insert into shoppingmall.auditgoods (goodsMsg) values (#{goodsMsg});
+        insert into auditgoods (goodsMsg) values (#{goodsMsg});
     </insert>
     <update id="updateAuditGoodsMsg">
-        UPDATE shoppingmall.auditgoods SET goodsMsg=#{goodsMsg} WHERE id=#{id}
+        UPDATE auditgoods SET goodsMsg=#{goodsMsg} WHERE id=#{id}
     </update>
     <delete id="delAuditGoodsMsg">
-        DELETE FROM shoppingmall.auditgoods WHERE id=#{id}
+        DELETE FROM auditgoods WHERE id=#{id}
     </delete>
     <select id="getCount" resultType="int" >
-        SELECT COUNT(*) FROM shoppingmall.auditgoods
+        SELECT COUNT(*) FROM auditgoods
     </select>
 </mapper>

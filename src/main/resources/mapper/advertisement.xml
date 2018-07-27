@@ -102,7 +102,7 @@
 
 
     <update id="updateStatus">
-        UPDATE shoppingmall.advertisement
+        UPDATE advertisement
         SET status=2
         WHERE  now()> advertisement.endTime AND  status=1
     </update>
@@ -120,7 +120,7 @@
     </select>
 
     <update id="updateStratStatus">
-        UPDATE shoppingmall.advertisement
+        UPDATE advertisement
         SET status=1
         WHERE  now() &gt; advertisement.startTime AND status = 2 AND now() &lt; advertisement.endTime
     </update>

@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_floor.FloorMapper">
     <select id="getMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.FloorEntity">
-        SELECT * from shoppingmall.floor
+        SELECT * from floor
         <if test="currentPage!=null and pageSize!=null">
             limit #{currentPage},#{pageSize}
         </if>
     </select>
     <select id="getCount" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM shoppingmall.floor
+        SELECT COUNT(*) FROM floor
     </select>
     <delete id="delFloor">
-        DELETE FROM shoppingmall.floor
+        DELETE FROM floor
         <where>
             <if test="id!=null">
                 AND id=#{id}
@@ -22,6 +22,6 @@
         </where>
     </delete>
     <insert id="addFloor">
-        INSERT INTO shoppingmall.floor(title, logoUrl, order) VALUES (title=#{title},logoUrl=#{logoUrl},order=#{order})
+        INSERT INTO floor(title, logoUrl, order) VALUES (title=#{title},logoUrl=#{logoUrl},order=#{order})
     </insert>
 </mapper>

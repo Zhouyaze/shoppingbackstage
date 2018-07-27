@@ -4,7 +4,7 @@
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.UpdateCommodityMapper">
 
     <update id="UpdateCommodity" parameterType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityEntity">
-        UPDATE  shoppingmall.commodity
+        UPDATE  commodity
           SET  commodityName =  #{CommodityEntity.commodityName},
                 bigPictureUrl = #{CommodityEntity.bigPictureUrl},
                 typeName =#{CommodityEntity.typeName}
@@ -13,7 +13,7 @@
 
 
     <update id="UpdateCommodityPrice">
-        UPDATE shoppingmall.commodity_specification_inventory_price
+        UPDATE commodity_specification_inventory_price
         SET
           specification1=#{specification.specification1},
           specification2=#{specification.specification2},
@@ -26,7 +26,7 @@
     </update>
 
     <update id="UpdateCommodityPicture">
-        UPDATE shoppingmall.commodityintroducepicture
+        UPDATE commodityintroducepicture
         set
             pictureUrl=#{pictureEntity.pictureUrl},
             levels=#{pictureEntity.levels}

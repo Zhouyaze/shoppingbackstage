@@ -8,7 +8,7 @@
         <selectKey keyProperty="typeEntity.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.type(id,typeName, levels, parentId)
+        INSERT INTO type(id,typeName, levels, parentId)
         VALUES (#{typeEntity.id},#{typeEntity.typeName},#{typeEntity.levels},#{typeEntity.parentId})
     </insert>
     <!-- 添加商品规格 -->
@@ -16,7 +16,7 @@
         <selectKey keyProperty="topic.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.specificationstopic(id,name)
+        INSERT INTO specificationstopic(id,name)
         VALUES (#{topic.id},#{topic.name})
     </insert>
     <!-- 添加商品详细规格-->
@@ -24,7 +24,7 @@
         <selectKey keyProperty="sedtaile.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.specificationsdetailed(id,dName)
+        INSERT INTO specificationsdetailed(id,dName)
         VALUES (#{sedtaile.id},#{sedtaile.dName})
     </insert>
 
@@ -40,7 +40,7 @@
         <selectKey keyProperty="priceEntity.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.commodity_specification_inventory_price(id,commodityId, specification1, specification2, specification3, specification4, inventory, price, picture)
+        INSERT INTO commodity_specification_inventory_price(id,commodityId, specification1, specification2, specification3, specification4, inventory, price, picture)
         VALUES (#{priceEntity.id},#{priceEntity.commodityId},#{priceEntity.specification1},#{priceEntity.specification2},#{priceEntity.specification3},#{priceEntity.specification4},#{priceEntity.inventory},#{priceEntity.price},#{priceEntity.picture})
     </insert>
     <!-- 添加商品规格关系表-->
@@ -48,7 +48,7 @@
         <selectKey keyProperty="relationEntity.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.commodity_specification_relation(id,specificationName, levels, parentId)
+        INSERT INTO commodity_specification_relation(id,specificationName, levels, parentId)
         VALUES (#{relationEntity.id},#{relationEntity.specificationName},#{relationEntity.levels},#{relationEntity.parentId})
     </insert>
     <!-- 添加商品图片表-->
@@ -56,7 +56,7 @@
         <selectKey keyProperty="picture.id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO shoppingmall.commodityintroducepicture(id,pictureUrl, commodityId, levels)
+        INSERT INTO commodityintroducepicture(id,pictureUrl, commodityId, levels)
         VALUES (#{picture.id},#{picture.pictureUrl},#{picture.commodityId},#{picture.levels})
     </insert>
 </mapper>

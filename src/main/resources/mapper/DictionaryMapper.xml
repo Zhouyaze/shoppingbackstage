@@ -4,11 +4,11 @@
 
 
     <select id="getAllMsg" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.DictionaryEntity">
-        select * from shoppingmall.dictionary
+        select * from dictionary
     </select>
 
     <select id="getMsgByType" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.DictionaryEntity">
-        select * from shoppingmall.dictionary WHERE type=#{type}
+        select * from dictionary WHERE type=#{type}
     </select>
 
     <insert id="saveMsg">
@@ -16,11 +16,11 @@
     </insert>
 
     <delete id="delMsgById">
-        delete from shoppingmall.dictionary where id=#{id}
+        delete from dictionary where id=#{id}
     </delete>
 
     <update id="updateMsg">
-        UPDATE shoppingmall.dictionary
+        UPDATE dictionary
         <set>
             <if test="type!=null">
                 type=#{type},

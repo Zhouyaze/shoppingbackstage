@@ -59,7 +59,7 @@ public class DeleteCommodityServiceImpl implements DeleteCommodityService {
         int number = delete.DeleteCommoditySpecification(id);
         try {
             kafkaService.kafka_del(id.toString()
-                    , CommoditySpecificationRelationEntity.class);
+                    , CommoditySpecificationInventoryPriceEntity.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@
 
     <!--删除商品所有 -->
     <delete id="DeleteCommodity" parameterType="java.lang.Integer">
-        DELETE FROM shoppingmall.commodity WHERE id=#{Id}
+        DELETE FROM commodity WHERE id=#{Id}
     </delete>
 
     <delete id="DeleteCommodityPrice"  parameterType="java.lang.Integer">
@@ -13,7 +13,7 @@
     </delete>
     <!--删除图片商品-->
     <delete id="DeleteCommodityPicture" parameterType="java.lang.Integer">
-        DELETE FROM shoppingmall.commodityintroducepicture WHERE commodityintroducepicture.commodityId=#{Id}
+        DELETE FROM commodityintroducepicture WHERE commodityintroducepicture.commodityId=#{Id}
     </delete>
 
     <!--删除 某个商品规格 -->

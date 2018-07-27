@@ -4,13 +4,13 @@
 
     <!--添加 退货 发货信息到 消息表-->
     <insert id="saveNews">
-       INSERT INTO shoppingmall.returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint,inventory)
+       INSERT INTO returned_purchase(messageType, manifest, returnUserName, returnUserAddress, returnCommodityName, returnCommoditySku, backstageHandlersint, purchaseHandlersint,inventory)
        VALUES(#{returned.messageType},#{returned.manifest},#{returned.returnUserName},#{returned.returnUserAddress},#{returned.returnCommodityName},#{returned.returnCommoditySku},#{returned.backstageHandlersint},#{returned.purchaseHandlersint},#{returned.inventory})
     </insert>
 
     <!--<select id="querReturned" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">-->
         <!--SELECT returnUserName,returnCommodityName,returnCommoditySku,returnUserAddress,backstageHandlersint-->
-        <!--FROM shoppingmall.returned_purchase WHERE id=1  &lt;!&ndash;#{returned.id}&ndash;&gt;-->
+        <!--FROM returned_purchase WHERE id=1  &lt;!&ndash;#{returned.id}&ndash;&gt;-->
     <!--</select>-->
 
 
@@ -18,20 +18,20 @@
     <!--查询退货 发货商品 发送进销存  根据id 逐条发 -->
     <select id="sendNews" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
         SELECT *
-        FROM shoppingmall.returned_purchase WHERE id=1  <!--#{returned.id}-->
+        FROM returned_purchase WHERE id=1  <!--#{returned.id}-->
     </select>
 
 
     <!--查询退货 发货  展示前台-->
     <select id="selectNews" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.ReturnedPurchaseEntity">
-        SELECT * FROM shoppingmall.returned_purchase
+        SELECT * FROM returned_purchase
         WHERE messageType=#{type.messageType} AND operatingStatus=#{type.operatingStatus}
     </select>
 
 
     <!--修改 消息表  状态-->
     <update id="updateNews">
-    UPDATE shoppingmall.returned_purchase
+    UPDATE returned_purchase
     SET operatingStatus=#{operatingStatus}
     WHERE manifest=#{manifest}
     </update>
@@ -39,14 +39,14 @@
 
     <!--查询商品规格 id -->
     <select id="slecctspecificationsId" resultType="int">
-      SELECT shoppingmall.returned_purchase.specificationsId   FROM returned_purchase
+      SELECT returned_purchase.specificationsId   FROM returned_purchase
         WHERE manifest=#{manifest}
 
     </select>
 
     <!--查询商品  数量 -->
     <select id="sslectInventory" resultType="int">
-         SELECT shoppingmall.returned_purchase.inventory FROM returned_purchase
+         SELECT returned_purchase.inventory FROM returned_purchase
         WHERE manifest=#{manifest}
     </select>
 </mapper>

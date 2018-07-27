@@ -40,13 +40,11 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
     @Override
     public int saveCommodityAll(MultipartFile imgFile, MultipartFile[] File , Commodity_Vo commodity_vo) {
         if (commodity_vo != null) {
-            CommodityEntity commodityEntity = getCommodityEntity(commodity_vo);
+            CommodityEntity commodityEntity = getCommodityEntity(commodity_vo);//获取添加的商品
             String imgPathUrl = "";
             if(null != imgFile){
                 imgPathUrl = toupload(imgFile);
                 String patch=imgPathUrl;
-                //根据最后“/”截取字符
-                // String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
                 commodity_vo.setBigPictureUrl(patch);
             }
             commodityEntity.setBigPictureUrl(commodity_vo.getBigPictureUrl());
@@ -66,32 +64,115 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
             CommodityintroducepictureEntity pictureEntity=getCommodityintroducepictureEntity(commodity_vo);
             String PathUrl = "";
             int no=2;
-
             int levels=0;
-            if(null != File){
-                for (int i=0;i< File.length;i++){
-                    PathUrl = toupload(File[i]);
-                    String patch=PathUrl;
-                    //根据最后“/”截取字符
-                    //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
-                    commodity_vo.setPictureUrl(patch);
-                    for ( int number=levels;number<no;number++){
-                        pictureEntity.setLevels(levels);
-                    }
-                    levels++;
-                    pictureEntity.setPictureUrl(commodity_vo.getPictureUrl());
-                    int num=saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
-                    try {
-                        kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity)
-                                ,String.valueOf(pictureEntity.getId())
-                                ,CommodityintroducepictureEntity.class);
-                        int id=pictureEntity.getId();
-                        pictureEntity.setId(id+1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            PathUrl = toupload(File[0]);
+            String patch=PathUrl;
+            //根据最后“/”截取字符
+            //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
+//            commodity_vo.setPictureUrl(patch);
+            pictureEntity.setPictureUrl(patch);
+            pictureEntity.setLevels(levels);
+            int num=saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
+            if (num>0) {
+                try {
+                    kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity)
+                            , String.valueOf(pictureEntity.getId())
+                            , CommodityintroducepictureEntity.class);
+//                    int id = pictureEntity.getId();
+//                    pictureEntity.setId(id + 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
+            //第二张图片
+            CommodityintroducepictureEntity pictureEntity2=getCommodityintroducepictureEntity(commodity_vo);
+
+            String PathUrl2 = "";
+            int no2=2;
+            int levels2=1;
+            PathUrl2 = toupload(File[1]);
+            String patch2=PathUrl2;
+            //根据最后“/”截取字符
+            //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
+//            commodity_vo.setPictureUrl(patch);
+            pictureEntity2.setPictureUrl(patch2);
+            pictureEntity2.setLevels(levels2);
+
+            int num2=saveCommodityMapper.Savecommodityintroducepicture(pictureEntity2);
+            if (num2>0) {
+                try {
+                    kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity2)
+                            , String.valueOf(pictureEntity2.getId())
+                            , CommodityintroducepictureEntity.class);
+//                    int id = pictureEntity.getId();
+//                    pictureEntity.setId(id + 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//            CommodityintroducepictureEntity pic=new CommodityintroducepictureEntity();
+//            PathUrl = toupload(File[1]);
+//            patch=PathUrl;
+//            //根据最后“/”截取字符
+//            //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
+////            commodity_vo.setPictureUrl(patch);
+//            pic.setPictureUrl(patch);
+//            pic.setLevels(1);
+//            int id=pictureEntity.getId()+1;
+//            pic.setId(id);
+//            pic.setCommodityId(pictureEntity.getCommodityId());
+//            num=saveCommodityMapper.Savecommodityintroducepicture(pic);
+//            if (num>0) {
+//                try {
+//                    kafkaService.kafka_save(objectMapper.writeValueAsString(pic)
+//                            , String.valueOf(pic.getId())
+//                            , CommodityintroducepictureEntity.class);
+////                    int id = pictureEntity.getId();
+////                    pictureEntity.setId(id + 1);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+
+
+
+//            if(null != File){
+//                for (int i=0;i< File.length;i++){
+////                    PathUrl = toupload(File[i]);
+////                    String patch=PathUrl;
+////                    //根据最后“/”截取字符
+////                    //  String url = patch.substring(patch.lastIndexOf("/")+1,patch.length());
+////                    commodity_vo.setPictureUrl(patch);
+////                    for ( int number=levels;number<no;number++){
+////                        pictureEntity.setLevels(levels);
+////                    }
+////                    levels++;
+////                    pictureEntity.setPictureUrl(commodity_vo.getPictureUrl());
+//                    int num=saveCommodityMapper.Savecommodityintroducepicture(pictureEntity);
+//                    try {
+//                        kafkaService.kafka_save(objectMapper.writeValueAsString(pictureEntity)
+//                                ,String.valueOf(pictureEntity.getId())
+//                                ,CommodityintroducepictureEntity.class);
+//                        int id=pictureEntity.getId();
+//                        pictureEntity.setId(id+1);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
         }
         return 1;
     }

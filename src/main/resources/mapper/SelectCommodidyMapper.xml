@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shopping_backstage_Commodity.SelectCommodidyMapper">
 <select id="getCount" resultType="int">
-    SELECT count(id) FROM shoppingmall.commodity
+    SELECT count(id) FROM commodity
     <where>
         <if test="commodity.commodityName !=null" >
             commodity.commodityName LIKE '%${commodity.commodityName}%'
@@ -13,19 +13,19 @@
     <!-- 商品的所有查询方法-->
     <!--帮助查询 商品类型 层级（标题） -->
     <select id="selectleves" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.TypeEntity" >
-        SELECT * FROM shoppingmall.type WHERE levels=1
+        SELECT * FROM type WHERE levels=1
     </select>
     <!--查询商品规格 -->
     <select id="selectspecificationstopic" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationstopicEntity">
-        SELECT * FROM shoppingmall.specificationstopic
+        SELECT * FROM specificationstopic
     </select>
     <!-- 查询商品详细规格-->
     <select id="selectspecificationsdetailed" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.SpecificationsdetailedEntity">
-        SELECT * FROM shoppingmall.specificationsdetailed
+        SELECT * FROM specificationsdetailed
     </select>
 
     <select id="seletCommodityId" resultType="int">
-        SELECT id FROM shoppingmall.commodity WHERE commodityName=#{name}
+        SELECT id FROM commodity WHERE commodityName=#{name}
     </select>
     <!-- 查询  商品类型标题  比如说【颜色 ，尺码】-->
     <select id="selsctspecification" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
@@ -111,18 +111,18 @@
     </select>
     <!--查询商品type id -->
     <select id="selectTypeId" resultType="int">
-        SELECT id FROM  shoppingmall.type WHERE typeName=#{typeNamelevels}
+        SELECT id FROM  type WHERE typeName=#{typeNamelevels}
     </select>
 
 
     <!-- * 查询商品  颜色{子类}尺码{子类}-->
     <select id="selectspecifications" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommoditySpecificationRelationEntity">
-        SELECT * FROM shoppingmall.commodity_specification_relation
-        WHERE shoppingmall.commodity_specification_relation.parentId=#{commodity.id};
+        SELECT * FROM commodity_specification_relation
+        WHERE commodity_specification_relation.parentId=#{commodity.id};
     </select>
 
     <select id="selectCount" resultType="int">
-        SELECT inventory FROM shoppingmall.commodity_specification_inventory_price
+        SELECT inventory FROM commodity_specification_inventory_price
         WHERE  id=#{specificationsId}
 
     </select>

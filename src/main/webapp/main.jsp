@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="wrap start-page">
- <h1><i class="home-icon"></i>欢迎回到**站点管理中心</h1>
+ <h1><i class="home-icon"></i>欢迎回到商城后台管理中心</h1>
  <dl>
   <dt>订单统计信息</dt>
   <dd>
@@ -28,38 +28,6 @@
     <li>
      <span>已成交订单：</span>
      <span>1282</span>
-    </li>
-   </ul>
-  </dd>
- </dl>
- 
- <dl>
-  <dt>商户统计信息</dt>
-  <dd>
-   <ul>
-    <li>
-     <span>店铺总数量：</span>
-     <span>1252</span>
-    </li>
-    <li>
-     <span>商品总数量：</span>
-     <span>13252</span>
-    </li>
-    <li>
-     <span>在线实时交易总计：</span>
-     <span>1282.00元</span>
-    </li>
-    <li>
-     <span>酒吧类店铺：</span>
-     <span>128家</span>
-    </li>
-    <li>
-     <span>家政服务类店铺：</span>
-     <span>300家</span>
-    </li>
-    <li>
-     <span>外卖类店铺：</span>
-     <span>458家</span>
     </li>
    </ul>
   </dd>
