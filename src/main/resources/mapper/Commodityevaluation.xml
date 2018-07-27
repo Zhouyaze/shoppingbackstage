@@ -9,4 +9,10 @@
         insert into commodityevaluation(evaluationTime,evaluationContent,evaluationTypeId,userId,commodityId)
         value (#{evaluationTime},#{evaluationContent},#{evaluationTypeId},#{userId},#{commodityId})
     </insert>
+
+    <select id="selectAllEvaluate" resultType="com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.CommodityevaluationEntity">
+        select u.nickName,u.loginName,c.commodityName,f.evaluationTime,f.evaluationContent
+        from user u,commodity c,commodityevaluation f
+        where f.userId=u.id and f.commodityId=c.id
+    </select>
 </mapper>

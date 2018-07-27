@@ -5,6 +5,8 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoppin
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommodityevaluationIMPL {
     int index=0;
@@ -19,5 +21,9 @@ public class CommodityevaluationIMPL {
     public int delete(Integer id){
        index= commodityevaluationDao.deleteEvaluate(id);
        return index;
+    }
+
+    public List<CommodityevaluationEntity> selectAl(){
+        return commodityevaluationDao.selectAllEvaluate();
     }
 }

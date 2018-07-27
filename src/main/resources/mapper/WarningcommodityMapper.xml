@@ -12,4 +12,6 @@
         SELECT * FROM shoppingmall.warningcommodity
 
     </select>
+
+
 </mapper>

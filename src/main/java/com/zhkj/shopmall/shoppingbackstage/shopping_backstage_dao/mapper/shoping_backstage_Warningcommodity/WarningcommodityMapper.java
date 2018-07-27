@@ -4,6 +4,9 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.Warning
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 @Repository
 public interface WarningcommodityMapper {
 
@@ -13,5 +16,11 @@ public interface WarningcommodityMapper {
      * @return
      */
     int saveWarning(@Param("warning") WarningcommodityEntity warningcommodityEntity);
+
+    boolean exportExcel(HttpServletResponse response);
+
+
+    List<WarningcommodityEntity> selectWarning();
+
 
 }

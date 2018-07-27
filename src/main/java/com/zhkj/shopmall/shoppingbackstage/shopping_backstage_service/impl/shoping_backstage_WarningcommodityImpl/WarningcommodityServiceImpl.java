@@ -5,9 +5,15 @@ import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_api.vo.Warnigcommo
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity.WarningcommodityEntity;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.mapper.shoping_backstage_Warningcommodity.WarningcommodityMapper;
 import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_service.mapper.shoping_backstage_WarningcommodityService.WarningcommodityService;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.Constants;
+import com.zhkj.shopmall.shoppingbackstage.shopping_backstage_tools.ExportExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class WarningcommodityServiceImpl implements WarningcommodityService {
@@ -28,6 +34,50 @@ public class WarningcommodityServiceImpl implements WarningcommodityService {
         }
         return "失败";
     }
+
+
+
+
+
+    @Override
+    public List<WarningcommodityEntity> selectWarning() {
+        return mapper.selectWarning();
+    }
+
+
+    @Override
+    public boolean exportExcel(HttpServletResponse response) {
+        List<WarningcommodityEntity>ls=mapper.selectWarning();
+        List<String[]>strings=  convertList(ls);
+        try {
+            ExportExcel.exportData(response, Constants.WARNING_NAME,Constants.WARNING_TABLE, strings);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * 转换类型
+     * @param studentEntityList 要转换的类型
+     * @return 转换后的类型
+     */
+    private List<String[]> convertList(List<WarningcommodityEntity> studentEntityList){
+        List<String[]> list = null;
+        if(null != studentEntityList && studentEntityList.size() > 0){
+            list = new ArrayList<>();
+            for(WarningcommodityEntity studentEntity : studentEntityList){
+                String[] strings = new String[]
+                        {studentEntity.getId().toString(),studentEntity.getCommodityName(),studentEntity.getCommoditySpecification(),
+                                studentEntity.getCommodityCount().toString(),studentEntity.getCommoditySupplier(),
+                                studentEntity.getCommodityWaitCount().toString(),studentEntity.getCreateTime().toString()};
+                list.add(strings);
+            }
+        }
+        return list;
+    }
+
+
 
 
 

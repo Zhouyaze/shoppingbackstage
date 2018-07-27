@@ -39,6 +39,8 @@ public class SaveCommodityServiceImpl implements SaveCommodityService {
      */
     @Override
     public int saveCommodityAll(MultipartFile imgFile, MultipartFile[] File , Commodity_Vo commodity_vo) {
+
+
         if (commodity_vo != null) {
             CommodityEntity commodityEntity = getCommodityEntity(commodity_vo);
             String imgPathUrl = "";

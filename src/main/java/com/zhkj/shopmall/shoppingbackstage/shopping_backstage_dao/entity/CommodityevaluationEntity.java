@@ -3,17 +3,44 @@ package com.zhkj.shopmall.shoppingbackstage.shopping_backstage_dao.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 
 public class CommodityevaluationEntity {
     private int id;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp evaluationTime;
     private String evaluationContent;
     private int evaluationTypeId;
     private int userId;
     private int commodityId;
+    private String commodityName;
 
+    public String getCommodityName() {
+        return commodityName;
+    }
+
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    private String nickName;
+    private String loginName;
     public int getId() {
         return id;
     }
@@ -60,24 +87,5 @@ public class CommodityevaluationEntity {
 
     public void setCommodityId(int commodityId) {
         this.commodityId = commodityId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CommodityevaluationEntity that = (CommodityevaluationEntity) o;
-        return id == that.id &&
-                evaluationTypeId == that.evaluationTypeId &&
-                userId == that.userId &&
-                commodityId == that.commodityId &&
-                Objects.equals(evaluationTime, that.evaluationTime) &&
-                Objects.equals(evaluationContent, that.evaluationContent);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, evaluationTime, evaluationContent, evaluationTypeId, userId, commodityId);
     }
 }
